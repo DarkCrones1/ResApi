@@ -1,0 +1,17 @@
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Domain.deps.json
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Domain.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Domain.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.csproj.AssemblyReference.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.AssemblyInfoInputs.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.AssemblyInfo.cs
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.csproj.CoreCompileInputs.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\refint\Res.Domain.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\ref\Res.Domain.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Common.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Domain.Dto.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Common.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\bin\Debug\net7.0\Res.Domain.Dto.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResProject\Res.Domain\obj\Debug\net7.0\Res.Domain.csproj.CopyComplete
