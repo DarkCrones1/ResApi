@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj": {}
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj": {}
   },
   "projects": {
-    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj",
         "projectName": "Res.Common",
-        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj",
         "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\obj\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,14 +77,14 @@
         }
       }
     },
-    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
         "projectName": "Res.Domain.Dto",
-        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
         "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\obj\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -105,8 +105,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj"
               }
             }
           }
@@ -140,14 +140,14 @@
         }
       }
     },
-    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\Res.Domain.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\Res.Domain.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj",
         "projectName": "Res.Domain",
-        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\Res.Domain.csproj",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj",
         "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\obj\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -168,11 +168,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj"
               },
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
               }
             }
           }
@@ -206,14 +206,14 @@
         }
       }
     },
-    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
         "projectName": "Res.Infraestructure",
-        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
         "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\obj\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -234,14 +234,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj"
               },
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
               },
-              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\Res.Domain.csproj": {
-                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Domain\\Res.Domain.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj"
               }
             }
           }

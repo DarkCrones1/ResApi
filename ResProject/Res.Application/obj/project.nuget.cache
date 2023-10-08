@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lw6MWeU6mcvQVS8+W3Xq2zEE0b2JU3Lf9RcVebp8yIVNguZsP1irhZJwLRTeDlSWsRkNmB6eEeemYAIX6n1eMQ==",
+  "dgSpecHash": "zIAlzdRz15c46rZazwRDKFMF9hbK+i5UJA/Gcu1ygcDjpjwUTSqm2HouB/uNmpm19rKESPNR+fnAEO18MXbpKA==",
   "success": true,
-  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Application\\Res.Application.csproj",
+  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Application\\Res.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

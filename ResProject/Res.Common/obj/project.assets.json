@@ -8331,11 +8331,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj",
+      "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj",
       "projectName": "Res.Common",
-      "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\Res.Common.csproj",
+      "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\Res.Common.csproj",
       "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-      "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Common\\obj\\",
+      "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y4Txu9EFwgxiYEA/bWTHKxdeDfeZtKQVeI5/LQ/N3tr4+lfZYHXFqDbMiTYexNJATgtk+wbGyYNzg2JAvziz9Q==",
+  "dgSpecHash": "v2wU7aG9LV132r1ckOCkscgN84+SvhvJMyzy25zryseKDtvOBAzjfB8k3/RGvrCmIrNTxtNM7w5FfDtQBEAlMA==",
   "success": true,
-  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
+  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Infraestructure\\Res.Infraestructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\azure.core\\1.28.0\\azure.core.1.28.0.nupkg.sha512",
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
