@@ -10139,11 +10139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infraestructure\\Res.Infraestructure.csproj",
-      "projectName": "Res.Infraestructure",
-      "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infraestructure\\Res.Infraestructure.csproj",
+      "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj",
+      "projectName": "Res.Infrastructure",
+      "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
-      "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infraestructure\\obj\\",
+      "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

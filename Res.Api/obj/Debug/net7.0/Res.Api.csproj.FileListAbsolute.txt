@@ -302,12 +302,10 @@ E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Common.dll
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Domain.dll
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Domain.Dto.dll
-E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Infraestructure.dll
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Application.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Common.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Domain.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Domain.Dto.pdb
-E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Infraestructure.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\staticwebassets\msbuild.Res.Api.Microsoft.AspNetCore.StaticWebAssets.props
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.Res.Api.props
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Res.Api.props
@@ -319,3 +317,5 @@ E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\Res.Api.csproj.CopyComplete
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\Res.Api.genruntimeconfig.cache
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\obj\Debug\net7.0\ref\Res.Api.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Infrastructure.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Api\bin\Debug\net7.0\Res.Infrastructure.pdb

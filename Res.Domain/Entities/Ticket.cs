@@ -2,7 +2,7 @@ using Res.Common.Entities;
 
 namespace Res.Domain.Entities;
 
-public partial class Ticket
+public partial class Ticket : BaseAuditableEntity
 {
     
 }

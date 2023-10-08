@@ -2,7 +2,7 @@ using Res.Common.Entities;
 
 namespace Res.Domain.Entities;
 
-public partial class GeographicalZone
+public partial class GeographicalZone : CatalogBaseAuditableEntity
 {
     
 }

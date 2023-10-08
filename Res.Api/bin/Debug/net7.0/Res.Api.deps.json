@@ -18,7 +18,7 @@
           "Res.Common": "1.0.0",
           "Res.Domain": "1.0.0",
           "Res.Domain.Dto": "1.0.0",
-          "Res.Infraestructure": "1.0.0",
+          "Res.Infrastructure": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
           "Swashbuckle.AspNetCore.Annotations": "6.5.0"
         },
@@ -2008,7 +2008,7 @@
           "Res.Domain.Dto.dll": {}
         }
       },
-      "Res.Infraestructure/1.0.0": {
+      "Res.Infrastructure/1.0.0": {
         "dependencies": {
           "Azure.Storage.Blobs": "12.15.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
@@ -2023,7 +2023,7 @@
           "Res.Domain.Dto": "1.0.0"
         },
         "runtime": {
-          "Res.Infraestructure.dll": {}
+          "Res.Infrastructure.dll": {}
         }
       }
     }
@@ -3573,7 +3573,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Res.Infraestructure/1.0.0": {
+    "Res.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

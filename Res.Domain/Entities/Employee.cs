@@ -2,7 +2,7 @@ using Res.Common.Entities;
 
 namespace Res.Domain.Entities;
 
-public partial class Employee
+public partial class Employee : BaseRemovablePaginationEntity
 {
     
 }

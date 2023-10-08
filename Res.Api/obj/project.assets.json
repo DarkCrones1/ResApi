@@ -3896,7 +3896,7 @@
           "bin/placeholder/Res.Domain.Dto.dll": {}
         }
       },
-      "Res.Infraestructure/1.0.0": {
+      "Res.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -3913,10 +3913,10 @@
           "Res.Domain.Dto": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Res.Infraestructure.dll": {}
+          "bin/placeholder/Res.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Res.Infraestructure.dll": {}
+          "bin/placeholder/Res.Infrastructure.dll": {}
         }
       }
     }
@@ -10818,10 +10818,10 @@
       "path": "../Res.Domain.Dto/Res.Domain.Dto.csproj",
       "msbuildProject": "../Res.Domain.Dto/Res.Domain.Dto.csproj"
     },
-    "Res.Infraestructure/1.0.0": {
+    "Res.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Res.Infraestructure/Res.Infraestructure.csproj",
-      "msbuildProject": "../Res.Infraestructure/Res.Infraestructure.csproj"
+      "path": "../Res.Infrastructure/Res.Infrastructure.csproj",
+      "msbuildProject": "../Res.Infrastructure/Res.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10836,7 +10836,7 @@
       "Res.Common >= 1.0.0",
       "Res.Domain >= 1.0.0",
       "Res.Domain.Dto >= 1.0.0",
-      "Res.Infraestructure >= 1.0.0",
+      "Res.Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "Swashbuckle.AspNetCore.Annotations >= 6.5.0"
     ]
@@ -10885,8 +10885,8 @@
             "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain\\Res.Domain.csproj": {
               "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain\\Res.Domain.csproj"
             },
-            "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infraestructure\\Res.Infraestructure.csproj": {
-              "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infraestructure\\Res.Infraestructure.csproj"
+            "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj": {
+              "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj"
             }
           }
         }

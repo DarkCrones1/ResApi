@@ -26,7 +26,7 @@
     <ProjectReference Include="..\Res.Common\Res.Common.csproj" />
     <ProjectReference Include="..\Res.Domain\Res.Domain.csproj" />
     <ProjectReference Include="..\Res.Domain.Dto\Res.Domain.Dto.csproj" />
-    <ProjectReference Include="..\Res.Infraestructure\Res.Infraestructure.csproj" />
+    <ProjectReference Include="..\Res.Infrastructure\Res.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
