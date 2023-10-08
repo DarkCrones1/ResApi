@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VC2ryfMOcj2zIfWF+I3DTXcn0rK/zk+pCIaKQGrGS/cCFsFUJnZMf6Nl6+eqJmAoLgZzxPfjYsW1v7EONGSwWA==",
+  "dgSpecHash": "Tbn+KisZPAEyjRnyMvYz5MmTlkhPYomlATizw1PxsfUrQ4oa9qfKwTB8ud/sImnpRjUPqRupIhyrhrtKPaHH4w==",
   "success": true,
-  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\ResProject\\Res.Domain\\Res.Domain.csproj",
+  "projectFilePath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain\\Res.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\azure.core\\1.28.0\\azure.core.1.28.0.nupkg.sha512",
     "C:\\Users\\Iván Garcia\\.nuget\\packages\\azure.storage.blobs\\12.15.0\\azure.storage.blobs.12.15.0.nupkg.sha512",

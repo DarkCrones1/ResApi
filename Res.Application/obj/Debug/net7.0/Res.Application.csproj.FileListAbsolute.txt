@@ -36,3 +36,22 @@ E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\R
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\ResProject\Res.Application\obj\Debug\net7.0\refint\Res.Application.dll
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\ResProject\Res.Application\obj\Debug\net7.0\Res.Application.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\ResProject\Res.Application\obj\Debug\net7.0\ref\Res.Application.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Application.deps.json
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Application.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Application.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Common.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Domain.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Domain.Dto.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Common.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Domain.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\bin\Debug\net7.0\Res.Domain.Dto.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.csproj.AssemblyReference.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.AssemblyInfoInputs.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.AssemblyInfo.cs
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.csproj.CoreCompileInputs.cache
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.csproj.CopyComplete
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\refint\Res.Application.dll
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\Res.Application.pdb
+E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Application\obj\Debug\net7.0\ref\Res.Application.dll
