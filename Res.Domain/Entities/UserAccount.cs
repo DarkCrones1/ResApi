@@ -13,4 +13,10 @@ public partial class UserAccount : BaseRemovablePaginationEntity
     public bool IsAuthorized { get; set; }
 
     public DateTime CreatedDate { get; set; }
+
+    public virtual ICollection<BranchStore> BranchStore { get; } = new List<BranchStore>();
+
+    public virtual ICollection<Employee> Employee { get; } = new List<Employee>();
+
+    public virtual ICollection<Rol> Rol { get; } = new List<Rol>();
 }

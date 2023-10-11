@@ -37,4 +37,6 @@ public partial class BranchStore : BaseRemovableAuditablePaginationEntity
     public virtual ICollection<Reservation> Reservation { get; } = new List<Reservation>();
 
     public virtual ICollection<Ticket> Ticket { get; } = new List<Ticket>();
+
+    public virtual ICollection<UserAccount> UserAccount { get; } = new List<UserAccount>();
 }
