@@ -22,6 +22,8 @@ public partial class BranchStore : BaseRemovableAuditablePaginationEntity
 
     public virtual ICollection<BoxCash> BoxCash { get; } = new List<BoxCash>();
 
+    public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
+
     public virtual ICollection<Customer> Customer { get; } = new List<Customer>();
 
     public virtual ICollection<Employee> Employee { get; } = new List<Employee>();

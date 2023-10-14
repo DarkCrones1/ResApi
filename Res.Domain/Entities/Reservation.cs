@@ -10,7 +10,7 @@ public partial class Reservation : BaseRemovableAuditablePaginationEntity
 
     public int CustomerId { get; set; }
 
-    public int EmployeeId { get; set; }
+    public int ManagerId { get; set; }
 
     public DateTime ReservationTime { get; set; }
 
@@ -20,5 +20,5 @@ public partial class Reservation : BaseRemovableAuditablePaginationEntity
 
     public virtual Customer Customer { get; set; } = null!;
 
-    public virtual Employee Employee { get; set; } = null!;
+    public virtual Employee Manager { get; set; } = null!;
 }

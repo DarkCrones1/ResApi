@@ -8,6 +8,8 @@ public partial class Food : CatalogBaseAuditablePaginationEntity
 
     public virtual ICollection<Category> Category { get; } = new List<Category>();
 
+    public virtual ICollection<OrderFood> CustomerFood { get; } = new List<OrderFood>();
+
     public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
 
     public virtual ICollection<Menu> Menu { get; } = new List<Menu>();

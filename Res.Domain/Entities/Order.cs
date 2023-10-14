@@ -2,11 +2,11 @@ using Res.Common.Entities;
 
 namespace Res.Domain.Entities;
 
-public partial class Cart : BaseAuditablePaginationEntity
+public partial class Order : BaseEntityPagination
 {
-    public int CustomerId { get; set; }
-
     public int BranchStoreId { get; set; }
+
+    public int CustomerId { get; set; }
 
     public short Status { get; set; }
 
@@ -14,7 +14,7 @@ public partial class Cart : BaseAuditablePaginationEntity
 
     public virtual BranchStore BranchStore { get; set; } = null!;
 
-    public virtual ICollection<CartFood> CartFood { get; } = new List<CartFood>();
+    public virtual ICollection<OrderDrink> OrderDrink { get; } = new List<OrderDrink>();
 
-    public virtual ICollection<CartDrink> CartDrink { get; } = new List<CartDrink>();
+    public virtual ICollection<OrderFood> OrderFood { get; } = new List<OrderFood>();
 }

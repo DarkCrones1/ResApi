@@ -8,6 +8,8 @@ public partial class Drink : CatalogBaseAuditablePaginationEntity
 
     public virtual ICollection<Category> Category { get; } = new List<Category>();
 
+    public virtual ICollection<OrderDrink> OrderDrink { get; } = new List<OrderDrink>();
+
     public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
 
     public virtual ICollection<Menu> Menu { get; } = new List<Menu>();
