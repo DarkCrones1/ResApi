@@ -18,5 +18,7 @@ public partial class UserAccount : BaseRemovablePaginationEntity
 
     public virtual ICollection<Employee> Employee { get; } = new List<Employee>();
 
+    public virtual ICollection<Customer> Customer { get; } = new List<Customer>();
+
     public virtual ICollection<Rol> Rol { get; } = new List<Rol>();
 }

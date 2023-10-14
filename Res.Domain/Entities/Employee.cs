@@ -40,5 +40,7 @@ public partial class Employee : BaseRemovableAuditablePaginationEntity
 
     public virtual ICollection<Payment> Payment { get; } = new List<Payment>();
 
+    public virtual ICollection<Reservation> Reservation { get; } = new List<Reservation>();
+
     public virtual ICollection<UserAccount> UserAccount { get; } = new List<UserAccount>();
 }
