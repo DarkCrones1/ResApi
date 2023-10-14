@@ -6,6 +6,8 @@ public partial class Cart : BaseAuditablePaginationEntity
 {
     public int CustomerId { get; set; }
 
+    public int BranchStoreId { get; set; }
+
     public short Status { get; set; }
 
     public virtual Customer Customer { get; set; } = null!;
