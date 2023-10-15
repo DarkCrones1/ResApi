@@ -29,6 +29,8 @@ public partial class Payment : BaseRemovableAuditablePaginationEntity
         }
     }
 
+    public short Status { get; set; }
+
     public virtual BranchStore BranchStore { get; set; } = null!;
 
     public virtual BoxCash CashRegister { get; set; } = null!;
