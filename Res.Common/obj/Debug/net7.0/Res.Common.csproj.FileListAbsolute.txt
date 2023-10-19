@@ -34,3 +34,15 @@ E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Common\obj\De
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Common\obj\Debug\net7.0\refint\Res.Common.dll
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Common\obj\Debug\net7.0\Res.Common.pdb
 E:\Archivos\Tareas Universidad UTM\IGS 7° Cuatrimestre\resapi\Res.Common\obj\Debug\net7.0\ref\Res.Common.dll
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\bin\Debug\net7.0\Res.Common.deps.json
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\bin\Debug\net7.0\Res.Common.dll
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\bin\Debug\net7.0\Res.Common.pdb
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.csproj.AssemblyReference.cache
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.AssemblyInfoInputs.cache
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.AssemblyInfo.cs
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.csproj.CoreCompileInputs.cache
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.dll
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\refint\Res.Common.dll
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\Res.Common.pdb
+D:\Documentos\UTM\IGDS 7° Cuatrimestre\Desarrollo de Proyecto\ResApi\Res.Common\obj\Debug\net7.0\ref\Res.Common.dll
