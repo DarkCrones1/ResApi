@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KQlOpM3mF6MYyjOK19p5Qu8yd5lHjvweyu2nqLrt4m8jZLvcGbVNoXbJ3hCc5teoMzsupCa5YVzgAgoTLdpIZA==",
+  "dgSpecHash": "mjMBAkxBpjWoILX0zW9WmkblVVjW5I2GBjK10k2c6FaKChUZ4QhrYp0PCZGBCMkj3kMSNu/4GGucvGa6C96x5Q==",
   "success": true,
-  "projectFilePath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Application\\Res.Application.csproj",
+  "projectFilePath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Application\\Res.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivang\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ivang\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

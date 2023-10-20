@@ -10,7 +10,7 @@ namespace Res.Infrastructure.Repositories;
 
 public class UnirOfWork : IUnitOfWork
 {
-    private readonly ResDBContext _dbContext;
+    private readonly ResDbContext _dbContext;
 
     private readonly IConfiguration _configuration;
 
@@ -70,7 +70,7 @@ public class UnirOfWork : IUnitOfWork
 
     private bool disposed;
 
-    public UnirOfWork(ResDBContext dbContext, IConfiguration configuration)
+    public UnirOfWork(ResDbContext dbContext, IConfiguration configuration)
     {
         _dbContext = dbContext;
 

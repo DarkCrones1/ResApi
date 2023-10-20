@@ -54,7 +54,7 @@ public class Startup
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Res Project API", Version = "v1" });
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            options.IncludeXmlComments(xmlFilePath);
+            // options.IncludeXmlComments(xmlFilePath);
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
@@ -82,18 +82,19 @@ public class Startup
 
         // Add DB Connection string
         services.AddDbContext<ResDbContext>(options =>
-        {
-            options.UseSqlServer(Configuration.GetConnectionString("resDevString") ?? throw new InvalidOperationException("Database conecction string not found...")).UseLazyLoadingProxies();
-        });
+
+            options.UseSqlServer(Configuration.GetConnectionString("resDevString"))
+        );
 
         // Add Mappers
         // services.AddAutoMapper(typeof().Assembly);
 
         // Configure Cores
-        services.AddCors(options => options.AddPolicy("corsPollicy", builder => {
+        services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
+        {
             builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
         }));
-        
+
         // Add Repositories
 
         // Add Serivces
@@ -104,10 +105,12 @@ public class Startup
         services.AddResponseCaching();
 
         // Add JWT
-        services.AddAuthentication(opttions => {
+        services.AddAuthentication(opttions =>
+        {
             opttions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             opttions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options => {
+        }).AddJwtBearer(options =>
+        {
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,

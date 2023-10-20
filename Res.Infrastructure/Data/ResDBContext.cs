@@ -71,7 +71,7 @@ public partial class ResDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            option => option.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+            option => option.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery).MigrationsAssembly("Res.Api")
         );
     }
 
