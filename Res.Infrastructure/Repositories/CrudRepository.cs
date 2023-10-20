@@ -10,10 +10,10 @@ namespace Res.Infrastructure;
 
 public class CrudRepository<T> : ICrudRepository<T> where T : BaseEntity
 {
-    private readonly ResDBContext _dbContext;
+    private readonly ResDbContext _dbContext;
     protected readonly DbSet<T> _entity;
 
-    public CrudRepository(ResDBContext dbContext)
+    public CrudRepository(ResDbContext dbContext)
     {
         this._dbContext = dbContext;
         this._entity = dbContext.Set<T>();

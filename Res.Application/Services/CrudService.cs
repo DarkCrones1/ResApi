@@ -14,15 +14,15 @@ using Res.Domain.Entities;
 
 namespace Res.Application.Services;
 
-public class CrudServices<T> : ICrudService<T> where T : BaseEntity
+public class CrudService<T> : ICrudService<T> where T : BaseEntity
 {
     protected ICrudRepository<T> _repository;
-    private readonly IUnitOfWork _unitOfWork;
+    protected readonly IUnitOfWork _unitOfWork;
 
-    public CrudServices(IUnitOfWork unitOfWork)
+    public CrudService(IUnitOfWork unitOfWork)
     {
-        this._repository = GetRepository();
         this._unitOfWork = unitOfWork;
+        this._repository = GetRepository();
     }
 
     protected virtual ICrudRepository<T> GetRepository()
@@ -41,6 +41,15 @@ public class CrudServices<T> : ICrudService<T> where T : BaseEntity
         if (typeRep == typeof(BranchStoreEmployee))
             return (ICrudRepository<T>)this._unitOfWork.BranchStoreEmployeeRepository;
 
+        if (typeRep == typeof(Cart))
+            return (ICrudRepository<T>)this._unitOfWork.CartRepository;
+
+        if (typeRep == typeof(CartDrink))
+            return (ICrudRepository<T>)this._unitOfWork.CartDrinkRepository;
+
+        if (typeRep == typeof(CartFood))
+            return (ICrudRepository<T>)this._unitOfWork.CartFoodRepository;
+
         if (typeRep == typeof(Category))
             return (ICrudRepository<T>)this._unitOfWork.CategoryRepository;
 
@@ -49,6 +58,9 @@ public class CrudServices<T> : ICrudService<T> where T : BaseEntity
 
         if (typeRep == typeof(CustomerAddress))
             return (ICrudRepository<T>)this._unitOfWork.CustomerAddressRepository;
+
+        if (typeRep == typeof(CustomerType))
+            return (ICrudRepository<T>)this._unitOfWork.CustomerTypeRepository;
 
         if (typeRep == typeof(Drink))
             return (ICrudRepository<T>)this._unitOfWork.DrinkRepository;
@@ -71,6 +83,15 @@ public class CrudServices<T> : ICrudService<T> where T : BaseEntity
         if (typeRep == typeof(Menu))
             return (ICrudRepository<T>)this._unitOfWork.MenuRepository;
 
+        if (typeRep == typeof(Order))
+            return (ICrudRepository<T>)this._unitOfWork.OrderRepository;
+
+        if (typeRep == typeof(OrderDrink))
+            return (ICrudRepository<T>)this._unitOfWork.OrderDrinkRepository;
+
+        if (typeRep == typeof(OrderFood))
+            return (ICrudRepository<T>)this._unitOfWork.OrderFoodRepository;
+
         if (typeRep == typeof(PayBox))
             return (ICrudRepository<T>)this._unitOfWork.PayBoxRepository;
 
@@ -79,6 +100,9 @@ public class CrudServices<T> : ICrudService<T> where T : BaseEntity
 
         if (typeRep == typeof(Reservation))
             return (ICrudRepository<T>)this._unitOfWork.ReservationRepository;
+
+        if (typeRep == typeof(Rol))
+            return (ICrudRepository<T>)this._unitOfWork.RolRepository;
 
         if (typeRep == typeof(UserAccount))
             return (ICrudRepository<T>)this._unitOfWork.UserAccountRepository;

@@ -14,11 +14,19 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<BranchStoreEmployee> BranchStoreEmployeeRepository { get; }
 
+    ICrudRepository<Cart> CartRepository { get; }
+
+    ICrudRepository<CartDrink> CartDrinkRepository { get; }
+
+    ICrudRepository<CartFood> CartFoodRepository { get; }
+
     ICrudRepository<Category> CategoryRepository { get; }
 
     ICrudRepository<Customer> CustomerRepository { get; }
 
     ICrudRepository<CustomerAddress> CustomerAddressRepository { get; }
+
+    ICrudRepository<CustomerType> CustomerTypeRepository { get; }
 
     ICrudRepository<Drink> DrinkRepository { get; }
 
@@ -34,11 +42,19 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Menu> MenuRepository { get; }
 
+    ICrudRepository<Order> OrderRepository { get; }
+
+    ICrudRepository<OrderDrink> OrderDrinkRepository { get; }
+
+    ICrudRepository<OrderFood> OrderFoodRepository { get; }
+
     ICrudRepository<PayBox> PayBoxRepository { get; }
 
     ICrudRepository<Payment> PaymentRepository { get; }
 
     ICrudRepository<Reservation> ReservationRepository { get; }
+
+    ICrudRepository<Rol> RolRepository { get; }
 
     ICrudRepository<Ticket> TicketRepository { get; }
 

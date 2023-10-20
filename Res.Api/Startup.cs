@@ -81,7 +81,7 @@ public class Startup
         services.AddEndpointsApiExplorer();
 
         // Add DB Connection string
-        services.AddDbContext<ResDBContext>(options =>
+        services.AddDbContext<ResDbContext>(options =>
         {
             options.UseSqlServer(Configuration.GetConnectionString("resDevString") ?? throw new InvalidOperationException("Database conecction string not found...")).UseLazyLoadingProxies();
         });
