@@ -5,20 +5,21 @@ using Res.Domain.Entities;
 
 namespace Res.Infrastructure.Data.Configurations;
 
-public class BoxCashConfiguration : IEntityTypeConfiguration<BoxCash>
+public class CustomerTypeConfiguration : IEntityTypeConfiguration<CustomerType>
 {
-    public void Configure(EntityTypeBuilder<BoxCash> builder)
+    public void Configure(EntityTypeBuilder<CustomerType> builder)
     {
+        builder.HasKey(e => e.Id).HasName("PK__Customer__3214EC0756D118DC");
+
         builder.Property(e => e.CreatedBy)
-                .HasMaxLength(20)
-                .HasDefaultValueSql("(N'Admin')");
+            .HasMaxLength(20)
+            .HasDefaultValueSql("(N'Admin')");
         builder.Property(e => e.CreatedDate)
             .HasDefaultValueSql("(getdate())")
             .HasColumnType("datetime");
-        builder.Property(e => e.Description).HasMaxLength(150);
+        builder.Property(e => e.Description).HasMaxLength(350);
         builder.Property(e => e.LastModifiedBy).HasMaxLength(20);
         builder.Property(e => e.LastModifiedDate).HasColumnType("datetime");
         builder.Property(e => e.Name).HasMaxLength(50);
-        builder.Property(e => e.SerialNumber).HasMaxLength(50);
     }
 }

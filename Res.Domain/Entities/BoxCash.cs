@@ -12,5 +12,7 @@ public partial class BoxCash : CatalogBaseAuditablePaginationEntity
 
     public virtual ICollection<UserAccount> EmployeePaymentAccount {get;} = new List<UserAccount>();
 
+    public virtual ICollection<PayBox> PayBox { get; } = new List<PayBox>();
+
     public virtual ICollection<Payment> Payment {get; } = new List<Payment>();
 }

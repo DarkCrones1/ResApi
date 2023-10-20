@@ -2,7 +2,7 @@ using Res.Common.Entities;
 
 namespace Res.Domain.Entities;
 
-public partial class Menu : BaseRemovableAuditablePaginationEntity
+public partial class Menu : CatalogBaseAuditablePaginationEntity
 {
     public virtual BranchStore BranchStore { get; set; } = null!;
 

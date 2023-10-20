@@ -8,6 +8,10 @@ public partial class CartFood : BaseEntityPagination
 
     public int FoodId { get; set; }
 
+    public DateTime CreatedDate { get; set; }
+
+    public string CreatedBy { get; set; } = null!;
+
     public virtual Cart Cart { get; set; } = null!;
 
     public virtual Food Food { get; set; } = null!;

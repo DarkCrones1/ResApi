@@ -14,7 +14,11 @@ public partial class Cart : BaseAuditablePaginationEntity
 
     public virtual BranchStore BranchStore { get; set; } = null!;
 
-    public virtual ICollection<CartFood> CartFood { get; } = new List<CartFood>();
+    public virtual Ticket Ticket { get; set; } = null!;
+
+    public virtual ICollection<Food> Food { get; } = new List<Food>();
 
     public virtual ICollection<CartDrink> CartDrink { get; } = new List<CartDrink>();
+
+    public virtual ICollection<CartFood> CartFood { get; } = new List<CartFood>();
 }

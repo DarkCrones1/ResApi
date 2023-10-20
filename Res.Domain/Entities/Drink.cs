@@ -4,9 +4,9 @@ namespace Res.Domain.Entities;
 
 public partial class Drink : CatalogBaseAuditablePaginationEntity
 {
-    public int CategoryId { get; set; }
-
     public virtual ICollection<Category> Category { get; } = new List<Category>();
+
+    public virtual ICollection<CartDrink> CartDrink { get; } = new List<CartDrink>();
 
     public virtual ICollection<OrderDrink> OrderDrink { get; } = new List<OrderDrink>();
 

@@ -10,7 +10,7 @@ public partial class PayBox : BaseRemovableAuditablePaginationEntity
 
     public int BranchStoreId { get; set; }
 
-    public int EmployeeId { get; set; }
+    public int CashierId { get; set; }
 
     public int TicketId { get; set; }
 
@@ -18,7 +18,7 @@ public partial class PayBox : BaseRemovableAuditablePaginationEntity
 
     public virtual BranchStore BranchStore { get; set; } = null!;
 
-    public virtual UserAccount Employee { get; set; } = null!;
+    public virtual UserAccount Cashier { get; set; } = null!;
 
     public virtual Ticket Ticket { get; set; } = null!;
 }

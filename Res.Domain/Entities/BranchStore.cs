@@ -22,6 +22,8 @@ public partial class BranchStore : BaseRemovableAuditablePaginationEntity
 
     public virtual ICollection<BoxCash> BoxCash { get; } = new List<BoxCash>();
 
+    public virtual ICollection<BranchStoreEmployee> BranchStoreEmployee { get; } = new List<BranchStoreEmployee>();
+
     public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
 
     public virtual ICollection<Customer> Customer { get; } = new List<Customer>();
@@ -34,7 +36,11 @@ public partial class BranchStore : BaseRemovableAuditablePaginationEntity
 
     public virtual ICollection<Menu> Menu { get; } = new List<Menu>();
 
+    public virtual ICollection<Order> Order { get; } = new List<Order>();
+
     public virtual ICollection<Payment> Payment { get; } = new List<Payment>();
+
+    public virtual ICollection<PayBox> PayBox { get; } = new List<PayBox>();
 
     public virtual ICollection<Reservation> Reservation { get; } = new List<Reservation>();
 

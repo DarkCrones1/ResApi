@@ -20,6 +20,8 @@ public partial class Customer : BaseRemovableAuditablePaginationEntity
 
     public int CustomerTypeId { get; set; }
 
+    public int CreatedAtBranchStoreId { get; set; }
+
     public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
 
     public virtual BranchStore CreatedAtBranchStore { get; set; } = null!;
