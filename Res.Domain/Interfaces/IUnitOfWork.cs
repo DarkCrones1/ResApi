@@ -16,11 +16,11 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Cart> CartRepository { get; }
 
-    ICrudRepository<CartDrink> CartDrinkRepository { get; }
+    // ICrudRepository<CartDrink> CartDrinkRepository { get; }
 
-    ICrudRepository<CartFood> CartFoodRepository { get; }
+    // ICrudRepository<CartFood> CartFoodRepository { get; }
 
-    ICrudRepository<Category> CategoryRepository { get; }
+    ICatalogBaseRepository<Category> CategoryRepository { get; }
 
     ICrudRepository<Customer> CustomerRepository { get; }
 

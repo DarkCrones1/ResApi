@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {}
+    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {}
   },
   "projects": {
     "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj": {
@@ -71,14 +71,14 @@
         }
       }
     },
-    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
         "projectName": "Res.Domain.Dto",
-        "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
         "packagesPath": "C:\\Users\\ivang\\.nuget\\packages\\",
-        "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\obj\\",
+        "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ivang\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -10160,11 +10160,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Infrastructure\\Res.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj",
       "projectName": "Res.Infrastructure",
-      "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Infrastructure\\Res.Infrastructure.csproj",
+      "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Infrastructure\\Res.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\ivang\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Infrastructure\\obj\\",
+      "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ivang\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -10182,11 +10182,11 @@
             "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj": {
               "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj"
             },
-            "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
-              "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
+            "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+              "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj"
             },
-            "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain\\Res.Domain.csproj": {
-              "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\ResApi\\Res.Domain\\Res.Domain.csproj"
+            "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain\\Res.Domain.csproj": {
+              "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain\\Res.Domain.csproj"
             }
           }
         }

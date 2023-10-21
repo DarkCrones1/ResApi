@@ -14,6 +14,13 @@ using Res.Infrastructure.Data;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using Res.Application.Mapping;
+using Res.Common.Interfaces.Repositories;
+using Res.Infrastructure;
+using Res.Infrastructure.Repositories;
+using Res.Common.Interfaces.Services;
+using Res.Application.Services;
+using Res.Domain.Interfaces;
 
 
 namespace Res.Api;
@@ -87,7 +94,7 @@ public class Startup
         );
 
         // Add Mappers
-        // services.AddAutoMapper(typeof().Assembly);
+        services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
         // Configure Cores
         services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
@@ -96,8 +103,15 @@ public class Startup
         }));
 
         // Add Repositories
+        services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+        services.AddScoped(typeof(IRetrieveRepository<>), typeof(RetrieveRepository<>));
+        services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
+
+        services.AddScoped<IUnitOfWork, UnirOfWork>();
 
         // Add Serivces
+        services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
+        services.AddScoped(typeof(ICatalogBaseService<>), typeof(CatalogBaseService<>));
 
         // Add AutoValidator
 
@@ -105,23 +119,23 @@ public class Startup
         services.AddResponseCaching();
 
         // Add JWT
-        services.AddAuthentication(opttions =>
-        {
-            opttions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            opttions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = Configuration["Authentication:Issuer"],
-                ValidAudience = Configuration["Authentication:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:SecretKey"]!))
-            };
-        });
+        // services.AddAuthentication(opttions =>
+        // {
+        //     opttions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //     opttions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        // }).AddJwtBearer(options =>
+        // {
+        //     options.TokenValidationParameters = new TokenValidationParameters
+        //     {
+        //         ValidateIssuer = true,
+        //         ValidateAudience = true,
+        //         ValidateLifetime = true,
+        //         ValidateIssuerSigningKey = true,
+        //         ValidIssuer = Configuration["Authentication:Issuer"],
+        //         ValidAudience = Configuration["Authentication:Audience"],
+        //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:SecretKey"]!))
+        //     };
+        // });
 
         // Add
         services.Configure<RequestLocalizationOptions>(options =>
