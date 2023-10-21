@@ -21,6 +21,7 @@ using Res.Infrastructure.Repositories;
 using Res.Common.Interfaces.Services;
 using Res.Application.Services;
 using Res.Domain.Interfaces;
+using Res.Api.Helper;
 
 
 namespace Res.Api;
@@ -112,6 +113,8 @@ public class Startup
         // Add Serivces
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
         services.AddScoped(typeof(ICatalogBaseService<>), typeof(CatalogBaseService<>));
+        services.AddScoped<TokenHelper>();
+        services.AddHttpContextAccessor();
 
         // Add AutoValidator
 

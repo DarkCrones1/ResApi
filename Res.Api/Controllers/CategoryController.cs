@@ -12,6 +12,7 @@ using Res.API.Responses;
 using Res.Domain.Dto.Request.Create;
 using Res.Common.Exceptions;
 using Res.Api.Helper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Res.API.Controllers;
 
@@ -46,6 +47,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
+    // [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CategoryResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CategoryCreateRequestDto requestDto)
     {
@@ -66,6 +68,7 @@ public class CategoryController : ControllerBase
 
     [HttpPut]
     [Route("{id:int}")]
+    // [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CategoryResponseDto>))]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CategoryUpdateRequestDto requestDto)
     {
@@ -94,6 +97,7 @@ public class CategoryController : ControllerBase
 
     [HttpDelete]
     [Route("{id:int}")]
+    // [Authorize]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         try

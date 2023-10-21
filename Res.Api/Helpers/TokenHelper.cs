@@ -24,6 +24,15 @@ public class TokenHelper
         var identity = _httpContextAccessor.HttpContext!.User.Identity as ClaimsIdentity;
         var nameIdentifier = identity!.FindFirst(ClaimTypes.NameIdentifier);
         
-        return nameIdentifier!.Value;
+        // return nameIdentifier!.Value;
+
+        if (nameIdentifier != null)
+        {
+            return nameIdentifier.Value;
+        }
+        else
+        {
+            return "Admin";
+        }
     }
 }
