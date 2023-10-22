@@ -1,5 +1,6 @@
 using Res.Common.Interfaces.Repositories;
 using Res.Domain.Entities;
+using Res.Domain.Interfaces.Repositories;
 // using Res.Domain.Interfaces.Repositories;
 
 namespace Res.Domain.Interfaces;
@@ -20,7 +21,7 @@ public interface IUnitOfWork : IDisposable
 
     // ICrudRepository<CartFood> CartFoodRepository { get; }
 
-    ICatalogBaseRepository<Category> CategoryRepository { get; }
+    ICategoryRepository CategoryRepository { get; }
 
     ICrudRepository<Customer> CustomerRepository { get; }
 

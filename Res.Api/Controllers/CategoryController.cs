@@ -13,6 +13,8 @@ using Res.Domain.Dto.Request.Create;
 using Res.Common.Exceptions;
 using Res.Api.Helper;
 using Microsoft.AspNetCore.Authorization;
+using Res.Domain.Dto.QueryFilters;
+using Res.Domain.Interfaces.Services;
 
 namespace Res.API.Controllers;
 
@@ -22,10 +24,10 @@ namespace Res.API.Controllers;
 public class CategoryController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Category> _service;
+    private readonly ICategoryService _service;
     private readonly TokenHelper _tokenHelper;
 
-    public CategoryController(IMapper mapper, ICatalogBaseService<Category> service, TokenHelper tokenHelper)
+    public CategoryController(IMapper mapper, ICategoryService service, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
@@ -37,17 +39,22 @@ public class CategoryController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
     [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] CategoryQueryFilter filter)
     {
-        var entities = await _service.GetAll();
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<CategoryResponseDto>>(entities);
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
 
-        var response = new ApiResponse<IEnumerable<CategoryResponseDto>>(data: dtos);
+        var response = new ApiResponse<IEnumerable<CategoryResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CategoryResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CategoryCreateRequestDto requestDto)
     {
@@ -68,7 +75,7 @@ public class CategoryController : ControllerBase
 
     [HttpPut]
     [Route("{id:int}")]
-    // [Authorize]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CategoryResponseDto>))]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CategoryUpdateRequestDto requestDto)
     {
@@ -86,7 +93,7 @@ public class CategoryController : ControllerBase
             newEntity.LastModifiedDate = DateTime.Now;
             newEntity.Id = id;
             await _service.Update(newEntity);
-            return Ok(newEntity);
+            return Ok(requestDto);
         }
         catch (Exception ex)
         {
@@ -97,7 +104,7 @@ public class CategoryController : ControllerBase
 
     [HttpDelete]
     [Route("{id:int}")]
-    // [Authorize]
+    [Authorize]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         try

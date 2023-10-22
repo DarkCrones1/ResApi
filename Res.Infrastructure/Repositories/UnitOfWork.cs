@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Res.Common.Interfaces.Repositories;
 using Res.Domain.Entities;
 using Res.Domain.Interfaces;
+using Res.Domain.Interfaces.Repositories;
+
 // using Res.Domain.Interfaces.Repositories;
 using Res.Infrastructure.Data;
 
@@ -28,7 +30,7 @@ public class UnirOfWork : IUnitOfWork
 
     // protected ICrudRepository<CartFood> _cartFoodRepository;
 
-    protected ICatalogBaseRepository<Category> _categoryRepository;
+    protected ICategoryRepository _categoryRepository;
 
     protected ICrudRepository<Customer> _customerRepository;
 
@@ -92,7 +94,7 @@ public class UnirOfWork : IUnitOfWork
 
         // _cartFoodRepository = new CrudRepository<CartFood>(_dbContext);
 
-        _categoryRepository = new CatalogBaseRepository<Category>(_dbContext);
+        _categoryRepository = new CategoryRepository(_dbContext);
 
         _customerRepository = new CrudRepository<Customer>(_dbContext);
 
@@ -147,7 +149,7 @@ public class UnirOfWork : IUnitOfWork
 
     // public ICrudRepository<CartFood> CartFoodRepository => _cartFoodRepository;
 
-    public ICatalogBaseRepository<Category> CategoryRepository => _categoryRepository;
+    public ICategoryRepository CategoryRepository => _categoryRepository;
 
     public ICrudRepository<Customer> CustomerRepository => _customerRepository;
 

@@ -22,6 +22,8 @@ using Res.Common.Interfaces.Services;
 using Res.Application.Services;
 using Res.Domain.Interfaces;
 using Res.Api.Helper;
+using Res.Domain.Interfaces.Repositories;
+using Res.Domain.Interfaces.Services;
 
 
 namespace Res.Api;
@@ -107,12 +109,15 @@ public class Startup
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
         services.AddScoped(typeof(IRetrieveRepository<>), typeof(RetrieveRepository<>));
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         services.AddScoped<IUnitOfWork, UnirOfWork>();
 
         // Add Serivces
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
         services.AddScoped(typeof(ICatalogBaseService<>), typeof(CatalogBaseService<>));
+        services.AddScoped<ICategoryService, CategoryService>();
+
         services.AddScoped<TokenHelper>();
         services.AddHttpContextAccessor();
 
