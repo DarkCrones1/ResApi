@@ -68,7 +68,9 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<Ticket> _ticketRepository;
 
-    protected ICrudRepository<UserAccount> _userAccountRepository;
+    protected IUserAccountRepository _userAccountRepository;
+
+    protected IRetrieveRepository<ActiveUserAccountEmployee> _activeUserAccountEmployeeRepository;
 
     private bool disposed;
 
@@ -132,7 +134,9 @@ public class UnirOfWork : IUnitOfWork
 
         _ticketRepository = new CrudRepository<Ticket>(_dbContext);
 
-        _userAccountRepository = new CrudRepository<UserAccount>(_dbContext);
+        _userAccountRepository = new UserAccountRepository(_dbContext);
+
+        _activeUserAccountEmployeeRepository = new RetrieveRepository<ActiveUserAccountEmployee>(_dbContext);
     }
 
     public ICrudRepository<Address> AddressRepository => _addressRepository;
@@ -187,7 +191,9 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<Ticket> TicketRepository => _ticketRepository;
 
-    public ICrudRepository<UserAccount> UserAccountRepository => _userAccountRepository;
+    public IUserAccountRepository UserAccountRepository => _userAccountRepository;
+
+    public IRetrieveRepository<ActiveUserAccountEmployee> ActiveUserAccountEmployeeRepository => _activeUserAccountEmployeeRepository;
 
     protected virtual void Dispose(bool disposing)
     {

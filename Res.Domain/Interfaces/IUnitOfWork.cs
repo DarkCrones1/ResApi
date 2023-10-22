@@ -59,7 +59,9 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Ticket> TicketRepository { get; }
 
-    ICrudRepository<UserAccount> UserAccountRepository { get; }
+    IUserAccountRepository UserAccountRepository { get; }
+
+    IRetrieveRepository<ActiveUserAccountEmployee> ActiveUserAccountEmployeeRepository { get; }
 
     void SaveChanges();
 

@@ -31,11 +31,11 @@ public class SettingConfigurationFile
         _instance = new SettingConfigurationFile(configuration);
     }
 
-    // public string UrlBlobCustomerIdentification => _configuration.GetValue<string>("DefaultValues:customerIdentificationAzureStorageBaseURL") ?? string.Empty;
-    // public string UrlBlobCustomerProfAddress => _configuration.GetValue<string>("DefaultValues:customerProofAddressAzureStorageBaseURL") ?? string.Empty;
-    // public string UrlBlobCustomerProfile => _configuration.GetValue<string>("DefaultValues:imageProfileAzureStorageBaseURL") ?? string.Empty;
-    // public string UrlBlobCustomerDocuments => _configuration.GetValue<string>("DefaultValues:customerDocuments") ?? string.Empty;
-    // public string UrlBlobEmployeeDocuments => _configuration.GetValue<string>("DefaultValues:employeeDocuments") ?? string.Empty;
+    public string UrlBlobCustomerIdentification => _configuration.GetValue<string>("DefaultValues:customerIdentificationAzureStorageBaseURL") ?? string.Empty;
+    public string UrlBlobCustomerProfAddress => _configuration.GetValue<string>("DefaultValues:customerProofAddressAzureStorageBaseURL") ?? string.Empty;
+    public string UrlBlobCustomerProfile => _configuration.GetValue<string>("DefaultValues:imageProfileAzureStorageBaseURL") ?? string.Empty;
+    public string UrlBlobCustomerDocuments => _configuration.GetValue<string>("DefaultValues:customerDocuments") ?? string.Empty;
+    public string UrlBlobEmployeeDocuments => _configuration.GetValue<string>("DefaultValues:employeeDocuments") ?? string.Empty;
     public int SysAdminRol => int.Parse(_configuration.GetValue<string>("DefaultValues:sysAdminRol")!);
     public int AdministratorRolId => int.Parse(_configuration.GetValue<string>("DefaultValues:administratorRolId")!);
     public int CashierRolId => int.Parse(_configuration.GetValue<string>("DefaultValues:cashierRolId")!);

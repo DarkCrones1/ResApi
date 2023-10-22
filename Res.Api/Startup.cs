@@ -110,13 +110,16 @@ public class Startup
         services.AddScoped(typeof(IRetrieveRepository<>), typeof(RetrieveRepository<>));
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 
         services.AddScoped<IUnitOfWork, UnirOfWork>();
 
         // Add Serivces
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
         services.AddScoped(typeof(ICatalogBaseService<>), typeof(CatalogBaseService<>));
+        services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IUserAccountService, UserAccountService>();
 
         services.AddScoped<TokenHelper>();
         services.AddHttpContextAccessor();
