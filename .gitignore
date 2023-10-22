@@ -481,6 +481,9 @@ $RECYCLE.BIN/
 20231022205332_InitialCreate.Designer.cs
 ResDbContextModelSnapshot.cs
 
+
+# Ignore carpetas
+/staticwebassets/
 /bin/
-/[Db]ebug/
+/Debug/
 /net7.0/
