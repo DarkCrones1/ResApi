@@ -12,11 +12,11 @@ public class OrderDrinkConfiguration : IEntityTypeConfiguration<OrderDrink>
         builder.HasOne(e => e.Drink).WithMany(p => p.OrderDrink)
         .HasForeignKey(d => d.DrinkId)
         .OnDelete(DeleteBehavior.ClientSetNull)
-        .HasConstraintName("FK_CartDrink_Cart");
+        .HasConstraintName("FK_OrderDrink_Drink");
 
         builder.HasOne(e => e.Order).WithMany(p => p.OrderDrink)
         .HasForeignKey(d => d.OrderId)
         .OnDelete(DeleteBehavior.ClientSetNull)
-        .HasConstraintName("FK_Drink_Cart");
+        .HasConstraintName("FK_OrderDrink_Order");
     }
 }

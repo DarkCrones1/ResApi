@@ -9,13 +9,6 @@ public class CartFoodConfiguration : IEntityTypeConfiguration<CartFood>
 {
     public void Configure(EntityTypeBuilder<CartFood> builder)
     {
-        builder.Property(e => e.CreatedBy)
-                .HasMaxLength(50)
-                .HasDefaultValueSql("(N'Admin')");
-        builder.Property(e => e.CreatedDate)
-            .HasDefaultValueSql("(getdate())")
-            .HasColumnType("datetime");
-
         builder.HasOne(e => e.Cart).WithMany(p => p.CartFood)
         .HasForeignKey(d => d.CartId)
         .OnDelete(DeleteBehavior.ClientSetNull)
