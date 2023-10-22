@@ -6,7 +6,7 @@ public partial class Food : CatalogBaseAuditablePaginationEntity
 {
     public virtual ICollection<Category> Category { get; } = new List<Category>();
 
-    public virtual ICollection<CartFood> CartFood { get; } = new List<CartFood>();
+    // public virtual CartFood CartFood { get; set; } = null!;
 
     public virtual ICollection<OrderFood> OrderFood { get; } = new List<OrderFood>();
 
