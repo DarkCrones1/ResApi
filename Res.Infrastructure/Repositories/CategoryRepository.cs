@@ -1,7 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 using Res.Domain.Entities;
 using Res.Domain.Interfaces.Repositories;
 using Res.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 using Res.Domain.Dto.QueryFilters;
 
 namespace Res.Infrastructure.Repositories;
