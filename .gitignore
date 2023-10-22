@@ -484,12 +484,14 @@ ResDbContextModelSnapshot.cs
 
 # Ignore carpetas
 /staticwebassets/
+/refint/
 /bin/
 /Debug/
 /net7.0/
 
 # ignore files
-*.dll
-*.pdb
-*.cache
-*.editorconfig
+**/*.dll
+**/*.pdb
+**/*.cache
+**/*.editorconfig
+**/*.pdb
