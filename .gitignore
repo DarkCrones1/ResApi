@@ -477,8 +477,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # Ignore migrations
-20231022205332_InitialCreate.cs
-20231022205332_InitialCreate.Designer.cs
+20231022231619_InitialCreate.cs
+20231022231619_InitialCreate.Designer.cs
 ResDbContextModelSnapshot.cs
 
 
@@ -495,4 +495,3 @@ ResDbContextModelSnapshot.cs
 **/*.cache
 **/*.editorconfig
 **/*.pdb
-**/*
