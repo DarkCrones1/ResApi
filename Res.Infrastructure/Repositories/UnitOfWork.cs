@@ -20,7 +20,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<BoxCash> _boxCashRepository;
 
-    protected ICrudRepository<BranchStore> _branchStoreRepository;
+    protected IBranchStoreRepository _branchStoreRepository;
 
     protected ICrudRepository<BranchStoreEmployee> _branchStoreEmployeeRepository;
 
@@ -86,7 +86,7 @@ public class UnirOfWork : IUnitOfWork
 
         _boxCashRepository = new CrudRepository<BoxCash>(_dbContext);
 
-        _branchStoreRepository = new CrudRepository<BranchStore>(_dbContext);
+        _branchStoreRepository = new BranchStoreRepository(_dbContext);
 
         _branchStoreEmployeeRepository = new CrudRepository<BranchStoreEmployee>(_dbContext);
 
@@ -143,7 +143,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<BoxCash> BoxCashRepository => _boxCashRepository;
 
-    public ICrudRepository<BranchStore> BranchStoreRepository => _branchStoreRepository;
+    public IBranchStoreRepository BranchStoreRepository => _branchStoreRepository;
 
     public ICrudRepository<BranchStoreEmployee> BranchStoreEmployeeRepository => _branchStoreEmployeeRepository;
 

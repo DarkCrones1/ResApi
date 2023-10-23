@@ -11,10 +11,6 @@ public class CreateRequestMappingProfile : Profile
     public CreateRequestMappingProfile()
     {
         CreateMap<CategoryCreateRequestDto, Category>()
-        // .ForMember(
-        //     dest => dest.CreatedBy,
-        //     opt => opt.MapFrom(src => "Admin")
-        // )
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
@@ -28,6 +24,37 @@ public class CreateRequestMappingProfile : Profile
             {
                 var createdUser = context.Items["CreatedUser"] as string;
                 dest.CreatedBy = createdUser;
+            }
+        );
+
+        CreateMap<BranchStoreCreateRequestDto, BranchStore>()
+        .ForMember(
+            dest => dest.Employee,
+            opt => opt.MapFrom(src => src.Employees)
+        )
+        .ForMember(
+            dest => dest.BoxCash,
+            opt => opt.MapFrom(src => src.BoxCashes)
+        )
+        .AfterMap(
+            (src, dest, context) =>
+            {
+                dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
+                dest.CreatedDate = DateTime.Now;
+                var createdUser = context.Items["CreatedUser"] as string;
+                dest.CreatedBy = createdUser;
+
+                var locationAddress = new Address
+                {
+                    Address1 = src.Address1,
+                    Address2 = src.Address2,
+                    Street = src.Street,
+                    ExternalNumber = src.ExternalNumber,
+                    InternalNumber = src.InternalNumber,
+                    ZipCode = src.ZipCode,
+                    City = src.City!
+                };
+                dest.Address.Add(locationAddress);
             }
         );
     }

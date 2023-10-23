@@ -10,6 +10,8 @@ public class QueryFilterMappingProfile : Profile
 {
     public QueryFilterMappingProfile()
     {
+        CreateMap<BranchStoreQueryFilter, BranchStore>();
+
         CreateMap<BaseCatalogQueryFilter, Category>();
 
         CreateMap<CategoryQueryFilter, Category>();

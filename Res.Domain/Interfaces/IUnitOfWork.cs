@@ -11,7 +11,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<BoxCash> BoxCashRepository { get; }
 
-    ICrudRepository<BranchStore> BranchStoreRepository { get; }
+    IBranchStoreRepository BranchStoreRepository { get; }
 
     ICrudRepository<BranchStoreEmployee> BranchStoreEmployeeRepository { get; }
 
