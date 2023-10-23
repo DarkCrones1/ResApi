@@ -480,6 +480,7 @@ $RECYCLE.BIN/
 20231022231619_InitialCreate.cs
 20231022231619_InitialCreate.Designer.cs
 ResDbContextModelSnapshot.cs
+*/Migrations/
 
 
 # Ignore carpetas
