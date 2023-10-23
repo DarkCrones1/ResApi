@@ -26,9 +26,9 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<Cart> _cartRepository;
 
-    // protected ICrudRepository<CartDrink> _cartDrinkRepository;
+    protected ICrudRepository<CartDrink> _cartDrinkRepository;
 
-    // protected ICrudRepository<CartFood> _cartFoodRepository;
+    protected ICrudRepository<CartFood> _cartFoodRepository;
 
     protected ICategoryRepository _categoryRepository;
 
@@ -92,9 +92,9 @@ public class UnirOfWork : IUnitOfWork
 
         _cartRepository = new CrudRepository<Cart>(_dbContext);
 
-        // _cartDrinkRepository = new CrudRepository<CartDrink>(_dbContext);
+        _cartDrinkRepository = new CrudRepository<CartDrink>(_dbContext);
 
-        // _cartFoodRepository = new CrudRepository<CartFood>(_dbContext);
+        _cartFoodRepository = new CrudRepository<CartFood>(_dbContext);
 
         _categoryRepository = new CategoryRepository(_dbContext);
 
@@ -149,9 +149,9 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<Cart> CartRepository => _cartRepository;
 
-    // public ICrudRepository<CartDrink> CartDrinkRepository => _cartDrinkRepository;
+    public ICrudRepository<CartDrink> CartDrinkRepository => _cartDrinkRepository;
 
-    // public ICrudRepository<CartFood> CartFoodRepository => _cartFoodRepository;
+    public ICrudRepository<CartFood> CartFoodRepository => _cartFoodRepository;
 
     public ICategoryRepository CategoryRepository => _categoryRepository;
 
