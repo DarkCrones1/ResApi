@@ -53,6 +53,25 @@ public class CategoryController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet]
+    [Route("{id:int}")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CategoryResponseDto>>))]
+    public async Task<IActionResult> GetAll([FromRoute] int id)
+    {
+        Expression<Func<Category, bool>> filter = x => x.Id == id;
+        var existCategory = await _service.Exist(filter);
+
+        if (!existCategory)
+            return BadRequest("No existen coincidencias");
+
+        var entity = await _service.GetById(id);
+        var dto = _mapper.Map<CategoryResponseDto>(entity);
+        var response = new ApiResponse<CategoryResponseDto>(data: dto);
+        return Ok(response);
+    }
+
     [HttpPost]
     [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CategoryResponseDto>))]
@@ -111,10 +130,10 @@ public class CategoryController : ControllerBase
         {
             Expression<Func<Category, bool>> filter = x => x.Id == id;
             var existCategory = await _service.Exist(filter);
-    
+
             if (!existCategory)
                 return BadRequest("No se encontró el elemento que desea modificar");
-    
+
             var oldEntity = await _service.GetById(id);
             oldEntity.IsDeleted = true;
             oldEntity.LastModifiedBy = _tokenHelper.GetUserName();
@@ -124,7 +143,7 @@ public class CategoryController : ControllerBase
         }
         catch (Exception ex)
         {
-            
+
             throw new LogicBusinessException(ex);
         }
     }

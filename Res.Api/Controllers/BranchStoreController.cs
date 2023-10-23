@@ -34,14 +34,43 @@ public class BranchStoreController : ControllerBase
         this._tokenHelper = tokenHelper;
     }
 
+    [HttpGet]
+    [Route("")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    public async Task<IActionResult> GetAll([FromQuery] BranchStoreQueryFilter filter)
+    {
+        var entities = await _service.GetPaged(filter);
+        var dtos = _mapper.Map<IEnumerable<BranchStoreResponseDto>>(entities);
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+
+        var response = new ApiResponse<IEnumerable<BranchStoreResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
+    }
+
+    // [HttpGet]
+    // [Route("{id:int}")]
+    // [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    // [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    // [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
+    // public async Task<IActionResult> GetById([FromRoute] int id)
+    // {
+    //     var entity = await _service.GetById(id);
+    // }
+
     [HttpPost]
-    [Authorize]
+    // [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<BranchStoreResponseDto>))]
     public async Task<IActionResult> Create([FromBody] BranchStoreCreateRequestDto requestDto)
     {
         try
         {
-            var entity = _mapper.Map<BranchStore>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+            var entity = _mapper.Map<BranchStore>(requestDto); //opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
             await _service.Create(entity);
             var dto = _mapper.Map<BranchStoreResponseDto>(entity);
             var response = new ApiResponse<BranchStoreResponseDto>(data: dto);

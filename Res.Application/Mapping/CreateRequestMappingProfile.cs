@@ -41,8 +41,8 @@ public class CreateRequestMappingProfile : Profile
             {
                 dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
                 dest.CreatedDate = DateTime.Now;
-                var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = createdUser;
+                // var createdUser = context.Items["CreatedUser"] as string;
+                dest.CreatedBy = "admin";
 
                 var locationAddress = new Address
                 {
@@ -55,6 +55,43 @@ public class CreateRequestMappingProfile : Profile
                     City = src.City!
                 };
                 dest.Address.Add(locationAddress);
+            }
+        );
+
+        CreateMap<BoxCashCreateRequestDto, BoxCash>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        );
+
+        CreateMap<EmployeeBranchStoreCreateRequestDto, Employee>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted))
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now))
+        .AfterMap(
+            (src, dest, context) =>
+            {
+                var employeeAddress = new Address
+                {
+                    Address1 = src.Address1,
+                    Address2 = src.Address2,
+                    Street = src.Street,
+                    ExternalNumber = src.ExternalNumber,
+                    InternalNumber = src.InternalNumber,
+                    ZipCode = src.ZipCode,
+                    City = src.City!
+                };
+                dest.Address.Add(employeeAddress);
+
+                // var createdUser = context.Items["CreatedUser"] as string;
+                dest.CreatedBy = "admin";
             }
         );
     }
