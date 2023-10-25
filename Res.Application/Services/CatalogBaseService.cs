@@ -40,6 +40,9 @@ public class CatalogBaseService<T> : CrudService<T>, ICatalogBaseService<T> wher
         if (typeRep == typeof(Job))
             return (ICatalogBaseRepository<T>)this._unitOfWork.JobRepository;
 
+        if (typeRep == typeof(Rol))
+            return (ICatalogBaseRepository<T>)this._unitOfWork.JobRepository;
+
         return (ICatalogBaseRepository<T>)this._unitOfWork.RolRepository;
     }
 }

@@ -8,5 +8,5 @@ public class BaseCatalogResponseDto : ICatalogBaseDto
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; } = null;
     public string Status { get; set; } = string.Empty;
-    public bool? isActive { get; set; } = null;
+    public bool? IsActive { get; set; } = null;
 }

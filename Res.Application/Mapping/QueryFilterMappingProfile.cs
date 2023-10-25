@@ -15,5 +15,9 @@ public class QueryFilterMappingProfile : Profile
         CreateMap<BaseCatalogQueryFilter, Category>();
 
         CreateMap<CategoryQueryFilter, Category>();
+
+        CreateMap<BaseCatalogQueryFilter, Rol>();
+
+        CreateMap<BaseCatalogQueryFilter, Job>();
     }
 }

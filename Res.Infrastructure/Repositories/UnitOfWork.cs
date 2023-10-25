@@ -46,7 +46,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<GeographicalZone> _geographicalZoneRepository;
 
-    protected ICrudRepository<Job> _jobRepository;
+    protected ICatalogBaseRepository<Job> _jobRepository;
 
     protected ICrudRepository<ManagerZoneBranchStore> _managerZoneBranchStoreRepository;
 
@@ -64,7 +64,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<Reservation> _reservationRepository;
 
-    protected ICrudRepository<Rol> _rolRepository;
+    protected ICatalogBaseRepository<Rol> _rolRepository;
 
     protected ICrudRepository<Ticket> _ticketRepository;
 
@@ -112,7 +112,7 @@ public class UnirOfWork : IUnitOfWork
 
         _geographicalZoneRepository = new CrudRepository<GeographicalZone>(_dbContext);
 
-        _jobRepository = new CrudRepository<Job>(_dbContext);
+        _jobRepository = new CatalogBaseRepository<Job>(_dbContext);
 
         _managerZoneBranchStoreRepository = new CrudRepository<ManagerZoneBranchStore>(_dbContext);
 
@@ -130,7 +130,7 @@ public class UnirOfWork : IUnitOfWork
 
         _reservationRepository = new CrudRepository<Reservation>(_dbContext);
 
-        _rolRepository = new CrudRepository<Rol>(_dbContext);
+        _rolRepository = new CatalogBaseRepository<Rol>(_dbContext);
 
         _ticketRepository = new CrudRepository<Ticket>(_dbContext);
 
@@ -169,7 +169,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<GeographicalZone> GeographicalZoneRepository => _geographicalZoneRepository;
 
-    public ICrudRepository<Job> JobRepository => _jobRepository;
+    public ICatalogBaseRepository<Job> JobRepository => _jobRepository;
 
     public ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository => _managerZoneBranchStoreRepository;
 
@@ -187,7 +187,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<Reservation> ReservationRepository => _reservationRepository;
 
-    public ICrudRepository<Rol> RolRepository => _rolRepository;
+    public ICatalogBaseRepository<Rol> RolRepository => _rolRepository;
 
     public ICrudRepository<Ticket> TicketRepository => _ticketRepository;
 

@@ -37,7 +37,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<GeographicalZone> GeographicalZoneRepository { get; }
 
-    ICrudRepository<Job> JobRepository { get; }
+    ICatalogBaseRepository<Job> JobRepository { get; }
 
     ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository { get; }
 
@@ -55,7 +55,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Reservation> ReservationRepository { get; }
 
-    ICrudRepository<Rol> RolRepository { get; }
+    ICatalogBaseRepository<Rol> RolRepository { get; }
 
     ICrudRepository<Ticket> TicketRepository { get; }
 
