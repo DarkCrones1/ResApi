@@ -51,11 +51,11 @@ public class UserAccountRepository : CrudRepository<UserAccount>, IUserAccountRe
         return await query.ToListAsync();
     }
 
-    // public Task<IEnumerable<ActiveUserAccountEmployee>> GetPagedQueryFilter(ActiveUserAccountEmployee entity)
-    // {
-    //     //TODO: fallo de diseño
-    //     throw new NotImplementedException();
-    // }
+    public Task<IEnumerable<ActiveUserAccountEmployee>> GetPagedQueryFilter(ActiveUserAccountEmployee entity)
+    {
+        //TODO: fallo de diseño
+        throw new NotImplementedException();
+    }
 
     public async Task<ActiveUserAccountEmployee> GetUserAccount(int id)
     {

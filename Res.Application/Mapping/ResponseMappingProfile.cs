@@ -68,5 +68,30 @@ public class ResponseMappingProfile : Profile
             dest => dest.IsActive,
             opt => opt.MapFrom(src => !src.IsDeleted)
         );
+
+        CreateMap<UserAccount, UserAccountResponseDto>()
+        .ForMember(
+            dest => dest.UserName,
+            opt => opt.MapFrom(src => src.UserName)
+        )
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => src.IsDeleted)
+        )
+        .AfterMap(
+            (src, dest) =>
+            {
+
+                var rol = src.Rol.FirstOrDefault() ?? new Rol();
+                dest.Rol = rol.Name;
+
+                var employee = src.Employee.FirstOrDefault() ?? new Employee();
+                dest.EmployeeId = employee.Id;
+                dest.FullName = employee.FullName;
+                dest.Phone = employee!.Phone!;
+                dest.CellPhone = employee.CellPhone;
+                dest.Email = employee.Email;
+            }
+        );
     }
 }

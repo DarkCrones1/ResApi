@@ -94,5 +94,60 @@ public class CreateRequestMappingProfile : Profile
                 dest.CreatedBy = "admin";
             }
         );
+
+        CreateMap<UserAccountCreateRequestDto, UserAccount>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.IsActive,
+            opt => opt.MapFrom(src => true)
+        )
+        .ForMember(
+                dest => dest.IsAuthorized,
+                opt => opt.MapFrom(src => true) // TODO: este proceso debe de poder realizar la activacion de manera manual
+            )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        );
+
+        CreateMap<UserAccountCreateRequestDto, Employee>()
+            .ForMember(
+                dest => dest.IsDeleted,
+                opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted))
+            .ForMember(
+                dest => dest.CreatedDate,
+                opt => opt.MapFrom(src => DateTime.Now))
+            .AfterMap(
+                (src, dest, context) =>
+                {
+                    // var createdUser = context.Items["CreatedUser"] as string;
+                    // dest.CreatedBy = createdUser;
+
+                    var employeeAddress = new Address
+                    {
+                        Address1 = src.Address1,
+                        Address2 = src.Address2,
+                        Street = src.Street,
+                        ExternalNumber = src.ExternalNumber,
+                        InternalNumber = src.InternalNumber,
+                        ZipCode = src.ZipCode,
+                        City = src.City!
+                    };
+                    dest.Address.Add(employeeAddress);
+
+                    var brachStoreEmployee = new BranchStoreEmployee
+                    {
+                        BranchStoreId = src.InitialBranchStoreId!.Value,
+                        // CreatedBy = createdUser!,
+                        CreatedBy = "Admin",
+                        CreatedDate = DateTime.Now,
+                        JobId = src.JobId!.Value,
+                    };
+                    dest.BranchStoreEmployee.Add(brachStoreEmployee);
+                }
+            );
     }
 }

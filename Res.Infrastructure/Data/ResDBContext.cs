@@ -24,9 +24,9 @@ public partial class ResDbContext : DbContext
 
     public virtual DbSet<Cart> Cart { get; set; }
 
-    public virtual DbSet<CartDrink> CartDrink { get; set; }
+    // public virtual DbSet<CartDrink> CartDrink { get; set; }
 
-    public virtual DbSet<CartFood> CartFood { get; set; }
+    // public virtual DbSet<CartFood> CartFood { get; set; }
 
     public virtual DbSet<Category> Category { get; set; }
 

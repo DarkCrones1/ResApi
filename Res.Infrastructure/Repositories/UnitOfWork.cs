@@ -26,9 +26,9 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<Cart> _cartRepository;
 
-    protected ICrudRepository<CartDrink> _cartDrinkRepository;
+    // protected ICrudRepository<CartDrink> _cartDrinkRepository;
 
-    protected ICrudRepository<CartFood> _cartFoodRepository;
+    // protected ICrudRepository<CartFood> _cartFoodRepository;
 
     protected ICategoryRepository _categoryRepository;
 
@@ -40,7 +40,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<Drink> _drinkRepository;
 
-    protected ICrudRepository<Employee> _employeeRepository;
+    protected IEmployeeRepository _employeeRepository;
 
     protected ICrudRepository<Food> _foodRepository;
 
@@ -92,9 +92,9 @@ public class UnirOfWork : IUnitOfWork
 
         _cartRepository = new CrudRepository<Cart>(_dbContext);
 
-        _cartDrinkRepository = new CrudRepository<CartDrink>(_dbContext);
+        // _cartDrinkRepository = new CrudRepository<CartDrink>(_dbContext);
 
-        _cartFoodRepository = new CrudRepository<CartFood>(_dbContext);
+        // _cartFoodRepository = new CrudRepository<CartFood>(_dbContext);
 
         _categoryRepository = new CategoryRepository(_dbContext);
 
@@ -106,7 +106,7 @@ public class UnirOfWork : IUnitOfWork
 
         _drinkRepository = new CrudRepository<Drink>(_dbContext);
 
-        _employeeRepository = new CrudRepository<Employee>(_dbContext);
+        _employeeRepository = new EmployeeRepository(_dbContext);
 
         _foodRepository = new CrudRepository<Food>(_dbContext);
 
@@ -149,9 +149,9 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<Cart> CartRepository => _cartRepository;
 
-    public ICrudRepository<CartDrink> CartDrinkRepository => _cartDrinkRepository;
+    // public ICrudRepository<CartDrink> CartDrinkRepository => _cartDrinkRepository;
 
-    public ICrudRepository<CartFood> CartFoodRepository => _cartFoodRepository;
+    // public ICrudRepository<CartFood> CartFoodRepository => _cartFoodRepository;
 
     public ICategoryRepository CategoryRepository => _categoryRepository;
 
@@ -163,7 +163,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<Drink> DrinkRepository => _drinkRepository;
 
-    public ICrudRepository<Employee> EmployeeRepository => _employeeRepository;
+    public IEmployeeRepository EmployeeRepository => _employeeRepository;
 
     public ICrudRepository<Food> FoodRepository => _foodRepository;
 

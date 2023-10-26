@@ -17,9 +17,9 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Cart> CartRepository { get; }
 
-    ICrudRepository<CartDrink> CartDrinkRepository { get; }
+    // ICrudRepository<CartDrink> CartDrinkRepository { get; }
 
-    ICrudRepository<CartFood> CartFoodRepository { get; }
+    // ICrudRepository<CartFood> CartFoodRepository { get; }
 
     ICategoryRepository CategoryRepository { get; }
 
@@ -31,7 +31,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Drink> DrinkRepository { get; }
 
-    ICrudRepository<Employee> EmployeeRepository { get; }
+    IEmployeeRepository EmployeeRepository { get; }
 
     ICrudRepository<Food> FoodRepository { get; }
 

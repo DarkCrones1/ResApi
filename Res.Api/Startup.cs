@@ -111,6 +111,7 @@ public class Startup
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
         services.AddScoped<IBranchStoreRepository, BranchStoreRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 
         services.AddScoped<IUnitOfWork, UnirOfWork>();
@@ -121,6 +122,7 @@ public class Startup
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IBranchStoreService, BranchStoreService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
 
         services.AddScoped<TokenHelper>();
