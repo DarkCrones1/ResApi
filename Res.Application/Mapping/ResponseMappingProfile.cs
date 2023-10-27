@@ -27,12 +27,12 @@ public class ResponseMappingProfile : Profile
         .AfterMap(
             (src, dest) =>
             {
-                var Manager = src.BranchStoreEmployee.FirstOrDefault(x => x.JobId == 4) ?? new BranchStoreEmployee();
+                var Manager = src.BranchStoreEmployee.FirstOrDefault(x => x.JobId == 2) ?? new BranchStoreEmployee();
                 dest.ManagerId = Manager.EmployeeId;
                 var employeeManagerName = src.Employee.FirstOrDefault(x => x.Id == Manager.EmployeeId) ?? new Employee();
                 dest.ManagerName = employeeManagerName.FullName;
 
-                var CoManager = src.BranchStoreEmployee.FirstOrDefault(x => x.JobId == 43) ?? new BranchStoreEmployee();
+                var CoManager = src.BranchStoreEmployee.FirstOrDefault(x => x.JobId == 3) ?? new BranchStoreEmployee();
                 dest.CoManagerId = CoManager.EmployeeId;
                 var employeeCoManagerName = src.Employee.FirstOrDefault(x => x.Id == CoManager.EmployeeId) ?? new Employee();
                 dest.CoManagerName = employeeCoManagerName.FullName;

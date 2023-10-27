@@ -52,7 +52,7 @@ public class CreateRequestMappingProfile : Profile
                     ExternalNumber = src.ExternalNumber,
                     InternalNumber = src.InternalNumber,
                     ZipCode = src.ZipCode,
-                    City = src.City!
+                    City = src.City
                 };
                 dest.Address.Add(locationAddress);
             }
