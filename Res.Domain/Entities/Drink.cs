@@ -4,6 +4,8 @@ namespace Res.Domain.Entities;
 
 public partial class Drink : CatalogBaseAuditablePaginationEntity
 {
+    public decimal Price { get; set; }
+
     public virtual ICollection<Category> Category { get; } = new List<Category>();
 
     // public virtual ICollection<CartDrink> CartDrink { get; } = new List<CartDrink>();

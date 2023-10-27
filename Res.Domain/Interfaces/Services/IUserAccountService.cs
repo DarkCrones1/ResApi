@@ -10,6 +10,8 @@ public interface IUserAccountService : ICrudService<UserAccount>
 {
     Task<ActiveUserAccountEmployee> GetUserAccount(int id);
     Task<ActiveUserAccountEmployee> GetUserAccountToLogin(Expression<Func<ActiveUserAccountEmployee, bool>> filters);
+    Task<ActiveUserAccountCustomer> GetUserAccountCustomer(int id);
+    Task<ActiveUserAccountCustomer> GetUserAccountCustomerToLogin(Expression<Func<ActiveUserAccountCustomer, bool>> filters);
     Task<IEnumerable<BranchStore>> GetBranchStoresToUserAccount(int id);
     Task<int> CreateUser(UserAccount user);
     Task<PagedList<UserAccount>> GetPaged(UserAccountQueryFilter filter);

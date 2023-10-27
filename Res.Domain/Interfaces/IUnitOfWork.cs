@@ -63,6 +63,8 @@ public interface IUnitOfWork : IDisposable
 
     IRetrieveRepository<ActiveUserAccountEmployee> ActiveUserAccountEmployeeRepository { get; }
 
+    IRetrieveRepository<ActiveUserAccountCustomer> ActiveUserAccountCustomerRepository { get; }
+
     void SaveChanges();
 
     Task SaveChangesAsync();

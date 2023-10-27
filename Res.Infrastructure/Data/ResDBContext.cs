@@ -70,6 +70,8 @@ public partial class ResDbContext : DbContext
 
     public virtual DbSet<ActiveUserAccountEmployee> ActiveUserAccountEmployee { get; set; }
 
+    public virtual DbSet<ActiveUserAccountCustomer> ActiveUserAccountCustomer { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(

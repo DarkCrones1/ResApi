@@ -72,6 +72,8 @@ public class UnirOfWork : IUnitOfWork
 
     protected IRetrieveRepository<ActiveUserAccountEmployee> _activeUserAccountEmployeeRepository;
 
+    protected IRetrieveRepository<ActiveUserAccountCustomer> _activeUserAccountCustomerRepository;
+
     private bool disposed;
 
     public UnirOfWork(ResDbContext dbContext, IConfiguration configuration)
@@ -137,6 +139,8 @@ public class UnirOfWork : IUnitOfWork
         _userAccountRepository = new UserAccountRepository(_dbContext);
 
         _activeUserAccountEmployeeRepository = new RetrieveRepository<ActiveUserAccountEmployee>(_dbContext);
+
+        _activeUserAccountCustomerRepository = new RetrieveRepository<ActiveUserAccountCustomer>(_dbContext);
     }
 
     public ICrudRepository<Address> AddressRepository => _addressRepository;
@@ -194,6 +198,8 @@ public class UnirOfWork : IUnitOfWork
     public IUserAccountRepository UserAccountRepository => _userAccountRepository;
 
     public IRetrieveRepository<ActiveUserAccountEmployee> ActiveUserAccountEmployeeRepository => _activeUserAccountEmployeeRepository;
+
+    public IRetrieveRepository<ActiveUserAccountCustomer> ActiveUserAccountCustomerRepository => _activeUserAccountCustomerRepository;
 
     protected virtual void Dispose(bool disposing)
     {

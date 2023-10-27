@@ -9,6 +9,9 @@ namespace Res.Domain.Interfaces.Repositories;
 public interface IUserAccountRepository : IQueryPagedRepository<ActiveUserAccountEmployee>, ICrudRepository<UserAccount>, IQueryFilterPagedRepository<UserAccount, UserAccountQueryFilter>
 {
     Task<ActiveUserAccountEmployee> GetUserAccount(int id);
-    Task<ActiveUserAccountEmployee> GetUserAccountToLogin(Expression<Func<ActiveUserAccountEmployee, bool>> filters);
     Task<IEnumerable<BranchStore>> GetBranchStoresToUser(int id);
+    Task<ActiveUserAccountEmployee> GetUserAccountToLogin(Expression<Func<ActiveUserAccountEmployee, bool>> filters);
+
+    Task<ActiveUserAccountCustomer> GetUserAccountCustomer(int id);
+    Task<ActiveUserAccountCustomer> GetUserAccountCustomerToLogin(Expression<Func<ActiveUserAccountCustomer, bool>> filters);
 }
