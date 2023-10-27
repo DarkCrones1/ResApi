@@ -46,36 +46,43 @@ public class UserAccountController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserAccountResponseDto>))]
     public async Task<IActionResult> CreateUser([FromBody] UserAccountCreateRequestDto requestDto)
     {
-        // try
-        // {
-        //     Expression<Func<UserAccount, bool>> filter = x => x.UserName == requestDto.UserName && !x.IsDeleted!.Value;
+        try
+        {
+            Expression<Func<UserAccount, bool>> filter = x => x.UserName == requestDto.UserName && !x.IsDeleted!.Value;
 
-        //     var existUser = await _service.Exist(filter);
+            var existUser = await _service.Exist(filter);
 
-        //     if (existUser)
-        //         return BadRequest("Ya existe un usuario con este nombre de usuario");
+            if (existUser)
+                return BadRequest("Ya existe un usuario con este nombre de usuario");
 
-        //     var entity = new UserAccount();
+            var entity = new UserAccount();
 
-        //     if (requestDto.EmployeeId.HasValue && requestDto.EmployeeId > 0)
-        //     {
-        //         entity = await AssingUserAccount(requestDto);
-        //     }
-        //     else
-        //     {
-        //         entity = await PopulateUserAccount(requestDto);
-        //     }
+            if (requestDto.EmployeeId.HasValue && requestDto.EmployeeId > 0)
+            {
+                entity = await AssingUserAccount(requestDto);
+            }
+            else
+            {
+                entity = await PopulateUserAccount(requestDto);
+            }
 
-        //     await _service.CreateUser(entity);
+            await _service.CreateUser(entity);
 
-        //     var result = _mapper.Map<UserAccountResponseDto>(entity);
-        //     var response = new ApiResponse<UserAccountResponseDto>(result);
-        //     return Ok(response);
-        // }
-        // catch (Exception ex)
-        // {
-        //     throw new LogicBusinessException(ex);
-        // }
+            var result = _mapper.Map<UserAccountResponseDto>(entity);
+            var response = new ApiResponse<UserAccountResponseDto>(result);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            throw new LogicBusinessException(ex);
+        }
+    }
+
+    [HttpPost]
+    [Route("Customer")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserAccountCustomerResponseDto>))]
+    public async Task<IActionResult> CreateUserCustomer([FromBody] UserAccountCustomerCreateRequestDto requestDto)
+    {
         Expression<Func<UserAccount, bool>> filter = x => x.UserName == requestDto.UserName && !x.IsDeleted!.Value;
 
         var existUser = await _service.Exist(filter);
@@ -83,23 +90,15 @@ public class UserAccountController : ControllerBase
         if (existUser)
             return BadRequest("Ya existe un usuario con este nombre de usuario");
 
-        var entity = new UserAccount();
-
-        if (requestDto.EmployeeId.HasValue && requestDto.EmployeeId > 0)
-        {
-            entity = await AssingUserAccount(requestDto);
-        }
-        else
-        {
-            entity = await PopulateUserAccount(requestDto);
-        }
+        var entity = await PopulateUserAccountCustomer(requestDto);
 
         await _service.CreateUser(entity);
 
-        var result = _mapper.Map<UserAccountResponseDto>(entity);
-        var response = new ApiResponse<UserAccountResponseDto>(result);
+        var result = _mapper.Map<UserAccountCustomerResponseDto>(entity);
+        var response = new ApiResponse<UserAccountCustomerResponseDto>(result);
         return Ok(response);
     }
+
 
     private async Task<Rol> GetRolToNewUserAccount(int rolId)
     {
@@ -173,6 +172,34 @@ public class UserAccountController : ControllerBase
                     userAccount.BranchStore.Add(branchStore);
             }
         }
+
+        return userAccount;
+    }
+
+    private async Task<UserAccount> PopulateUserAccountCustomer(UserAccountCustomerCreateRequestDto requestDto)
+    {
+        var userAccount = _mapper.Map<UserAccount>(requestDto);
+
+        var customer = _mapper.Map<Customer>(requestDto);
+        customer.UserAccount.Add(userAccount);
+
+        userAccount.Customer.Add(customer);
+
+        var customerAddres = _mapper.Map<CustomerAddress>(requestDto);
+        customerAddres.Status = 1;
+        customer.CustomerAddress.Add(customerAddres);
+
+        if (requestDto.BranchStoreIds != null)
+        {
+            foreach (var item in requestDto.BranchStoreIds)
+            {
+                var branchStore = await GetBranchStoreToNewUserAccount(item);
+                if (branchStore.Id > 0)
+                    userAccount.BranchStore.Add(branchStore);
+            }
+        }
+        var rol = await _rolService.GetById(2);
+        userAccount.Rol.Add(rol);
 
         return userAccount;
     }
