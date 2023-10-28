@@ -16,10 +16,6 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<Cart> CartRepository { get; }
 
-    // ICrudRepository<CartDrink> CartDrinkRepository { get; }
-
-    // ICrudRepository<CartFood> CartFoodRepository { get; }
-
     ICategoryRepository CategoryRepository { get; }
 
     ICrudRepository<Customer> CustomerRepository { get; }

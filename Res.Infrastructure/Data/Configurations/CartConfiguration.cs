@@ -27,40 +27,6 @@ namespace Res.Infrastructure.Data.Configurations
                 .HasForeignKey(d => d.BranchStoreId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Cart_BranchStore");
-
-            // builder.HasMany(d => d.Drink).WithMany(p => p.Cart)
-            //     .UsingEntity<Dictionary<string, object>>(
-            //         "CartDrink",
-            //         r => r.HasOne<Drink>().WithMany()
-            //         .HasForeignKey("DrinkId")
-            //         .OnDelete(DeleteBehavior.ClientSetNull)
-            //         .HasConstraintName("FK_CartDrink_Drink"),
-            //         l => l.HasOne<Cart>().WithMany()
-            //             .HasForeignKey("CartId")
-            //             .OnDelete(DeleteBehavior.ClientSetNull)
-            //             .HasConstraintName("FK_CartDrink_Cart"),
-            //         j =>
-            //         {
-            //             j.HasKey("CartId", "DrinkId");
-            //         }
-            //     );
-
-            // builder.HasMany(d => d.Food).WithMany(p => p.Cart)
-            //     .UsingEntity<Dictionary<string, object>>(
-            //         "CartFood",
-            //         r => r.HasOne<Food>().WithMany()
-            //         .HasForeignKey("FoodId")
-            //         .OnDelete(DeleteBehavior.ClientSetNull)
-            //         .HasConstraintName("FK_CartFood_Food"),
-            //         l => l.HasOne<Cart>().WithMany()
-            //             .HasForeignKey("CartId")
-            //             .OnDelete(DeleteBehavior.ClientSetNull)
-            //             .HasConstraintName("FK_CartFood_Cart"),
-            //         j =>
-            //         {
-            //             j.HasKey("CartId", "DrinkId");
-            //         }
-            //     );
         }
     }
 }
