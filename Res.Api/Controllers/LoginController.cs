@@ -83,6 +83,7 @@ public class LoginController : ControllerBase
                 new Claim(ClaimTypes.Role, $"{_user.JobName}"),
                 new Claim(ClaimTypes.Email, _user.Email),
                 new Claim(ClaimTypes.Sid, $"{_user.Id}"),
+                new Claim(ClaimTypes.PrimaryGroupSid, $"{_user.AccountType}"),
                 new Claim(ClaimTypes.DateOfBirth, DateTime.Now.ToString()),
                 //TODO: obtener todas las sucursales donde trabaja el usuario de momento obtenemos y asignamos la primera
                 new Claim(ClaimTypes.GroupSid, $"{_lstBranchStoresToUserAccount.FirstOrDefault()?.Id}"),

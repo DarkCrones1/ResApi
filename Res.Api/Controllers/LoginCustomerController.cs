@@ -77,7 +77,7 @@ public class LoginCustomerController : ControllerBase
         var lstClaims = new List<Claim>{
                 new Claim(ClaimTypes.NameIdentifier, _user!.UserName),
                 new Claim(ClaimTypes.Name, _user!.Name),
-                new Claim(ClaimTypes.PrimaryGroupSid, $"{_user.RolId}"),
+                new Claim(ClaimTypes.PrimaryGroupSid, $"{_user.AccountType}"),
                 new Claim(ClaimTypes.Email, _user.Email),
                 new Claim(ClaimTypes.Sid, $"{_user.Id}"),
                 new Claim(ClaimTypes.DateOfBirth, DateTime.Now.ToString()),

@@ -111,6 +111,10 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.AccountType,
+            opt => opt.MapFrom(src => (short)PersonAccountType.Employee)
         );
 
         CreateMap<UserAccountCustomerCreateRequestDto, UserAccount>()
@@ -129,6 +133,10 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.AccountType,
+            opt => opt.MapFrom(src => (short)PersonAccountType.Customer)
         );
 
         CreateMap<UserAccountCreateRequestDto, Employee>()

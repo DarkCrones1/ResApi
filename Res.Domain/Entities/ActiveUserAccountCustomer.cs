@@ -20,7 +20,7 @@ public partial class ActiveUserAccountCustomer : BaseQueryable
 
     public string Email { get; set; } = null!;
 
-    public int RolId { get; set; }
+    public short AccountType { get; set; }
 
     public string Name => $"{this.FirstName} {this.MiddleName} {this.LastName}".Trim();
 }

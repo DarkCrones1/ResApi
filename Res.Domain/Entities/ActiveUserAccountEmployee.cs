@@ -24,5 +24,7 @@ public partial class ActiveUserAccountEmployee : BaseQueryable
 
     public string JobName { get; set; } = null!;
 
+    public short AccountType { get; set; }
+
     public string Name => $"{this.FirstName} {this.MiddleName} {this.LastName}".Trim();
 }
