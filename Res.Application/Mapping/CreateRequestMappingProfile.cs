@@ -169,6 +169,10 @@ public class CreateRequestMappingProfile : Profile
             );
 
         CreateMap<UserAccountCustomerCreateRequestDto, Customer>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
+        )
         .AfterMap(
             (src, dest, context) =>
             {
@@ -184,6 +188,10 @@ public class CreateRequestMappingProfile : Profile
         );
 
         CreateMap<CustomerCreateRequestDto, Customer>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
+        )
         .AfterMap(
             (src, dest, context) =>
             {
@@ -202,14 +210,16 @@ public class CreateRequestMappingProfile : Profile
         .AfterMap(
             (src, dest) =>
             {
-                dest.Address = new Address();
-                dest.Address.Address1 = src.Address1;
-                dest.Address.Address2 = src.Address2;
-                dest.Address.Street = src.Street;
-                dest.Address.ExternalNumber = src.ExternalNumber;
-                dest.Address.InternalNumber = src.InternalNumber;
-                dest.Address.City = src.City ?? string.Empty;
-                dest.Address.ZipCode = src.ZipCode;
+                dest.Address = new Address
+                {
+                    Address1 = src.Address1,
+                    Address2 = src.Address2,
+                    Street = src.Street,
+                    ExternalNumber = src.ExternalNumber,
+                    InternalNumber = src.InternalNumber,
+                    City = src.City ?? string.Empty,
+                    ZipCode = src.ZipCode
+                };
                 dest.RegisterDate = DateTime.Now;
             }
         );
@@ -218,14 +228,16 @@ public class CreateRequestMappingProfile : Profile
         .AfterMap(
             (src, dest) =>
             {
-                dest.Address = new Address();
-                dest.Address.Address1 = src.Address1;
-                dest.Address.Address2 = src.Address2;
-                dest.Address.Street = src.Street;
-                dest.Address.ExternalNumber = src.ExternalNumber;
-                dest.Address.InternalNumber = src.InternalNumber;
-                dest.Address.City = src.City ?? string.Empty;
-                dest.Address.ZipCode = src.ZipCode;
+                dest.Address = new Address
+                {
+                    Address1 = src.Address1,
+                    Address2 = src.Address2,
+                    Street = src.Street,
+                    ExternalNumber = src.ExternalNumber,
+                    InternalNumber = src.InternalNumber,
+                    City = src.City ?? string.Empty,
+                    ZipCode = src.ZipCode
+                };
                 dest.RegisterDate = DateTime.Now;
             }
         );
