@@ -12,7 +12,7 @@ namespace Res.Infrastructure.Repositories;
 
 public class UnirOfWork : IUnitOfWork
 {
-    private readonly ResDbContext _dbContext;
+    protected readonly ResDbContext _dbContext;
 
     private readonly IConfiguration _configuration;
 

@@ -40,10 +40,10 @@ public class ResponseMappingProfile : Profile
                 var branchStoreAddress = src.Address.FirstOrDefault() ?? new Address();
 
                 dest.Address1 = branchStoreAddress.Address1;
-                dest.Address2 = branchStoreAddress.Address2;
+                dest.Address2 = branchStoreAddress.Address2!;
                 dest.Street = branchStoreAddress.Street;
                 dest.ExternalNumber = branchStoreAddress.ExternalNumber;
-                dest.InternalNumber = branchStoreAddress.InternalNumber;
+                dest.InternalNumber = branchStoreAddress.InternalNumber!;
                 dest.City = branchStoreAddress.City;
                 dest.ZipCode = branchStoreAddress.ZipCode;
             }
@@ -118,8 +118,14 @@ public class ResponseMappingProfile : Profile
             }
         );
 
-        CreateMap<Customer, CustomerResponseDto>();
+        CreateMap<Customer, CustomerResponseDto>()
+        .AfterMap(
+            (src, dest) => 
+            {
+                
+            }
+        );
 
-        CreateMap<Address, CustomerResponseDto>();
+        // CreateMap<Address, CustomerResponseDto>();
     }
 }

@@ -93,7 +93,7 @@ public class Startup
         // Add DB Connection string
         services.AddDbContext<ResDbContext>(options =>
 
-            options.UseSqlServer(Configuration.GetConnectionString("resDevString"))
+            options.UseSqlServer(Configuration.GetConnectionString("resDevString") ?? throw new InvalidOperationException("Database Connection String Not Found...")).UseLazyLoadingProxies()
         );
 
         // Add Mappers

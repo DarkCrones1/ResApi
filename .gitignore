@@ -489,6 +489,7 @@ ResDbContextModelSnapshot.cs
 /bin/
 /Debug/
 /net7.0/
+/obj/
 
 # ignore files
 **/*.dll

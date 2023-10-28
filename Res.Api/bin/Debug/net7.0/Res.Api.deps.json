@@ -12,7 +12,6 @@
           "Azure.Storage.Blobs": "12.18.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.12",
           "Microsoft.AspNetCore.OpenApi": "7.0.4",
-          "Microsoft.EntityFrameworkCore": "7.0.12",
           "Microsoft.EntityFrameworkCore.Design": "7.0.12",
           "Microsoft.EntityFrameworkCore.Proxies": "7.0.12",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12",

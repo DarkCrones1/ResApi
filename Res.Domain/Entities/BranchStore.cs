@@ -16,6 +16,8 @@ public partial class BranchStore : BaseRemovableAuditablePaginationEntity
 
     public string? SecondaryPhone { get; set; }
 
+    public int GeographicalZoneId { get; set; }
+
     public bool? IsCentralBranchStore { get; set; }
 
     public virtual ICollection<Address> Address { get; } = new List<Address>();
