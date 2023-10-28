@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace Res.Domain.Enumerations;
 
-public enum PersonAccountType
+public enum UserAccountType
 {
     [Description("Administrador")]
     Admin = 1,

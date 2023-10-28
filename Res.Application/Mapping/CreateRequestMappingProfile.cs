@@ -114,7 +114,7 @@ public class CreateRequestMappingProfile : Profile
         )
         .ForMember(
             dest => dest.AccountType,
-            opt => opt.MapFrom(src => (short)PersonAccountType.Employee)
+            opt => opt.MapFrom(src => (short)UserAccountType.Employee)
         );
 
         CreateMap<UserAccountCustomerCreateRequestDto, UserAccount>()
@@ -136,7 +136,7 @@ public class CreateRequestMappingProfile : Profile
         )
         .ForMember(
             dest => dest.AccountType,
-            opt => opt.MapFrom(src => (short)PersonAccountType.Customer)
+            opt => opt.MapFrom(src => (short)UserAccountType.Customer)
         );
 
         CreateMap<UserAccountCreateRequestDto, Employee>()
