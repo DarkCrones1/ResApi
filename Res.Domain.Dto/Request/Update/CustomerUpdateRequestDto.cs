@@ -1,6 +1,6 @@
 namespace Res.Domain.Dto.Request.Create;
 
-public class CustomerCreateRequestDto
+public class CustomerUpdateRequestDto
 {
     public string FirstName { get; set; } = null!;
 
@@ -13,8 +13,6 @@ public class CustomerCreateRequestDto
     public string? Phone { get; set; }
 
     public string CellPhone { get; set; } = null!;
-
-    public int CreatedAtBranchStoreId { get; set; }
 
     public string Address1 { get; set; } = null!;
 
@@ -29,6 +27,4 @@ public class CustomerCreateRequestDto
     public string City { get; set; } = null!;
 
     public string ZipCode { get; set; } = null!;
-
-    public short? GenderId { get; set; }
 }

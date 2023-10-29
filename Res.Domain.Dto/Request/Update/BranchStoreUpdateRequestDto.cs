@@ -1,21 +1,24 @@
 namespace Res.Domain.Dto.Request.Create;
 
-public class CustomerCreateRequestDto
+public class BranchStoreUpdateRequestDto
 {
-    public string FirstName { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
-    public string? MiddleName { get; set; }
+    public string Code { get; set; } = null!;
 
-    public string LastName { get; set; } = null!;
+    public string? Rfc { get; set; }
 
     public string? Email { get; set; }
 
     public string? Phone { get; set; }
 
-    public string CellPhone { get; set; } = null!;
+    public string? SecondaryPhone { get; set; }
 
-    public int CreatedAtBranchStoreId { get; set; }
+    public int GeographicalZoneId { get; set; }
 
+    public bool IsCentralBranchStore { get; set; }
+
+    // location address
     public string Address1 { get; set; } = null!;
 
     public string? Address2 { get; set; }
@@ -30,5 +33,5 @@ public class CustomerCreateRequestDto
 
     public string ZipCode { get; set; } = null!;
 
-    public short? GenderId { get; set; }
+    public string Location { get; set; } = null!;
 }

@@ -6,6 +6,8 @@ public class CustomerResponseDto
 
     public Guid Code { get; set; }
 
+    public string? Name {get; set;}
+
     public string FirstName { get; set; } = null!;
 
     public string? MiddleName { get; set; }
@@ -35,4 +37,28 @@ public class CustomerResponseDto
     public string City { get; set; } = null!;
 
     public string ZipCode { get; set; } = null!;
+
+    public short? GenderId { get; set; }
+
+    public string Gender { get; set; } = null!;
+
+    public DateTime? BirthDate { get; set; }
+
+    public int Age
+    {
+        get
+        {
+            if (!BirthDate.HasValue) return 0;
+
+            DateTime endDate = DateTime.Now;
+            TimeSpan difference = endDate - BirthDate.Value;
+            int yearsDifference = (int)(difference.TotalDays / 365.25);
+
+            return yearsDifference;
+        }
+    }
+
+    public short? Status { get; set; }
+
+    public string? StatusName { get; set; }
 }

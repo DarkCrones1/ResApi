@@ -18,7 +18,7 @@ public interface IUnitOfWork : IDisposable
 
     ICategoryRepository CategoryRepository { get; }
 
-    ICrudRepository<Customer> CustomerRepository { get; }
+    ICustomerRepository CustomerRepository { get; }
 
     ICrudRepository<CustomerAddress> CustomerAddressRepository { get; }
 

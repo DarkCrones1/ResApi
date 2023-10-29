@@ -24,10 +24,10 @@ namespace Res.API.Controllers;
 public class CustomerController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Customer> _service;
+    private readonly ICustomerService _service;
     private readonly TokenHelper _tokenHelper;
 
-    public CustomerController(IMapper mapper, ICrudService<Customer> service, TokenHelper tokenHelper)
+    public CustomerController(IMapper mapper, ICustomerService service, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
@@ -41,8 +41,7 @@ public class CustomerController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CustomerResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] CustomerQueryFilter filter)
     {
-        var filters = _mapper.Map<Customer>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
@@ -50,26 +49,80 @@ public class CustomerController : ControllerBase
         );
 
         var dtos = _mapper.Map<IEnumerable<CustomerResponseDto>>(entities);
-        var response = new ApiResponse<IEnumerable<CustomerResponseDto>>(data: dtos, meta:metaDataResponse);
+        var response = new ApiResponse<IEnumerable<CustomerResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
-        
     }
 
     [HttpPost]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CustomerResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CustomerCreateRequestDto requestDto)
     {
-        var customer = _mapper.Map<Customer>(requestDto);
+        try
+        {
+            var customer = _mapper.Map<Customer>(requestDto);
+
+            var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
+            customerAddress.Status = 1;
+            customer.CustomerAddress.Add(customerAddress);
+
+            await _service.Create(customer);
+
+            var dto = _mapper.Map<CustomerResponseDto>(customer);
+            var response = new ApiResponse<CustomerResponseDto>(data: dto);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+
+            throw new LogicBusinessException(ex);
+        }
+    }
+
+    [HttpPut]
+    [Authorize]
+    [Route("{id:int}")]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CustomerUpdateRequestDto requestDto)
+    {
+        Expression<Func<Customer, bool>> filter = x => x.Id == id;
+        var existCustomer = await _service.Exist(filter);
+
+        if (!existCustomer)
+            return BadRequest("No existe ningun empleado con esa información");
+
+        var newEntity = _mapper.Map<Customer>(requestDto);
+
+        newEntity.IsDeleted = false;
+        newEntity.Id = id;
+        newEntity.LastModifiedBy = _tokenHelper.GetUserName();
+        newEntity.LastModifiedDate = DateTime.Now;
 
         var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
+        customerAddress.CustomerId = id;
         customerAddress.Status = 1;
-        customer.CustomerAddress.Add(customerAddress);
+        newEntity.CustomerAddress.Add(customerAddress);
 
-        await _service.Create(customer);
+        await _service.Update(id, newEntity);
 
-        var dto = _mapper.Map<CustomerResponseDto>(customer);
+        var dto = _mapper.Map<CustomerResponseDto>(requestDto);
         var response = new ApiResponse<CustomerResponseDto>(data: dto);
-        return  Ok(response);
+        return Ok(response);
+    }
 
+    [HttpDelete]
+    [Route("{id:int}")]
+    public async Task<IActionResult> DeleteCustomer([FromRoute] int id)
+    {
+        try
+        {
+            await _service.Delete(id);
+
+            return Ok(true);
+        }
+        catch (Exception ex)
+        {
+
+            throw new LogicBusinessException(ex);
+        }
     }
 }

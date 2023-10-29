@@ -117,28 +117,6 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => (short)UserAccountType.Employee)
         );
 
-        CreateMap<UserAccountCustomerCreateRequestDto, UserAccount>()
-        .ForMember(
-            dest => dest.IsDeleted,
-            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
-        )
-        .ForMember(
-            dest => dest.IsActive,
-            opt => opt.MapFrom(src => true)
-        )
-        .ForMember(
-                dest => dest.IsAuthorized,
-                opt => opt.MapFrom(src => true) // TODO: este proceso debe de poder realizar la activacion de manera manual
-            )
-        .ForMember(
-            dest => dest.CreatedDate,
-            opt => opt.MapFrom(src => DateTime.Now)
-        )
-        .ForMember(
-            dest => dest.AccountType,
-            opt => opt.MapFrom(src => (short)UserAccountType.Customer)
-        );
-
         CreateMap<UserAccountCreateRequestDto, Employee>()
             .ForMember(
                 dest => dest.IsDeleted,
@@ -176,25 +154,6 @@ public class CreateRequestMappingProfile : Profile
                 }
             );
 
-        CreateMap<UserAccountCustomerCreateRequestDto, Customer>()
-        .ForMember(
-            dest => dest.Status,
-            opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
-        )
-        .AfterMap(
-            (src, dest, context) =>
-            {
-                dest.Code = Guid.NewGuid();
-                dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
-                dest.CreatedDate = DateTime.Now;
-                dest.CustomerTypeId = 1;
-                dest.CreatedDate = DateTime.Now;
-
-                // var createdUser = context.Items["CreatedUser"] as string;
-                // dest.CreatedBy = createdUser;
-            }
-        );
-
         CreateMap<CustomerCreateRequestDto, Customer>()
         .ForMember(
             dest => dest.Status,
@@ -229,6 +188,47 @@ public class CreateRequestMappingProfile : Profile
                     ZipCode = src.ZipCode
                 };
                 dest.RegisterDate = DateTime.Now;
+            }
+        );
+
+        CreateMap<UserAccountCustomerCreateRequestDto, UserAccount>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.IsActive,
+            opt => opt.MapFrom(src => true)
+        )
+        .ForMember(
+                dest => dest.IsAuthorized,
+                opt => opt.MapFrom(src => true) // TODO: este proceso debe de poder realizar la activacion de manera manual
+            )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.AccountType,
+            opt => opt.MapFrom(src => (short)UserAccountType.Customer)
+        );
+
+        CreateMap<UserAccountCustomerCreateRequestDto, Customer>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
+        )
+        .AfterMap(
+            (src, dest, context) =>
+            {
+                dest.Code = Guid.NewGuid();
+                dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
+                dest.CreatedDate = DateTime.Now;
+                dest.CustomerTypeId = 1;
+                dest.CreatedDate = DateTime.Now;
+
+                // var createdUser = context.Items["CreatedUser"] as string;
+                // dest.CreatedBy = createdUser;
             }
         );
 

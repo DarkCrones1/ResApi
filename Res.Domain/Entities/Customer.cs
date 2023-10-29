@@ -24,6 +24,10 @@ public partial class Customer : BaseRemovableAuditablePaginationEntity
 
     public short Status { get; set; }
 
+    public short? Gender { get; set; }
+
+    public DateTime? BirthDate { get; set; }
+
     public virtual ICollection<Cart> Cart { get; } = new List<Cart>();
 
     public virtual BranchStore CreatedAtBranchStore { get; set; } = null!;

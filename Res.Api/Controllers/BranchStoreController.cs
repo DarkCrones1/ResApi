@@ -53,18 +53,28 @@ public class BranchStoreController : ControllerBase
         return Ok(response);
     }
 
-    // [HttpGet]
-    // [Route("{id:int}")]
-    // [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
-    // [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
-    // [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<BranchStoreResponseDto>>))]
-    // public async Task<IActionResult> GetById([FromRoute] int id)
-    // {
-    //     var entity = await _service.GetById(id);
-    // }
+    [HttpGet]
+    [Route("{id:int}")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<BranchStoreDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<BranchStoreDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<BranchStoreDetailResponseDto>>))]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        Expression<Func<BranchStore, bool>> filter = x => x.Id == id;
+        var existEntity = await _service.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        var entity = await _service.GetById(id);
+
+        var dto = _mapper.Map<BranchStoreDetailResponseDto>(entity);
+        var response = new ApiResponse<BranchStoreDetailResponseDto>(data: dto);
+        return Ok(response);
+    }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<BranchStoreResponseDto>))]
     public async Task<IActionResult> Create([FromBody] BranchStoreCreateRequestDto requestDto)
     {
@@ -75,6 +85,57 @@ public class BranchStoreController : ControllerBase
             var dto = _mapper.Map<BranchStoreResponseDto>(entity);
             var response = new ApiResponse<BranchStoreResponseDto>(data: dto);
             return Ok(response);
+        }
+        catch (Exception ex)
+        {
+
+            throw new LogicBusinessException(ex);
+        }
+    }
+
+    [HttpPut]
+    [Authorize]
+    [Route("{id:int}")]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] BranchStoreUpdateRequestDto requestDto)
+    {
+        try
+        {
+            Expression<Func<BranchStore, bool>> filter = x => x.Id == id;
+            var existEntity = await _service.Exist(filter);
+    
+            if (!existEntity)
+                return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+    
+            var newEntity = _mapper.Map<BranchStore>(requestDto);
+    
+            newEntity.IsDeleted = false;
+            newEntity.Id = id;
+            newEntity.LastModifiedBy = _tokenHelper.GetUserName();
+            newEntity.LastModifiedDate = DateTime.Now;
+    
+            await _service.Update(newEntity);
+            return Ok(requestDto);
+        }
+        catch (Exception ex)
+        {
+            
+            throw new LogicBusinessException(ex);
+        }
+    }
+
+    [HttpDelete]
+    [Route("{id:int}")]
+    [Authorize]
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            var entity = await _service.GetById(id);
+            entity.IsDeleted = true;
+            entity.LastModifiedBy = _tokenHelper.GetUserName();
+            entity.LastModifiedDate = DateTime.Now;
+            await _service.Update(entity);
+            return Ok(true);
         }
         catch (Exception ex)
         {

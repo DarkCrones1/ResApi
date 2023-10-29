@@ -28,7 +28,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICategoryRepository _categoryRepository;
 
-    protected ICrudRepository<Customer> _customerRepository;
+    protected ICustomerRepository _customerRepository;
 
     protected ICrudRepository<CustomerAddress> _customerAddressRepository;
 
@@ -92,7 +92,7 @@ public class UnirOfWork : IUnitOfWork
 
         _categoryRepository = new CategoryRepository(_dbContext);
 
-        _customerRepository = new CrudRepository<Customer>(_dbContext);
+        _customerRepository = new CustomerRepository(_dbContext);
 
         _customerAddressRepository = new CrudRepository<CustomerAddress>(_dbContext);
 
@@ -147,7 +147,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICategoryRepository CategoryRepository => _categoryRepository;
 
-    public ICrudRepository<Customer> CustomerRepository => _customerRepository;
+    public ICustomerRepository CustomerRepository => _customerRepository;
 
     public ICrudRepository<CustomerAddress> CustomerAddressRepository => _customerAddressRepository;
 
