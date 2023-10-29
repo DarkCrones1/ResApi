@@ -22,6 +22,7 @@ namespace Res.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
+[Authorize]
 public class UserAccountController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -80,6 +81,7 @@ public class UserAccountController : ControllerBase
 
     [HttpPost]
     [Route("Customer")]
+    [AllowAnonymous]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserAccountCustomerResponseDto>))]
     public async Task<IActionResult> CreateUserCustomer([FromBody] UserAccountCustomerCreateRequestDto requestDto)
     {
