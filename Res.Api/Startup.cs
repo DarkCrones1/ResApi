@@ -127,6 +127,7 @@ public class Startup
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<IMiscellaneousService, MiscellaneousService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
 
         services.AddScoped<TokenHelper>();

@@ -10,6 +10,6 @@ public enum ReservationStatus
     Pendding = 2,
     [Description("Concretada")]
     Concreted = 3,
-    [Description("Cendelada")]
+    [Description("Cencelada")]
     Canceled = 5
 }
