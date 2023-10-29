@@ -15,4 +15,5 @@ public interface IUserAccountService : ICrudService<UserAccount>
     Task<IEnumerable<BranchStore>> GetBranchStoresToUserAccount(int id);
     Task<int> CreateUser(UserAccount user);
     Task<PagedList<UserAccount>> GetPaged(UserAccountQueryFilter filter);
+    Task<PagedList<UserAccount>> GetPaged(UserAccountCustomerQueryFilter filter);
 }

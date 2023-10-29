@@ -192,6 +192,9 @@ public class ResponseMappingProfile : Profile
                 dest.Phone = employee!.Phone!;
                 dest.CellPhone = employee.CellPhone;
                 dest.Email = employee.Email;
+
+                dest.UserAccountType = src.AccountType;
+                dest.UserAccountTypeName = EnumHelper.GetDescription<UserAccountType>((UserAccountType)src.AccountType);
             }
         );
 
@@ -207,15 +210,15 @@ public class ResponseMappingProfile : Profile
         .AfterMap(
             (src, dest) =>
             {
-                var rol = src.Rol.FirstOrDefault() ?? new Rol();
-                dest.Rol = rol.Name;
-
                 var customer = src.Customer.FirstOrDefault() ?? new Customer();
                 dest.CustomerId = customer.Id;
                 dest.FullName = customer.FullName;
                 dest.Phone = customer!.Phone!;
                 dest.CellPhone = customer.CellPhone;
                 dest.Email = customer.Email!;
+
+                dest.UserAccountType = src.AccountType;
+                dest.UserAccountTypeName = EnumHelper.GetDescription<UserAccountType>((UserAccountType)src.AccountType);
             }
         );
 

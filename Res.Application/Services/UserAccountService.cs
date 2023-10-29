@@ -65,4 +65,11 @@ public class UserAccountService : CrudService<UserAccount>, IUserAccountService
         var pagedItems = PagedList<UserAccount>.Create(result, filter.PageNumber, filter.PageSize);
         return pagedItems;
     }
+
+    public async Task<PagedList<UserAccount>> GetPaged(UserAccountCustomerQueryFilter filter)
+    {
+        var result = await _unitOfWork.UserAccountRepository.GetPaged(filter);
+        var pagedItems = PagedList<UserAccount>.Create(result, filter.PageNumber, filter.PageSize);
+        return pagedItems;
+    }
 }

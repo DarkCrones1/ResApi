@@ -6,7 +6,7 @@ using Res.Domain.Entities;
 
 namespace Res.Domain.Interfaces.Repositories;
 
-public interface IUserAccountRepository : IQueryPagedRepository<ActiveUserAccountEmployee>, ICrudRepository<UserAccount>, IQueryFilterPagedRepository<UserAccount, UserAccountQueryFilter>
+public interface IUserAccountRepository : IQueryPagedRepository<ActiveUserAccountEmployee>, ICrudRepository<UserAccount>, IQueryFilterPagedRepository<UserAccount, UserAccountQueryFilter>, IQueryFilterPagedRepository<UserAccount, UserAccountCustomerQueryFilter>
 {
     Task<ActiveUserAccountEmployee> GetUserAccount(int id);
     Task<IEnumerable<BranchStore>> GetBranchStoresToUser(int id);

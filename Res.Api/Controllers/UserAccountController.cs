@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Res.Domain.Dto.QueryFilters;
 using Res.Domain.Interfaces.Services;
 using Res.Common.QueryFilters;
+using Res.Domain.Enumerations;
 
 namespace Res.API.Controllers;
 
@@ -40,6 +41,44 @@ public class UserAccountController : ControllerBase
         this._employeeService = employeeService;
         this._mapper = mapper;
         this._service = service;
+    }
+
+    [HttpGet]
+    [Route("Employee")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<UserAccountResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<UserAccountResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<UserAccountResponseDto>>))]
+    public async Task<IActionResult> GetUser([FromQuery] UserAccountQueryFilter filter)
+    {
+        var entities = await _service.GetPaged(filter);
+        var dtos = _mapper.Map<IEnumerable<UserAccountResponseDto>>(entities);
+
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+        var response = new ApiResponse<IEnumerable<UserAccountResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("Customer")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<UserAccountCustomerResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<UserAccountCustomerResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<UserAccountCustomerResponseDto>>))]
+    public async Task<IActionResult> GetUserAcustomer([FromQuery] UserAccountCustomerQueryFilter filter)
+    {
+        var entities = await _service.GetPaged(filter);
+        var dtos = _mapper.Map<IEnumerable<UserAccountCustomerResponseDto>>(entities);
+
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+        var response = new ApiResponse<IEnumerable<UserAccountCustomerResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
     }
 
     [HttpPost]

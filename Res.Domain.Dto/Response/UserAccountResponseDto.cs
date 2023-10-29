@@ -18,5 +18,9 @@ public class UserAccountResponseDto
 
     public string Rol { get; set; } = string.Empty;
 
+    public short UserAccountType { get; set; }
+
+    public string? UserAccountTypeName { get; set; }
+
     public bool IsDeleted { get; set; }
 }
