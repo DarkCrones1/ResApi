@@ -32,7 +32,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<CustomerAddress> _customerAddressRepository;
 
-    protected ICrudRepository<CustomerType> _customerTypeRepository;
+    protected ICatalogBaseRepository<CustomerType> _customerTypeRepository;
 
     protected ICatalogBaseRepository<Drink> _drinkRepository;
 
@@ -40,13 +40,13 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICatalogBaseRepository<Food> _foodRepository;
 
-    protected ICrudRepository<GeographicalZone> _geographicalZoneRepository;
+    protected ICatalogBaseRepository<GeographicalZone> _geographicalZoneRepository;
 
     protected ICatalogBaseRepository<Job> _jobRepository;
 
     protected ICrudRepository<ManagerZoneBranchStore> _managerZoneBranchStoreRepository;
 
-    protected ICrudRepository<Menu> _menuRepository;
+    protected ICatalogBaseRepository<Menu> _menuRepository;
 
     protected ICrudRepository<Order> _orderRepository;
 
@@ -96,7 +96,7 @@ public class UnirOfWork : IUnitOfWork
 
         _customerAddressRepository = new CrudRepository<CustomerAddress>(_dbContext);
 
-        _customerTypeRepository = new CrudRepository<CustomerType>(_dbContext);
+        _customerTypeRepository = new CatalogBaseRepository<CustomerType>(_dbContext);
 
         _drinkRepository = new CatalogBaseRepository<Drink>(_dbContext);
 
@@ -104,13 +104,13 @@ public class UnirOfWork : IUnitOfWork
 
         _foodRepository = new CatalogBaseRepository<Food>(_dbContext);
 
-        _geographicalZoneRepository = new CrudRepository<GeographicalZone>(_dbContext);
+        _geographicalZoneRepository = new CatalogBaseRepository<GeographicalZone>(_dbContext);
 
         _jobRepository = new CatalogBaseRepository<Job>(_dbContext);
 
         _managerZoneBranchStoreRepository = new CrudRepository<ManagerZoneBranchStore>(_dbContext);
 
-        _menuRepository = new CrudRepository<Menu>(_dbContext);
+        _menuRepository = new CatalogBaseRepository<Menu>(_dbContext);
 
         _orderRepository = new CrudRepository<Order>(_dbContext);
 
@@ -151,7 +151,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<CustomerAddress> CustomerAddressRepository => _customerAddressRepository;
 
-    public ICrudRepository<CustomerType> CustomerTypeRepository => _customerTypeRepository;
+    public ICatalogBaseRepository<CustomerType> CustomerTypeRepository => _customerTypeRepository;
 
     public ICatalogBaseRepository<Drink> DrinkRepository => _drinkRepository;
 
@@ -159,13 +159,13 @@ public class UnirOfWork : IUnitOfWork
 
     public ICatalogBaseRepository<Food> FoodRepository => _foodRepository;
 
-    public ICrudRepository<GeographicalZone> GeographicalZoneRepository => _geographicalZoneRepository;
+    public ICatalogBaseRepository<GeographicalZone> GeographicalZoneRepository => _geographicalZoneRepository;
 
     public ICatalogBaseRepository<Job> JobRepository => _jobRepository;
 
     public ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository => _managerZoneBranchStoreRepository;
 
-    public ICrudRepository<Menu> MenuRepository => _menuRepository;
+    public ICatalogBaseRepository<Menu> MenuRepository => _menuRepository;
 
     public ICrudRepository<Order> OrderRepository => _orderRepository;
 

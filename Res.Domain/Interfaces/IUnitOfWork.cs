@@ -22,7 +22,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<CustomerAddress> CustomerAddressRepository { get; }
 
-    ICrudRepository<CustomerType> CustomerTypeRepository { get; }
+    ICatalogBaseRepository<CustomerType> CustomerTypeRepository { get; }
 
     ICatalogBaseRepository<Drink> DrinkRepository { get; }
 
@@ -30,13 +30,13 @@ public interface IUnitOfWork : IDisposable
 
     ICatalogBaseRepository<Food> FoodRepository { get; }
 
-    ICrudRepository<GeographicalZone> GeographicalZoneRepository { get; }
+    ICatalogBaseRepository<GeographicalZone> GeographicalZoneRepository { get; }
 
     ICatalogBaseRepository<Job> JobRepository { get; }
 
     ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository { get; }
 
-    ICrudRepository<Menu> MenuRepository { get; }
+    ICatalogBaseRepository<Menu> MenuRepository { get; }
 
     ICrudRepository<Order> OrderRepository { get; }
 

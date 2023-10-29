@@ -4,6 +4,6 @@ using Res.Domain.Entities;
 
 namespace Res.Domain.Interfaces.Repositories;
 
-public interface IBoxCashRepository : ICrudRepository<BoxCash>, IQueryFilterPagedRepository<BoxCash, BoxCashQueryFilter>
+public interface IBoxCashRepository : ICatalogBaseRepository<BoxCash>, IQueryFilterPagedRepository<BoxCash, BoxCashQueryFilter>
 {
 }
