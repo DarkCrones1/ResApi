@@ -58,7 +58,7 @@ public class CreateRequestMappingProfile : Profile
             }
         );
 
-        CreateMap<BoxCashCreateRequestDto, BoxCash>()
+        CreateMap<BoxCashBranchStoreCreateRequestDto, BoxCash>()
         .ForMember(
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)

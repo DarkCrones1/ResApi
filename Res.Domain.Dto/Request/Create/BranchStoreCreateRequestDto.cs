@@ -4,12 +4,12 @@ public class BranchStoreCreateRequestDto
 {
 
     private IEnumerable<EmployeeBranchStoreCreateRequestDto> _Employees;
-    private IEnumerable<BoxCashCreateRequestDto> _boxCashes;
+    private IEnumerable<BoxCashBranchStoreCreateRequestDto> _boxCashes;
 
     public BranchStoreCreateRequestDto()
     {
         _Employees = new List<EmployeeBranchStoreCreateRequestDto>();
-        _boxCashes = new List<BoxCashCreateRequestDto>();
+        _boxCashes = new List<BoxCashBranchStoreCreateRequestDto>();
     }
 
     public string Name { get; set; } = null!;
@@ -47,5 +47,5 @@ public class BranchStoreCreateRequestDto
 
     public IEnumerable<EmployeeBranchStoreCreateRequestDto> Employees { get => _Employees; set => _Employees = value ?? new List<EmployeeBranchStoreCreateRequestDto>(); }
 
-    public IEnumerable<BoxCashCreateRequestDto>? BoxCashes { get => _boxCashes; set => _boxCashes = value ?? new List<BoxCashCreateRequestDto>(); }
+    public IEnumerable<BoxCashBranchStoreCreateRequestDto>? BoxCashes { get => _boxCashes; set => _boxCashes = value ?? new List<BoxCashBranchStoreCreateRequestDto>(); }
 }
