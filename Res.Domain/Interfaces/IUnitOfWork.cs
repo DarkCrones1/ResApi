@@ -8,7 +8,7 @@ public interface IUnitOfWork : IDisposable
 {
     ICrudRepository<Address> AddressRepository { get; }
 
-    ICrudRepository<BoxCash> BoxCashRepository { get; }
+    IBoxCashRepository BoxCashRepository { get; }
 
     IBranchStoreRepository BranchStoreRepository { get; }
 

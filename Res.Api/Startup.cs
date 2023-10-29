@@ -109,6 +109,7 @@ public class Startup
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
         services.AddScoped(typeof(IRetrieveRepository<>), typeof(RetrieveRepository<>));
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
+        services.AddScoped<IBoxCashRepository, BoxCashRepository>();
         services.AddScoped<IBranchStoreRepository, BranchStoreRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
@@ -121,6 +122,7 @@ public class Startup
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
         services.AddScoped(typeof(ICatalogBaseService<>), typeof(CatalogBaseService<>));
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IBoxCashService, BoxCashService>();
         services.AddScoped<IBranchStoreService, BranchStoreService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICustomerService, CustomerService>();

@@ -10,6 +10,20 @@ public class CreateRequestMappingProfile : Profile
 {
     public CreateRequestMappingProfile()
     {
+        CreateMap<BoxCashCreateRequestDto, BoxCash>()
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.SerialNumber,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        );
+
         CreateMap<CategoryCreateRequestDto, Category>()
         .ForMember(
             dest => dest.CreatedDate,

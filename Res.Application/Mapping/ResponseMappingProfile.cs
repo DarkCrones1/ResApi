@@ -11,6 +11,16 @@ public class ResponseMappingProfile : Profile
 {
     public ResponseMappingProfile()
     {
+        CreateMap<BoxCash, BoxCashResponseDto>()
+        .ForMember(
+            dest => dest.IsActive,
+            opt => opt.MapFrom(src => !src.IsDeleted)
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
+        );
+
         CreateMap<Category, CategoryResponseDto>()
         .ForMember(
             dest => dest.Status,

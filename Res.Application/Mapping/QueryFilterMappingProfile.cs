@@ -10,6 +10,8 @@ public class QueryFilterMappingProfile : Profile
 {
     public QueryFilterMappingProfile()
     {
+        CreateMap<BoxCashQueryFilter, BoxCash>();
+        
         CreateMap<BranchStoreQueryFilter, BranchStore>();
 
         CreateMap<BaseCatalogQueryFilter, Category>();
@@ -20,8 +22,8 @@ public class QueryFilterMappingProfile : Profile
 
         CreateMap<BaseCatalogQueryFilter, Job>();
 
-        CreateMap<EmployeeQueryFilter, Employee>();
-
         CreateMap<CustomerQueryFilter, Customer>();
+
+        CreateMap<EmployeeQueryFilter, Employee>();
     }
 }

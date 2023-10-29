@@ -10,6 +10,8 @@ public class UpdateRequestMappingProfile : Profile
 {
     public UpdateRequestMappingProfile()
     {
+        CreateMap<BoxCashUpdateRequestDto, BoxCash>();
+
         CreateMap<CategoryUpdateRequestDto, Category>();
 
         CreateMap<BaseCatalogUpdateRequestDto, Rol>();
