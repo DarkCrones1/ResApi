@@ -25,6 +25,10 @@ public class ResponseMappingProfile : Profile
         .ForMember(
             dest => dest.Status,
             opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
+        )
+        .ForMember(
+            dest => dest.ProductTypeName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<ProductType>((ProductType)src.ProductType))
         );
 
         CreateMap<BranchStore, BranchStoreResponseDto>()
