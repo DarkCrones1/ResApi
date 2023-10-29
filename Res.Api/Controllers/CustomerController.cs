@@ -21,6 +21,7 @@ namespace Res.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
+[Authorize]
 public class CustomerController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -54,7 +55,6 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CustomerResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CustomerCreateRequestDto requestDto)
     {
@@ -80,33 +80,40 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize]
     [Route("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CustomerUpdateRequestDto requestDto)
     {
-        Expression<Func<Customer, bool>> filter = x => x.Id == id;
-        var existCustomer = await _service.Exist(filter);
-
-        if (!existCustomer)
-            return BadRequest("No existe ningun empleado con esa información");
-
-        var newEntity = _mapper.Map<Customer>(requestDto);
-
-        newEntity.IsDeleted = false;
-        newEntity.Id = id;
-        newEntity.LastModifiedBy = _tokenHelper.GetUserName();
-        newEntity.LastModifiedDate = DateTime.Now;
-
-        var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
-        customerAddress.CustomerId = id;
-        customerAddress.Status = 1;
-        newEntity.CustomerAddress.Add(customerAddress);
-
-        await _service.Update(id, newEntity);
-
-        var dto = _mapper.Map<CustomerResponseDto>(requestDto);
-        var response = new ApiResponse<CustomerResponseDto>(data: dto);
-        return Ok(response);
+        try
+        {
+            Expression<Func<Customer, bool>> filter = x => x.Id == id;
+            var existCustomer = await _service.Exist(filter);
+    
+            if (!existCustomer)
+                return BadRequest("No existe ningun empleado con esa información");
+    
+            var newEntity = _mapper.Map<Customer>(requestDto);
+    
+            newEntity.IsDeleted = false;
+            newEntity.Id = id;
+            newEntity.LastModifiedBy = _tokenHelper.GetUserName();
+            newEntity.LastModifiedDate = DateTime.Now;
+    
+            var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
+            customerAddress.CustomerId = id;
+            customerAddress.Status = 1;
+            newEntity.CustomerAddress.Add(customerAddress);
+    
+            await _service.Update(id, newEntity);
+    
+            var dto = _mapper.Map<CustomerResponseDto>(newEntity);
+            var response = new ApiResponse<CustomerResponseDto>(data: dto);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            
+            throw new LogicBusinessException(ex);
+        }
     }
 
     [HttpDelete]
@@ -115,8 +122,16 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            await _service.Delete(id);
+            Expression<Func<Customer, bool>> filter = x => x.Id == id;
+            var existCustomer = await _service.Exist(filter);
+    
+            if (!existCustomer)
+                return BadRequest("No existe ningun empleado con esa información");
 
+            var entity = await _service.GetById(id);
+            entity.IsDeleted = true;
+
+            await _service.Update(entity);
             return Ok(true);
         }
         catch (Exception ex)

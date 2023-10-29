@@ -6,7 +6,7 @@ public class CustomerResponseDto
 
     public Guid Code { get; set; }
 
-    public string? Name {get; set;}
+    public string? Name { get; set; }
 
     public string FirstName { get; set; } = null!;
 
@@ -21,6 +21,8 @@ public class CustomerResponseDto
     public string CellPhone { get; set; } = null!;
 
     public int CustomerTypeId { get; set; }
+
+    public string? CustomerTypeName { get; set; }
 
     public int CreatedAtBranchStoreId { get; set; }
 
@@ -38,9 +40,9 @@ public class CustomerResponseDto
 
     public string ZipCode { get; set; } = null!;
 
-    public short? GenderId { get; set; }
+    public short? Gender { get; set; }
 
-    public string Gender { get; set; } = null!;
+    public string GenderName { get; set; } = null!;
 
     public DateTime? BirthDate { get; set; }
 
@@ -61,4 +63,6 @@ public class CustomerResponseDto
     public short? Status { get; set; }
 
     public string? StatusName { get; set; }
+
+    public bool? IsDeleted { get; set; }
 }

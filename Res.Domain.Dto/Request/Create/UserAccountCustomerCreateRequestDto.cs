@@ -36,6 +36,12 @@ public class UserAccountCustomerCreateRequestDto
 
     public string ZipCode { get; set; } = null!;
 
+    public int CustomerTypeId { get; set; }
+
+    public short? Gender { get; set; }
+
+    public DateTime? BirthDate { get; set; }
+
     // Location Info
     public int[]? BranchStoreIds { get; set; }
 }

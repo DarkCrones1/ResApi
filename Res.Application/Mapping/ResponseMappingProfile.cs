@@ -188,23 +188,27 @@ public class ResponseMappingProfile : Profile
         CreateMap<Customer, CustomerResponseDto>()
         .ForMember(
             dest => dest.Name,
-            opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName} {src.MiddleName}".Trim()))
-        .ForMember(
-            dest => dest.GenderId,
-            opt => opt.MapFrom(src => src.Gender))
+            opt => opt.MapFrom(src => $"{src.FirstName} {src.MiddleName} {src.LastName}".Trim()))
         .ForMember(
             dest => dest.Gender,
+            opt => opt.MapFrom(src => src.Gender))
+        .ForMember(
+            dest => dest.GenderName,
             opt => opt.MapFrom(
                 src => EnumHelper.GetDescription<Gender>(src.Gender.HasValue ? ((Gender)src.Gender!.Value) : (Gender)(-1))
             )
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => src.Status)
         )
         .ForMember(
             dest => dest.StatusName,
             opt => opt.MapFrom(src => EnumHelper.GetDescription<CustomerTypeStatus>((CustomerTypeStatus)src.Status))
         )
         .ForMember(
-            dest => dest.Status,
-            opt => opt.MapFrom(src => src.Status)
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => src.IsDeleted)
         )
         .AfterMap(
             (src, dest) =>

@@ -23,6 +23,7 @@ public class CustomerService : CrudService<Customer>, ICustomerService
     public async Task Update(int customerId, Customer entity)
     {
         var oldEntity = await _unitOfWork.CustomerRepository.GetById(customerId);
+        entity.Code = oldEntity.Code;
 
         if (entity.CustomerAddress.Any())
         {
@@ -38,6 +39,7 @@ public class CustomerService : CrudService<Customer>, ICustomerService
             await CreateCustomerAddress(entity.CustomerAddress.FirstOrDefault()!);
         }
 
+        await base.Update(entity);
         await _unitOfWork.SaveChangesAsync();
     }
 

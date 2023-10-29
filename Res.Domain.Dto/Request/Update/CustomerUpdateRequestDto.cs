@@ -14,6 +14,8 @@ public class CustomerUpdateRequestDto
 
     public string CellPhone { get; set; } = null!;
 
+    public int CreatedAtBranchStoreId { get; set; }
+
     public string Address1 { get; set; } = null!;
 
     public string? Address2 { get; set; }
@@ -27,4 +29,12 @@ public class CustomerUpdateRequestDto
     public string City { get; set; } = null!;
 
     public string ZipCode { get; set; } = null!;
+
+    public int CustomerTypeId { get; set; }
+
+    public short? Gender { get; set; }
+
+    public short? Status { get; set; }
+
+    public DateTime? BirthDate { get; set; }
 }
