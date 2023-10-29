@@ -34,11 +34,11 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<CustomerType> _customerTypeRepository;
 
-    protected ICrudRepository<Drink> _drinkRepository;
+    protected ICatalogBaseRepository<Drink> _drinkRepository;
 
     protected IEmployeeRepository _employeeRepository;
 
-    protected ICrudRepository<Food> _foodRepository;
+    protected ICatalogBaseRepository<Food> _foodRepository;
 
     protected ICrudRepository<GeographicalZone> _geographicalZoneRepository;
 
@@ -98,11 +98,11 @@ public class UnirOfWork : IUnitOfWork
 
         _customerTypeRepository = new CrudRepository<CustomerType>(_dbContext);
 
-        _drinkRepository = new CrudRepository<Drink>(_dbContext);
+        _drinkRepository = new CatalogBaseRepository<Drink>(_dbContext);
 
         _employeeRepository = new EmployeeRepository(_dbContext);
 
-        _foodRepository = new CrudRepository<Food>(_dbContext);
+        _foodRepository = new CatalogBaseRepository<Food>(_dbContext);
 
         _geographicalZoneRepository = new CrudRepository<GeographicalZone>(_dbContext);
 
@@ -153,11 +153,11 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<CustomerType> CustomerTypeRepository => _customerTypeRepository;
 
-    public ICrudRepository<Drink> DrinkRepository => _drinkRepository;
+    public ICatalogBaseRepository<Drink> DrinkRepository => _drinkRepository;
 
     public IEmployeeRepository EmployeeRepository => _employeeRepository;
 
-    public ICrudRepository<Food> FoodRepository => _foodRepository;
+    public ICatalogBaseRepository<Food> FoodRepository => _foodRepository;
 
     public ICrudRepository<GeographicalZone> GeographicalZoneRepository => _geographicalZoneRepository;
 

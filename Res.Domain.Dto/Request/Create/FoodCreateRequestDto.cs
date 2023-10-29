@@ -1,6 +1,6 @@
 namespace Res.Domain.Dto.Request.Create;
 
-public class DrinkCreateRequestDto : BaseCatalogCreateRequestDto
+public class FoodCreateRequestDto : BaseCatalogCreateRequestDto
 {
     public decimal Price { get; set; }
 

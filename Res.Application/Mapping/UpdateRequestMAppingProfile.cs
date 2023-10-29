@@ -57,5 +57,7 @@ public class UpdateRequestMappingProfile : Profile
         );
 
         CreateMap<DrinkUpdateRequestDto, Drink>();
+
+        CreateMap<FoodUpdateRequestDto, Food>();
     }
 }

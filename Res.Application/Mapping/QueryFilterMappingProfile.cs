@@ -26,6 +26,8 @@ public class QueryFilterMappingProfile : Profile
 
         CreateMap<DrinkQueryFilter, Drink>();
 
+        CreateMap<FoodQueryFilter, Food>();
+
         CreateMap<EmployeeQueryFilter, Employee>();
     }
 }

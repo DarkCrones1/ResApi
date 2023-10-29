@@ -24,11 +24,11 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<CustomerType> CustomerTypeRepository { get; }
 
-    ICrudRepository<Drink> DrinkRepository { get; }
+    ICatalogBaseRepository<Drink> DrinkRepository { get; }
 
     IEmployeeRepository EmployeeRepository { get; }
 
-    ICrudRepository<Food> FoodRepository { get; }
+    ICatalogBaseRepository<Food> FoodRepository { get; }
 
     ICrudRepository<GeographicalZone> GeographicalZoneRepository { get; }
 

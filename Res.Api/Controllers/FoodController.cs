@@ -21,14 +21,14 @@ namespace Res.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
-public class DrinkController : ControllerBase
+public class FoodController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Drink> _service;
+    private readonly ICatalogBaseService<Food> _service;
     private readonly TokenHelper _tokenHelper;
     private readonly ICategoryService _categoryService;
 
-    public DrinkController(IMapper mapper, ICatalogBaseService<Drink> service, TokenHelper tokenHelper, ICategoryService categoryService)
+    public FoodController(IMapper mapper, ICatalogBaseService<Food> service, TokenHelper tokenHelper, ICategoryService categoryService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -39,33 +39,33 @@ public class DrinkController : ControllerBase
     [HttpGet]
     [Route("")]
     [AllowAnonymous]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
-    public async Task<IActionResult> GetAll([FromQuery] DrinkQueryFilter filter)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<FoodResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<FoodResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<FoodResponseDto>>))]
+    public async Task<IActionResult> GetAll([FromQuery] FoodQueryFilter filter)
     {
-        var filters = _mapper.Map<Drink>(filter);
+        var filters = _mapper.Map<Food>(filter);
         var entities = await _service.GetPaged(filters);
 
-        var dtos = _mapper.Map<IEnumerable<DrinkResponseDto>>(entities);
+        var dtos = _mapper.Map<IEnumerable<FoodResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-        var response = new ApiResponse<IEnumerable<DrinkResponseDto>>(data: dtos, meta: metaDataResponse);
+        var response = new ApiResponse<IEnumerable<FoodResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }
 
     [HttpGet]
     [Route("{id:int}")]
     [AllowAnonymous]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<DrinkDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<DrinkDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<DrinkDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<FoodDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<FoodDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<FoodDetailResponseDto>>))]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
-        Expression<Func<Drink, bool>> filter = x => x.Id == id;
+        Expression<Func<Food, bool>> filter = x => x.Id == id;
         var existDrink = await _service.Exist(filter);
 
         if (!existDrink)
@@ -73,20 +73,20 @@ public class DrinkController : ControllerBase
 
         var entity = await _service.GetById(id);
 
-        var dto = _mapper.Map<DrinkDetailResponseDto>(entity);
-        var response = new ApiResponse<DrinkDetailResponseDto>(data: dto);
+        var dto = _mapper.Map<FoodDetailResponseDto>(entity);
+        var response = new ApiResponse<FoodDetailResponseDto>(data: dto);
         return Ok(response);
     }
 
     [HttpPost]
     [Route("")]
     [Authorize]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<DrinkResponseDto>))]
-    public async Task<IActionResult> Create([FromBody] DrinkCreateRequestDto requestDto)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<FoodResponseDto>))]
+    public async Task<IActionResult> Create([FromBody] FoodCreateRequestDto requestDto)
     {
         try
         {
-            var entity = _mapper.Map<Drink>(requestDto);
+            var entity = _mapper.Map<Food>(requestDto);
             if (requestDto.CategoryIds != null)
             {
                 foreach (var item in requestDto.CategoryIds)
@@ -97,13 +97,13 @@ public class DrinkController : ControllerBase
                 }
             }
             await _service.Create(entity);
-            var dto = _mapper.Map<DrinkResponseDto>(entity);
-            var response = new ApiResponse<DrinkResponseDto>(data: dto);
+            var dto = _mapper.Map<FoodResponseDto>(entity);
+            var response = new ApiResponse<FoodResponseDto>(data: dto);
             return Ok(response);
         }
         catch (Exception ex)
         {
-            
+
             throw new LogicBusinessException(ex);
         }
     }
@@ -111,20 +111,20 @@ public class DrinkController : ControllerBase
     [HttpPut]
     [Route("{id:int}")]
     [Authorize]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<DrinkResponseDto>))]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] DrinkUpdateRequestDto requestDto)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<FoodResponseDto>))]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] FoodUpdateRequestDto requestDto)
     {
         try
         {
-            Expression<Func<Drink, bool>> filter = x => x.Id == id;
-            var existDrink = await _service.Exist(filter);
+            Expression<Func<Food, bool>> filter = x => x.Id == id;
+            var existFood = await _service.Exist(filter);
 
-            if (!existDrink)
+            if (!existFood)
                 return BadRequest("No se encontró el elemento que dese modificar");
 
             var oldEntity = await _service.GetById(id);
             oldEntity.Category.Clear();
-            var newEntity = _mapper.Map<Drink>(requestDto);
+            var newEntity = _mapper.Map<Food>(requestDto);
             newEntity.IsDeleted = false;
             newEntity.LastModifiedDate = DateTime.Now;
             newEntity.LastModifiedBy = _tokenHelper.GetUserName();
@@ -139,8 +139,8 @@ public class DrinkController : ControllerBase
                 }
             }
             await _service.Update(newEntity);
-            var dto = _mapper.Map<DrinkResponseDto>(newEntity);
-            var response = new ApiResponse<DrinkResponseDto>(data: dto);
+            var dto = _mapper.Map<FoodResponseDto>(newEntity);
+            var response = new ApiResponse<FoodResponseDto>(data: dto);
             return Ok(requestDto);
         }
         catch (Exception ex)
@@ -155,10 +155,10 @@ public class DrinkController : ControllerBase
     [Authorize]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        Expression<Func<Drink, bool>> filter = x => x.Id == id;
-        var existDrink = await _service.Exist(filter);
+        Expression<Func<Food, bool>> filter = x => x.Id == id;
+        var existFood = await _service.Exist(filter);
 
-        if (!existDrink)
+        if (!existFood)
             return BadRequest("No se encontró el elemento que dese modificar");
 
         var entity = await _service.GetById(id);
