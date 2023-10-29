@@ -82,7 +82,7 @@ public class UserAccountController : ControllerBase
     }
 
     [HttpPost]
-    [Route("")]
+    [Route("Employee")]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserAccountResponseDto>))]
     public async Task<IActionResult> CreateUser([FromBody] UserAccountCreateRequestDto requestDto)
     {
