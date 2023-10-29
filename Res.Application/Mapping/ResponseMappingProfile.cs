@@ -91,7 +91,11 @@ public class ResponseMappingProfile : Profile
             }
         );
 
-        CreateMap<Drink, DrinkResponseDto>();
+        CreateMap<Drink, DrinkResponseDto>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
+        );
 
         CreateMap<Employee, EmployeeResponseDto>()
         .ForMember(

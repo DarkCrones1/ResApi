@@ -15,6 +15,7 @@ using Res.Api.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Res.Domain.Dto.QueryFilters;
 using Res.Domain.Interfaces.Services;
+using Res.Common.QueryFilters;
 
 namespace Res.API.Controllers;
 
@@ -34,6 +35,27 @@ public class DrinkController : ControllerBase
         this._service = service;
         this._tokenHelper = tokenHelper;
         this._categoryService = categoryService;
+    }
+
+    [HttpGet]
+    [Route("")]
+    [AllowAnonymous]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
+    public async Task<IActionResult> GetAll([FromQuery] DrinkQueryFilter filter)
+    {
+        var filters = _mapper.Map<Drink>(filter);
+        var entities = await _service.GetPaged(filters);
+
+        var dtos = _mapper.Map<IEnumerable<DrinkResponseDto>>(entities);
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+        var response = new ApiResponse<IEnumerable<DrinkResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
     }
 
     [HttpPost]
