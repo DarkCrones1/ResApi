@@ -55,5 +55,7 @@ public class UpdateRequestMappingProfile : Profile
                 dest.RegisterDate = DateTime.Now;
             }
         );
+
+        CreateMap<DrinkUpdateRequestDto, Drink>();
     }
 }

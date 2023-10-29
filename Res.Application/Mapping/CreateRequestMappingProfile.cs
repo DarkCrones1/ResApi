@@ -82,6 +82,22 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => DateTime.Now)
         );
 
+        CreateMap<DrinkCreateRequestDto, Drink>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .AfterMap(
+            (src, dest) => 
+            {
+                dest.CreatedBy = "Admin";
+            }
+        );
+
         CreateMap<EmployeeBranchStoreCreateRequestDto, Employee>()
         .ForMember(
             dest => dest.IsDeleted,

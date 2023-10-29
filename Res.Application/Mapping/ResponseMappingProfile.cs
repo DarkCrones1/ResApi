@@ -91,6 +91,8 @@ public class ResponseMappingProfile : Profile
             }
         );
 
+        CreateMap<Drink, DrinkResponseDto>();
+
         CreateMap<Employee, EmployeeResponseDto>()
         .ForMember(
             dest => dest.IsActive,
