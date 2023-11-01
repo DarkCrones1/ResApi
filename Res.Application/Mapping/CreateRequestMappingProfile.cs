@@ -277,7 +277,7 @@ public class CreateRequestMappingProfile : Profile
                 dest.CreatedDate = DateTime.Now;
                 dest.Status = (short)CustomerTypeStatus.New;
                 dest.Gender = src.Gender;
-                dest.CustomerTypeId = (short)UserAccountType.Customer;
+                dest.CustomerTypeId = src.CustomerTypeId;
                 // var createdUser = context.Items["CreatedUser"] as string;
                 // dest.CreatedBy = createdUser;
             }
