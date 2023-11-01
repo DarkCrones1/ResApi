@@ -222,23 +222,23 @@ public class CreateRequestMappingProfile : Profile
             }
         );
 
-        CreateMap<CustomerCreateRequestDto, CustomerAddress>()
-        .AfterMap(
-            (src, dest) =>
-            {
-                dest.Address = new Address
-                {
-                    Address1 = src.Address1,
-                    Address2 = src.Address2,
-                    Street = src.Street,
-                    ExternalNumber = src.ExternalNumber,
-                    InternalNumber = src.InternalNumber,
-                    City = src.City ?? string.Empty,
-                    ZipCode = src.ZipCode
-                };
-                dest.RegisterDate = DateTime.Now;
-            }
-        );
+        // CreateMap<CustomerCreateRequestDto, CustomerAddress>()
+        // .AfterMap(
+        //     (src, dest) =>
+        //     {
+        //         dest.Address = new Address
+        //         {
+        //             Address1 = src.Address1,
+        //             Address2 = src.Address2,
+        //             Street = src.Street,
+        //             ExternalNumber = src.ExternalNumber,
+        //             InternalNumber = src.InternalNumber,
+        //             City = src.City ?? string.Empty,
+        //             ZipCode = src.ZipCode
+        //         };
+        //         dest.RegisterDate = DateTime.Now;
+        //     }
+        // );
 
         CreateMap<UserAccountCustomerCreateRequestDto, UserAccount>()
         .ForMember(
@@ -283,22 +283,22 @@ public class CreateRequestMappingProfile : Profile
             }
         );
 
-        CreateMap<UserAccountCustomerCreateRequestDto, CustomerAddress>()
-        .AfterMap(
-            (src, dest) =>
-            {
-                dest.Address = new Address
-                {
-                    Address1 = src.Address1,
-                    Address2 = src.Address2,
-                    Street = src.Street,
-                    ExternalNumber = src.ExternalNumber,
-                    InternalNumber = src.InternalNumber,
-                    City = src.City ?? string.Empty,
-                    ZipCode = src.ZipCode
-                };
-                dest.RegisterDate = DateTime.Now;
-            }
-        );
+        // CreateMap<UserAccountCustomerCreateRequestDto, CustomerAddress>()
+        // .AfterMap(
+        //     (src, dest) =>
+        //     {
+        //         dest.Address = new Address
+        //         {
+        //             Address1 = src.Address1,
+        //             Address2 = src.Address2,
+        //             Street = src.Street,
+        //             ExternalNumber = src.ExternalNumber,
+        //             InternalNumber = src.InternalNumber,
+        //             City = src.City ?? string.Empty,
+        //             ZipCode = src.ZipCode
+        //         };
+        //         dest.RegisterDate = DateTime.Now;
+        //     }
+        // );
     }
 }

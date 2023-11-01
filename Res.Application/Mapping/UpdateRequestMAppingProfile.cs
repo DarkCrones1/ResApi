@@ -38,23 +38,23 @@ public class UpdateRequestMappingProfile : Profile
 
         CreateMap<CustomerUpdateRequestDto, Customer>();
 
-        CreateMap<CustomerUpdateRequestDto, CustomerAddress>()
-        .AfterMap(
-            (src, dest) =>
-            {
-                dest.Address = new Address
-                {
-                    Address1 = src.Address1,
-                    Address2 = src.Address2,
-                    Street = src.Street,
-                    ExternalNumber = src.ExternalNumber,
-                    InternalNumber = src.InternalNumber,
-                    City = src.City ?? string.Empty,
-                    ZipCode = src.ZipCode
-                };
-                dest.RegisterDate = DateTime.Now;
-            }
-        );
+        // CreateMap<CustomerUpdateRequestDto, CustomerAddress>()
+        // .AfterMap(
+        //     (src, dest) =>
+        //     {
+        //         dest.Address = new Address
+        //         {
+        //             Address1 = src.Address1,
+        //             Address2 = src.Address2,
+        //             Street = src.Street,
+        //             ExternalNumber = src.ExternalNumber,
+        //             InternalNumber = src.InternalNumber,
+        //             City = src.City ?? string.Empty,
+        //             ZipCode = src.ZipCode
+        //         };
+        //         dest.RegisterDate = DateTime.Now;
+        //     }
+        // );
 
         CreateMap<DrinkUpdateRequestDto, Drink>();
 

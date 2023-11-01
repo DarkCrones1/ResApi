@@ -22,19 +22,19 @@ public class UserAccountCustomerCreateRequestDto
 
     public int CreatedAtBranchStoreId { get; set; }
 
-    public string Address1 { get; set; } = null!;
+    // public string Address1 { get; set; } = null!;
 
-    public string? Address2 { get; set; }
+    // public string? Address2 { get; set; }
 
-    public string Street { get; set; } = null!;
+    // public string Street { get; set; } = null!;
 
-    public string ExternalNumber { get; set; } = null!;
+    // public string ExternalNumber { get; set; } = null!;
 
-    public string? InternalNumber { get; set; }
+    // public string? InternalNumber { get; set; }
 
-    public string City { get; set; } = null!;
+    // public string City { get; set; } = null!;
 
-    public string ZipCode { get; set; } = null!;
+    // public string ZipCode { get; set; } = null!;
 
     public int CustomerTypeId { get; set; }
 
