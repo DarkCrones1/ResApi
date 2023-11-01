@@ -12,7 +12,7 @@ public partial class CustomerAddress : BaseEntity
 
     public short Status { get; set; }
 
-    public virtual Address Address { get; set; } = null!;
+    // public virtual Address Address { get; set; } = null!;
 
-    public virtual Customer Customer { get; set; } = null!;
+    // public virtual Customer Customer { get; set; } = null!;
 }

@@ -32,7 +32,7 @@ public partial class Customer : BaseRemovableAuditablePaginationEntity
 
     public virtual BranchStore CreatedAtBranchStore { get; set; } = null!;
 
-    public virtual ICollection<CustomerAddress> CustomerAddress { get; } = new List<CustomerAddress>();
+    // public virtual ICollection<CustomerAddress> CustomerAddress { get; } = new List<CustomerAddress>();
 
     public virtual CustomerType CustomerType { get; set; } = null!;
 

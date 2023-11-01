@@ -15,14 +15,14 @@ public class CustomerAddressConfiguration : IEntityTypeConfiguration<CustomerAdd
             .HasDefaultValueSql("(getdate())")
             .HasColumnType("datetime");
 
-        builder.HasOne(d => d.Address).WithMany(p => p.CustomerAddress)
-            .HasForeignKey(d => d.AddressId)
-            .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK_CustomerAddress_Address");
+        // builder.HasOne(d => d.Address).WithMany(p => p.CustomerAddress)
+        //     .HasForeignKey(d => d.AddressId)
+        //     .OnDelete(DeleteBehavior.ClientSetNull)
+        //     .HasConstraintName("FK_CustomerAddress_Address");
 
-        builder.HasOne(d => d.Customer).WithMany(p => p.CustomerAddress)
-            .HasForeignKey(d => d.CustomerId)
-            .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK_CustomerAddress_Customer");
+        // builder.HasOne(d => d.Customer).WithMany(p => p.CustomerAddress)
+        //     .HasForeignKey(d => d.CustomerId)
+        //     .OnDelete(DeleteBehavior.ClientSetNull)
+        //     .HasConstraintName("FK_CustomerAddress_Customer");
     }
 }
