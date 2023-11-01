@@ -62,9 +62,9 @@ public class CustomerController : ControllerBase
         {
             var customer = _mapper.Map<Customer>(requestDto);
 
-            var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
-            customerAddress.Status = 1;
-            customer.CustomerAddress.Add(customerAddress);
+            // var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
+            // customerAddress.Status = 1;
+            // customer.CustomerAddress.Add(customerAddress);
 
             await _service.Create(customer);
 
@@ -98,10 +98,10 @@ public class CustomerController : ControllerBase
             newEntity.LastModifiedBy = _tokenHelper.GetUserName();
             newEntity.LastModifiedDate = DateTime.Now;
     
-            var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
-            customerAddress.CustomerId = id;
-            customerAddress.Status = 1;
-            newEntity.CustomerAddress.Add(customerAddress);
+            // var customerAddress = _mapper.Map<CustomerAddress>(requestDto);
+            // customerAddress.CustomerId = id;
+            // customerAddress.Status = 1;
+            // newEntity.CustomerAddress.Add(customerAddress);
     
             await _service.Update(id, newEntity);
     
