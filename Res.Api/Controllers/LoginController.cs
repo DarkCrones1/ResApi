@@ -54,7 +54,7 @@ public class LoginController : ControllerBase
         var result = await _service.IsValidUser(requestDto.UserName!, requestDto.Password!);
 
         if (!result)
-            return NotFound();
+            return NotFound("El usuario no es válido");
 
         _user = await GetEmployee(requestDto);
 
@@ -62,7 +62,7 @@ public class LoginController : ControllerBase
 
         //TODO: falta agregar la parte de administrador, en ese caso no se tiene asignada una sucursal
         if (!_lstBranchStoresToUserAccount.Any())
-            return NotFound();
+            return NotFound("No existe ninguna relaacion con sucursal");
 
         var token = await GenerateToken();
 

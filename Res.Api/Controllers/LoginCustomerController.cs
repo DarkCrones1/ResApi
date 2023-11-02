@@ -54,14 +54,14 @@ public class LoginCustomerController : ControllerBase
         var result = await _service.IsValidUser(requestDto.UserName!, requestDto.Password!);
 
         if (!result)
-            return NotFound();
+            return NotFound("El usuario no es válido");
 
         _user = await GetCustomer(requestDto);
 
         await GetBranchStoresToUserAccount();
 
         if (!_lstBranchStoresToUserAccount.Any())
-            return NotFound();
+            return NotFound("El usuario no está asignado a ninguna sucursal");
 
         var token = await GenerateToken();
 
