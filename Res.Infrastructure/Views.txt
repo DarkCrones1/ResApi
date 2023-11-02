@@ -1,0 +1,19 @@
+Vista Cliente
+
+SELECT dbo.UserAccountCustomer.UserAccountId, dbo.UserAccountCustomer.CustomerId, dbo.UserAccount.UserName, dbo.Customer.FirstName, dbo.Customer.MiddleName, dbo.Customer.LastName, dbo.Customer.Phone, 
+                  dbo.Customer.CellPhone, dbo.Customer.Email, dbo.Customer.FirstName + ' ' + ISNULL(dbo.Customer.MiddleName, '') + ' ' + dbo.Customer.LastName AS Name, dbo.UserAccount.AccountType
+FROM     dbo.Customer INNER JOIN
+                  dbo.Rol ON dbo.Customer.Id = dbo.Rol.Id INNER JOIN
+                  dbo.UserAccountCustomer ON dbo.Customer.Id = dbo.UserAccountCustomer.CustomerId INNER JOIN
+                  dbo.UserAccount ON dbo.UserAccountCustomer.UserAccountId = dbo.UserAccount.Id
+
+
+Vista Empleado
+
+SELECT dbo.UserAccountEmployee.UserAccountId, dbo.UserAccountEmployee.EmployeeId, dbo.UserAccount.UserName, dbo.Employee.FirstName, dbo.Employee.MiddleName, dbo.Employee.LastName, dbo.Employee.Phone, 
+                  dbo.Employee.CellPhone, dbo.Employee.Email, dbo.Employee.JobId, dbo.Job.Name AS JobName, dbo.Employee.FirstName + ISNULL(' ' + dbo.Employee.MiddleName, '') + ' ' + dbo.Employee.LastName AS Name, 
+                  dbo.UserAccount.AccountType
+FROM     dbo.Employee INNER JOIN
+                  dbo.Job ON dbo.Employee.JobId = dbo.Job.Id INNER JOIN
+                  dbo.UserAccount ON dbo.Employee.Id = dbo.UserAccount.Id INNER JOIN
+                  dbo.UserAccountEmployee ON dbo.Employee.Id = dbo.UserAccountEmployee.EmployeeId AND dbo.UserAccount.Id = dbo.UserAccountEmployee.UserAccountId

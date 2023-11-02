@@ -25,28 +25,7 @@ public class CustomerService : CrudService<Customer>, ICustomerService
         var oldEntity = await _unitOfWork.CustomerRepository.GetById(customerId);
         entity.Code = oldEntity.Code;
 
-        // if (entity.CustomerAddress.Any())
-        // {
-        //     Expression<Func<CustomerAddress, bool>> filters = x => x.CustomerId == customerId;
-        //     var lstCurrentAddress = await _unitOfWork.CustomerAddressRepository.GetBy(filters);
-
-        //     if (lstCurrentAddress.Any())
-        //     {
-        //         var lastCustomerCurrentAddress = lstCurrentAddress.First();
-        //         _unitOfWork.CustomerAddressRepository.Update(lastCustomerCurrentAddress);
-        //     }
-
-        //     await CreateCustomerAddress(entity.CustomerAddress.FirstOrDefault()!);
-        // }dotn
-
         await base.Update(entity);
         await _unitOfWork.SaveChangesAsync();
-    }
-
-    public async Task<int> CreateCustomerAddress(CustomerAddress address)
-    {
-        var result = await _unitOfWork.CustomerAddressRepository.Create(address);
-        await _unitOfWork.SaveChangesAsync();
-        return result;
     }
 }

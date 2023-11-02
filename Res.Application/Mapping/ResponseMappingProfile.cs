@@ -250,24 +250,6 @@ public class ResponseMappingProfile : Profile
         .ForMember(
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => src.IsDeleted)
-        )
-        .AfterMap(
-            (src, dest) =>
-            {
-                // var customerAddress = src.CustomerAddress.FirstOrDefault(x => x.CustomerId == src.Id) ?? new CustomerAddress();
-
-                // dest.Address1 = customerAddress.Address.Address1;
-                // dest.Address2 = customerAddress.Address.Address2;
-                // dest.Street = customerAddress.Address.Street;
-                // dest.ExternalNumber = customerAddress.Address.ExternalNumber;
-                // dest.InternalNumber = customerAddress.Address.InternalNumber;
-                // dest.City = customerAddress.Address.City;
-                // dest.ZipCode = customerAddress.Address.ZipCode;
-
-
-            }
         );
-
-        // CreateMap<Address, CustomerResponseDto>();
     }
 }

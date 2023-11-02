@@ -31,8 +31,6 @@ public partial class Address : BaseEntity
 
     public string ZipCode { get; set; } = null!;
 
-    public virtual ICollection<CustomerAddress> CustomerAddress { get; } = new List<CustomerAddress>();
-
     public virtual ICollection<BranchStore> BranchStore { get; } = new List<BranchStore>();
 
     public virtual ICollection<Employee> Employee { get; } = new List<Employee>();

@@ -28,8 +28,6 @@ public partial class ResDbContext : DbContext
 
     public virtual DbSet<Customer> Customer { get; set; }
 
-    public virtual DbSet<CustomerAddress> CustomerAddress { get; set; }
-
     public virtual DbSet<CustomerType> CustomerType { get; set; }
 
     public virtual DbSet<Drink> Drink { get; set; }

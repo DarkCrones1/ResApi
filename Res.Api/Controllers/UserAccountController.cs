@@ -226,10 +226,6 @@ public class UserAccountController : ControllerBase
 
         userAccount.Customer.Add(customer);
 
-        // var customerAddres = _mapper.Map<CustomerAddress>(requestDto);
-        // customerAddres.Status = 1;
-        // customer.CustomerAddress.Add(customerAddres);
-
         if (requestDto.BranchStoreIds != null)
         {
             foreach (var item in requestDto.BranchStoreIds)

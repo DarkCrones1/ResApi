@@ -20,8 +20,6 @@ public interface IUnitOfWork : IDisposable
 
     ICustomerRepository CustomerRepository { get; }
 
-    ICrudRepository<CustomerAddress> CustomerAddressRepository { get; }
-
     ICatalogBaseRepository<CustomerType> CustomerTypeRepository { get; }
 
     ICatalogBaseRepository<Drink> DrinkRepository { get; }
