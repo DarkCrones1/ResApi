@@ -235,8 +235,6 @@ public class UserAccountController : ControllerBase
                     userAccount.BranchStore.Add(branchStore);
             }
         }
-        var rol = await _rolService.GetById(2);
-        userAccount.Rol.Add(rol);
 
         return userAccount;
     }
