@@ -153,7 +153,7 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
                 dest => dest.IsAuthorized,
                 opt => opt.MapFrom(src => true) // TODO: este proceso debe de poder realizar la activacion de manera manual
-            )
+        )
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
