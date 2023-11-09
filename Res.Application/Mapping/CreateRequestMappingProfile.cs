@@ -265,5 +265,11 @@ public class CreateRequestMappingProfile : Profile
             }
         );
 
+        CreateMap<MenuCreateRequestDto, Menu>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        );
+
     }
 }

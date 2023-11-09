@@ -29,5 +29,7 @@ public class QueryFilterMappingProfile : Profile
         CreateMap<FoodQueryFilter, Food>();
 
         CreateMap<EmployeeQueryFilter, Employee>();
+
+        CreateMap<MenuQueryFilter, Menu>();
     }
 }

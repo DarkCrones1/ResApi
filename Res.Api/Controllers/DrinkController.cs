@@ -96,6 +96,7 @@ public class DrinkController : ControllerBase
                         entity.Category.Add(category);
                 }
             }
+            
             await _service.Create(entity);
             var dto = _mapper.Map<DrinkResponseDto>(entity);
             var response = new ApiResponse<DrinkResponseDto>(data: dto);

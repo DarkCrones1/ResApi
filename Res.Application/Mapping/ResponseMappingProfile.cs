@@ -119,6 +119,27 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
         );
 
+        CreateMap<Menu, MenuDetailResponseDto>()
+        .ForMember(
+            dest => dest.Drink,
+            opt => opt.MapFrom(src => src.Drink)
+        )
+        .ForMember(
+            dest => dest.Food,
+            opt => opt.MapFrom(src => src.Food)
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
+        )
+        .AfterMap(
+            (src, dest) => 
+            {
+                dest.BranchStoreName = src.BranchStore.Name;
+                dest.BranchStoreId = src.BranchStoreId;
+            }
+        );
+
         CreateMap<Employee, EmployeeResponseDto>()
         .ForMember(
             dest => dest.IsActive,
