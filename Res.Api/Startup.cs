@@ -179,7 +179,13 @@ public class Startup
     {
         //app.UseLogResponseHttp();
 
-        app.UseCors("corsPolicy");
+        // app.UseCors("corsPolicy");
+        app.UseCors(
+                builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                }
+            );
 
         app.UseHttpsRedirection();
 
