@@ -62,9 +62,6 @@ public class Startup
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Res Project API", Version = "v1" });
-            // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            // var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            // options.IncludeXmlComments(xmlFilePath);
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
@@ -100,19 +97,11 @@ public class Startup
         services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
         // Configure Cores
-        // services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
-        // {
-        //     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-        // }));
-
-        services.AddCors(option =>
+        services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
         {
-            option.AddDefaultPolicy(builder =>
-            {
-                builder.WithOrigins("https://apirequest.io").AllowAnyMethod().AllowAnyHeader()
-                .WithExposedHeaders(new string[] { "TotalCuantityRegisters" });
-            });
-        });
+            builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader()
+            .WithExposedHeaders(new string[] { "TotalCuantityRegisters" });
+        }));
 
         // Add Repositories
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
@@ -179,13 +168,7 @@ public class Startup
     {
         //app.UseLogResponseHttp();
 
-        // app.UseCors("corsPolicy");
-        app.UseCors(
-                builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                }
-            );
+        app.UseCors("corsPolicy");
 
         app.UseHttpsRedirection();
 
@@ -193,13 +176,28 @@ public class Startup
         if (environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
+                options.RoutePrefix = string.Empty;
+            });
         }
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
-            options.RoutePrefix = string.Empty;
-        });
+
+        app.Use((context, next) =>
+            {
+                if (context.Request.Method == "OPTIONS")
+                {
+                    context.Response.Headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE";
+                    context.Response.Headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization";
+                    context.Response.Headers["Access-Control-Max-Age"] = "86400"; // 24 hours
+                    context.Response.StatusCode = 200;
+                    return Task.CompletedTask;
+                }
+
+                return next();
+            });
+
 
         app.UseRouting();
 
