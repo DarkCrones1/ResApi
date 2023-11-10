@@ -62,8 +62,8 @@ public class Startup
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Res Project API", Version = "v1" });
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            // var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             // options.IncludeXmlComments(xmlFilePath);
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -100,10 +100,19 @@ public class Startup
         services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
         // Configure Cores
-        services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
+        // services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
+        // {
+        //     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+        // }));
+
+        services.AddCors(option =>
         {
-            builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-        }));
+            option.AddDefaultPolicy(builder =>
+            {
+                builder.WithOrigins("https://apirequest.io").AllowAnyMethod().AllowAnyHeader()
+                .WithExposedHeaders(new string[] { "TotalCuantityRegisters" });
+            });
+        });
 
         // Add Repositories
         services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
