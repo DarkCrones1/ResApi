@@ -176,13 +176,14 @@ public class Startup
         if (environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
-                options.RoutePrefix = string.Empty;
-            });
         }
+
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
+            options.RoutePrefix = string.Empty;
+        });
 
         app.Use((context, next) =>
             {
