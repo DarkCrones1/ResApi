@@ -197,7 +197,7 @@ public class Startup
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gem Project API V1");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
             options.RoutePrefix = string.Empty;
         });
 
