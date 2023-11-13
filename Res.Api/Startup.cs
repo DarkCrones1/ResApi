@@ -96,11 +96,10 @@ public class Startup
         // Add Mappers
         services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-        // Configure Cores
-        services.AddCors(options => options.AddPolicy("corsPollicy", builder =>
+        // Configure Cors
+        services.AddCors(options => options.AddPolicy("corsPolicy", builder =>
         {
-            builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader()
-            .WithExposedHeaders(new string[] { "TotalCuantityRegisters" });
+            builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
         }));
 
         // Add Repositories
@@ -113,7 +112,6 @@ public class Startup
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
-
         services.AddScoped<IUnitOfWork, UnirOfWork>();
 
         // Add Serivces
@@ -127,7 +125,6 @@ public class Startup
         services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<IMiscellaneousService, MiscellaneousService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
-
         services.AddScoped<TokenHelper>();
         services.AddHttpContextAccessor();
 
@@ -177,28 +174,12 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
-
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "Res Project API V1");
             options.RoutePrefix = string.Empty;
         });
-
-        app.Use((context, next) =>
-            {
-                if (context.Request.Method == "OPTIONS")
-                {
-                    context.Response.Headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE";
-                    context.Response.Headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization";
-                    context.Response.Headers["Access-Control-Max-Age"] = "86400"; // 24 hours
-                    context.Response.StatusCode = 200;
-                    return Task.CompletedTask;
-                }
-
-                return next();
-            });
-
 
         app.UseRouting();
 
