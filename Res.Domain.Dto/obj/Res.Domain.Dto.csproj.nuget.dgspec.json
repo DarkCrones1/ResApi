@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {}
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {}
   },
   "projects": {
-    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\Res.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\Res.Common.csproj",
         "projectName": "Res.Common",
-        "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj",
-        "packagesPath": "C:\\Users\\ivang\\.nuget\\packages\\",
-        "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\obj\\",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\Res.Common.csproj",
+        "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ivang\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Iván Garcia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,34 +73,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
+    "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "projectUniqueName": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
         "projectName": "Res.Domain.Dto",
-        "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
-        "packagesPath": "C:\\Users\\ivang\\.nuget\\packages\\",
-        "outputPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Domain.Dto\\obj\\",
+        "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain.Dto\\Res.Domain.Dto.csproj",
+        "packagesPath": "C:\\Users\\Iván Garcia\\.nuget\\packages\\",
+        "outputPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Domain.Dto\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ivang\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Iván Garcia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj": {
-                "projectPath": "D:\\Documentos\\UTM\\IGDS 7° Cuatrimestre\\Desarrollo de Proyecto\\resapi\\Res.Common\\Res.Common.csproj"
+              "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\Res.Common.csproj": {
+                "projectPath": "E:\\Archivos\\Tareas Universidad UTM\\IGS 7° Cuatrimestre\\resapi\\Res.Common\\Res.Common.csproj"
               }
             }
           }
@@ -124,7 +136,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
