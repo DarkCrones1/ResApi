@@ -486,10 +486,16 @@ ResDbContextModelSnapshot.cs
 # Ignore carpetas
 /staticwebassets/
 /refint/
-/bin/
+/bin/*
 /Debug/
 /net7.0/
-/obj/
+Res.Api/obj/*
+Res.Api/bin/*
+Res.Application/obj/*
+Res.Common/obj/*
+Res.Domain/obj/*
+Res.Domain.Dto/obj/*
+Res.Infrastructure/obj/*
 
 # ignore files
 **/*.dll
