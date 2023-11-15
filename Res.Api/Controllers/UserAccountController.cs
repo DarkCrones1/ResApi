@@ -17,6 +17,7 @@ using Res.Domain.Dto.QueryFilters;
 using Res.Domain.Interfaces.Services;
 using Res.Common.QueryFilters;
 using Res.Domain.Enumerations;
+using Res.Common.Functions;
 
 namespace Res.API.Controllers;
 
@@ -106,6 +107,7 @@ public class UserAccountController : ControllerBase
                 entity = await PopulateUserAccount(requestDto);
             }
 
+            entity.Password = MD5Encrypt.GetMD5(requestDto.Password);
             await _service.CreateUser(entity);
 
             var result = _mapper.Map<UserAccountResponseDto>(entity);
@@ -132,7 +134,7 @@ public class UserAccountController : ControllerBase
             return BadRequest("Ya existe un usuario con este nombre de usuario");
 
         var entity = await PopulateUserAccountCustomer(requestDto);
-
+        entity.Password = MD5Encrypt.GetMD5(requestDto.Password);
         await _service.CreateUser(entity);
 
         var result = _mapper.Map<UserAccountCustomerResponseDto>(entity);

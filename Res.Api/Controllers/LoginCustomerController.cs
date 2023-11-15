@@ -21,6 +21,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
+using Res.Common.Functions;
 
 namespace Res.API.Controllers;
 
@@ -51,7 +52,7 @@ public class LoginCustomerController : ControllerBase
     [Route("SignIn")]
     public async Task<IActionResult> SignIn([FromBody] LoginRequestDto requestDto)
     {
-        var result = await _service.IsValidUser(requestDto.UserName!, requestDto.Password!);
+        var result = await _service.IsValidUser(requestDto.UserName!, MD5Encrypt.GetMD5(requestDto.Password!));
 
         if (!result)
             return NotFound("El usuario no es válido");
