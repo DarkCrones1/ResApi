@@ -499,3 +499,5 @@ ResDbContextModelSnapshot.cs
 **/*.pdb
 **/*.txt
 **/*.nuget
+
+#
