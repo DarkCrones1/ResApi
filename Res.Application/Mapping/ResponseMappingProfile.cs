@@ -21,6 +21,24 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
         );
 
+        CreateMap<Cart, CartDetailResponseDto>()
+        .ForMember(
+            dest => dest.Drink,
+            opt => opt.MapFrom(src => src.Drink)
+        )
+        .ForMember(
+            dest => dest.Food,
+            opt => opt.MapFrom(src => src.Food)
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => src.Status)
+        )
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<CartStatus>((CartStatus)src.Status))
+        );
+
         CreateMap<Category, CategoryResponseDto>()
         .ForMember(
             dest => dest.Status,
@@ -131,13 +149,6 @@ public class ResponseMappingProfile : Profile
         .ForMember(
             dest => dest.Status,
             opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
-        )
-        .AfterMap(
-            (src, dest) => 
-            {
-                dest.BranchStoreName = src.BranchStore.Name;
-                dest.BranchStoreId = src.BranchStoreId;
-            }
         );
 
         CreateMap<Employee, EmployeeResponseDto>()

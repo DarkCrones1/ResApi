@@ -18,6 +18,8 @@ public class QueryFilterMappingProfile : Profile
 
         CreateMap<CategoryQueryFilter, Category>();
 
+        CreateMap<CartQueryFilter, Cart>();
+
         CreateMap<BaseCatalogQueryFilter, Rol>();
 
         CreateMap<BaseCatalogQueryFilter, Job>();

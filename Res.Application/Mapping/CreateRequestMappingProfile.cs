@@ -24,6 +24,23 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => Guid.NewGuid())
         );
 
+        CreateMap<CartCreateRequestDto, Cart>()
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)CartStatus.Arrange)
+        )
+        .AfterMap(
+            (src, dest, context) =>
+            {
+                var createdUser = context.Items["CreatedUser"] as string;
+                dest.CreatedBy = createdUser;
+            }
+        );
+
         CreateMap<CategoryCreateRequestDto, Category>()
         .ForMember(
             dest => dest.CreatedDate,
@@ -269,6 +286,17 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .AfterMap(
+            (src, dest, context) =>
+            {
+                var createdUser = context.Items["CreatedUser"] as string;
+                dest.CreatedBy = createdUser;
+            }
         );
 
     }

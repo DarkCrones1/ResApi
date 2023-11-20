@@ -21,52 +21,53 @@ namespace Res.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
-public class MenuController : ControllerBase
+[Authorize]
+public class CartController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Menu> _service;
+    private readonly ICrudService<Cart> _service;
     private readonly TokenHelper _tokenHelper;
-    private readonly ICatalogBaseService<Drink> _drinkService;
     private readonly ICatalogBaseService<Food> _foodService;
+    private readonly ICatalogBaseService<Drink> _drinkService;
 
-    public MenuController(IMapper mapper, ICatalogBaseService<Menu> service, TokenHelper tokenHelper, ICatalogBaseService<Drink> drinkService, ICatalogBaseService<Food> foodService)
+    public CartController(IMapper mapper, ICrudService<Cart> service, TokenHelper tokenHelper, ICatalogBaseService<Food> foodService, ICatalogBaseService<Drink> drinkService)
     {
         this._mapper = mapper;
         this._service = service;
         this._tokenHelper = tokenHelper;
-        this._drinkService = drinkService;
         this._foodService = foodService;
+        this._drinkService = drinkService;
     }
 
     [HttpGet]
     [Route("")]
     [AllowAnonymous]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<MenuDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<MenuDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<MenuDetailResponseDto>>))]
-    public async Task<IActionResult> Get([FromQuery] MenuQueryFilter filter)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    public async Task<IActionResult> Get([FromQuery] CartQueryFilter filter)
     {
-        var filters = _mapper.Map<Menu>(filter);
+        var filters = _mapper.Map<Cart>(filter);
         var entities = await _service.GetPaged(filters);
-        var dtos = _mapper.Map<IEnumerable<MenuDetailResponseDto>>(entities);
+        var dtos = _mapper.Map<IEnumerable<CartDetailResponseDto>>(entities);
 
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-        var response = new ApiResponse<IEnumerable<MenuDetailResponseDto>>(data: dtos, meta: metaDataResponse);
+        var response = new ApiResponse<IEnumerable<CartDetailResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }
 
     [HttpPost]
     [Route("")]
     [Authorize]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<MenuDetailResponseDto>))]
-    public async Task<IActionResult> Create([FromBody] MenuCreateRequestDto requestDto)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CartDetailResponseDto>))]
+    public async Task<IActionResult> Create([FromBody] CartCreateRequestDto requestDto)
     {
-        var entity = _mapper.Map<Menu>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
-        
+        var entity = _mapper.Map<Cart>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+
         if (requestDto.DrinkIds != null)
         {
             foreach (var item in requestDto.DrinkIds)
@@ -88,8 +89,8 @@ public class MenuController : ControllerBase
         }
 
         await _service.Create(entity);
-        var dto = _mapper.Map<MenuDetailResponseDto>(entity);
-        var response = new ApiResponse<MenuDetailResponseDto>(data: dto);
+        var dto = _mapper.Map<CartDetailResponseDto>(entity);
+        var response = new ApiResponse<CartDetailResponseDto>(data: dto);
         return Ok(response);
     }
 }

@@ -4,7 +4,7 @@ namespace Res.Domain.Enumerations;
 
 public enum CartStatus
 {
-    [Description("Ordenando")]
+    [Description("Ordenado")]
     Arrange = 1,
     [Description("Pendiente")]
     Pendding = 2,
