@@ -283,5 +283,7 @@ public class ResponseMappingProfile : Profile
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => src.IsDeleted)
         );
+
+        CreateMap<Order, OrderResponseDto>();
     }
 }
