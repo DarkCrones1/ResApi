@@ -22,19 +22,17 @@ namespace Res.API.Controllers;
 [Route("api/[controller]")]
 [Produces("application/json")]
 [Authorize]
-public class OrderController : ControllerBase
+public class ReservationController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Order> _service;
-    private readonly ICatalogBaseService<Drink> _drinkService;
-    private readonly ICatalogBaseService<Food> _foodService;
+    private readonly ICrudService<Reservation> _service;
+    private readonly TokenHelper _tokenHelper;
 
-    public OrderController(IMapper mapper, ICrudService<Order> service, ICatalogBaseService<Drink> drinkService, ICatalogBaseService<Food> foodService)
+    public ReservationController(IMapper mapper, ICrudService<Reservation> service, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
-        this._drinkService = drinkService;
-        this._foodService = foodService;
+        this._tokenHelper = tokenHelper;
     }
 
     [HttpGet]
@@ -42,31 +40,32 @@ public class OrderController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<ReservationResponseDto>>))]
     [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<ReservationResponseDto>>))]
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<ReservationResponseDto>>))]
-    public async Task<IActionResult> GetAll([FromQuery] OrderQueryFilter filter)
+    public async Task<IActionResult> GetAll([FromQuery] ReservationQueryFilter filter)
     {
-        var filters = _mapper.Map<Order>(filter);
+        var filters = _mapper.Map<Reservation>(filter);
         var entities = await _service.GetPaged(filters);
-        var dtos = _mapper.Map<IEnumerable<OrderResponseDto>>(entities);
+        var dtos = _mapper.Map<IEnumerable<ReservationResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
         
-        var response = new ApiResponse<IEnumerable<OrderResponseDto>>(data: dtos, meta: metaDataResponse);
+        var response = new ApiResponse<IEnumerable<ReservationResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }
 
     [HttpPost]
     [Route("")]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderResponseDto>))]
-    public async Task<IActionResult> Create([FromBody] OrderCreateRequestDto requestDto)
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<ReservationResponseDto>))]
+    public async Task<IActionResult> Create([FromBody] ReservationCreateRequestDto requestDto)
     {
-        var entity = _mapper.Map<Order>(requestDto);
+        var entity = _mapper.Map<Reservation>(requestDto);
+        entity.CreatedBy = _tokenHelper.GetUserName();
         await _service.Create(entity);
 
-        var dto = _mapper.Map<OrderResponseDto>(entity);
-        var response = new ApiResponse<OrderResponseDto>(data: dto);
+        var dto = _mapper.Map<ReservationResponseDto>(entity);
+        var response = new ApiResponse<ReservationResponseDto>(dto);
         return Ok(response);
     }
 }

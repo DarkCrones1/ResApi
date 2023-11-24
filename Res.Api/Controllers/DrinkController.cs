@@ -87,6 +87,7 @@ public class DrinkController : ControllerBase
         try
         {
             var entity = _mapper.Map<Drink>(requestDto);
+            entity.CreatedBy = _tokenHelper.GetUserName();
             if (requestDto.CategoryIds != null)
             {
                 foreach (var item in requestDto.CategoryIds)

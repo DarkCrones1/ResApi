@@ -62,6 +62,7 @@ public class BoxCashController : ControllerBase
         try
         {
             var entity = _mapper.Map<BoxCash>(requestDto);
+            entity.CreatedBy = _tokenHelper.GetUserName();
             await _service.Create(entity);
             var dto = _mapper.Map<BoxCashResponseDto>(entity);
             var response = new ApiResponse<BoxCashResponseDto>(data: dto);

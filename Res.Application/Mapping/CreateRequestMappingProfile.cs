@@ -32,13 +32,6 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.Status,
             opt => opt.MapFrom(src => (short)CartStatus.Arrange)
-        )
-        .AfterMap(
-            (src, dest, context) =>
-            {
-                var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = createdUser;
-            }
         );
 
         CreateMap<CategoryCreateRequestDto, Category>()
@@ -49,13 +42,6 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
-        )
-        .AfterMap(
-            (src, dest, context) =>
-            {
-                var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = createdUser;
-            }
         );
 
         CreateMap<BranchStoreCreateRequestDto, BranchStore>()
@@ -68,12 +54,10 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => src.BoxCashes)
         )
         .AfterMap(
-            (src, dest, context) =>
+            (src, dest) =>
             {
                 dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
                 dest.CreatedDate = DateTime.Now;
-                // var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = "admin";
 
                 var locationAddress = new Address
                 {
@@ -107,12 +91,6 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
-        )
-        .AfterMap(
-            (src, dest) =>
-            {
-                dest.CreatedBy = "Admin";
-            }
         );
 
         CreateMap<FoodCreateRequestDto, Food>()
@@ -123,12 +101,6 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
-        )
-        .AfterMap(
-            (src, dest) =>
-            {
-                dest.CreatedBy = "Admin";
-            }
         );
 
         CreateMap<EmployeeBranchStoreCreateRequestDto, Employee>()
@@ -139,7 +111,7 @@ public class CreateRequestMappingProfile : Profile
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now))
         .AfterMap(
-            (src, dest, context) =>
+            (src, dest) =>
             {
                 var employeeAddress = new Address
                 {
@@ -152,9 +124,6 @@ public class CreateRequestMappingProfile : Profile
                     City = src.City!
                 };
                 dest.Address.Add(employeeAddress);
-
-                // var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = "admin";
             }
         );
 
@@ -188,11 +157,8 @@ public class CreateRequestMappingProfile : Profile
                 dest => dest.CreatedDate,
                 opt => opt.MapFrom(src => DateTime.Now))
             .AfterMap(
-                (src, dest, context) =>
+                (src, dest) =>
                 {
-                    // var createdUser = context.Items["CreatedUser"] as string;
-                    // dest.CreatedBy = createdUser;
-
                     var employeeAddress = new Address
                     {
                         Address1 = src.Address1,
@@ -208,7 +174,6 @@ public class CreateRequestMappingProfile : Profile
                     var brachStoreEmployee = new BranchStoreEmployee
                     {
                         BranchStoreId = src.InitialBranchStoreId!.Value,
-                        // CreatedBy = createdUser!,
                         CreatedBy = "Admin",
                         CreatedDate = DateTime.Now,
                         JobId = src.JobId!.Value,
@@ -223,7 +188,7 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
         )
         .AfterMap(
-            (src, dest, context) =>
+            (src, dest) =>
             {
                 dest.Code = Guid.NewGuid();
                 dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
@@ -233,9 +198,6 @@ public class CreateRequestMappingProfile : Profile
                 dest.Status = (short)CustomerTypeStatus.New;
                 dest.Gender = src.Gender;
                 dest.CustomerTypeId = src.CustomerTypeId;
-
-                // var createdUser = context.Items["CreatedUser"] as string;
-                // dest.CreatedBy = createdUser;
             }
         );
 
@@ -267,7 +229,7 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => (short)CustomerTypeStatus.New)
         )
         .AfterMap(
-            (src, dest, context) =>
+            (src, dest) =>
             {
                 dest.Code = Guid.NewGuid();
                 dest.IsDeleted = ValuesStatusPropertyEntity.IsNotDeleted;
@@ -277,8 +239,6 @@ public class CreateRequestMappingProfile : Profile
                 dest.Status = (short)CustomerTypeStatus.New;
                 dest.Gender = src.Gender;
                 dest.CustomerTypeId = src.CustomerTypeId;
-                // var createdUser = context.Items["CreatedUser"] as string;
-                // dest.CreatedBy = createdUser;
             }
         );
 
@@ -290,13 +250,6 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
-        )
-        .AfterMap(
-            (src, dest, context) =>
-            {
-                var createdUser = context.Items["CreatedUser"] as string;
-                dest.CreatedBy = createdUser;
-            }
         );
 
         CreateMap<OrderCreateRequestDto, Order>()
@@ -333,6 +286,24 @@ public class CreateRequestMappingProfile : Profile
                     }
                 }
             }
+        );
+
+        CreateMap<ReservationCreateRequestDto, Reservation>()
+        .ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        )
+        .ForMember(
+            dest => dest.SerialId,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)ReservationStatus.Reserved)
         );
 
     }

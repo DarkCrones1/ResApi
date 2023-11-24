@@ -60,6 +60,7 @@ public class JobController : ControllerBase
     public async Task<IActionResult> Create([FromBody] BaseCatalogCreateRequestDto requestDto)
     {
         var entity = _mapper.Map<Job>(requestDto);
+        entity.CreatedBy = _tokenHelper.GetUserName();
         await _service.Create(entity);
         var dto = _mapper.Map<BaseCatalogResponseDto>(entity);
         var response = new ApiResponse<BaseCatalogResponseDto>(data: dto);
@@ -79,7 +80,7 @@ public class JobController : ControllerBase
         newEntity.Id = id;
         newEntity.IsDeleted = false;
         newEntity.LastModifiedDate = DateTime.Now;
-        newEntity.LastModifiedBy = "Admin";
+        newEntity.LastModifiedBy = _tokenHelper.GetUserName();
         // newEntity.LastModifiedBy = _tokenHelper.GetUserName();
         await _service.Update(newEntity);
         return Ok(requestDto);
@@ -97,7 +98,7 @@ public class JobController : ControllerBase
         var entity = await _service.GetById(id);
         entity.IsDeleted = true;
         entity.LastModifiedDate = DateTime.Now;
-        entity.LastModifiedBy = "ADMIN";
+        entity.LastModifiedBy = _tokenHelper.GetUserName();
         entity.Id = id;
         await _service.Update(entity);
         return Ok(true);

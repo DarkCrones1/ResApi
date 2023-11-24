@@ -65,7 +65,8 @@ public class MenuController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<MenuDetailResponseDto>))]
     public async Task<IActionResult> Create([FromBody] MenuCreateRequestDto requestDto)
     {
-        var entity = _mapper.Map<Menu>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+        var entity = _mapper.Map<Menu>(requestDto);
+        entity.CreatedBy = _tokenHelper.GetUserName();
         
         if (requestDto.DrinkIds != null)
         {

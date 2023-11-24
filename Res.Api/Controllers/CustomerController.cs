@@ -61,6 +61,7 @@ public class CustomerController : ControllerBase
         try
         {
             var customer = _mapper.Map<Customer>(requestDto);
+            customer.CreatedBy = "Admin";
 
             await _service.Create(customer);
 

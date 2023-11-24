@@ -21,6 +21,7 @@ namespace Res.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
+[Authorize]
 public class BranchStoreController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -74,13 +75,13 @@ public class BranchStoreController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<BranchStoreResponseDto>))]
     public async Task<IActionResult> Create([FromBody] BranchStoreCreateRequestDto requestDto)
     {
         try
         {
-            var entity = _mapper.Map<BranchStore>(requestDto); //opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+            var entity = _mapper.Map<BranchStore>(requestDto);
+            entity.CreatedBy = _tokenHelper.GetUserName();
             await _service.Create(entity);
             var dto = _mapper.Map<BranchStoreResponseDto>(entity);
             var response = new ApiResponse<BranchStoreResponseDto>(data: dto);
@@ -94,7 +95,6 @@ public class BranchStoreController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize]
     [Route("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] BranchStoreUpdateRequestDto requestDto)
     {

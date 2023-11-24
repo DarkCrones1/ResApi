@@ -284,6 +284,16 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => src.IsDeleted)
         );
 
-        CreateMap<Order, OrderResponseDto>();
+        CreateMap<Order, OrderResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderStatus>((OrderStatus)src.Status))
+        );
+
+        CreateMap<Reservation, ReservationResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<ReservationStatus>((ReservationStatus)src.Status))
+        );
     }
 }

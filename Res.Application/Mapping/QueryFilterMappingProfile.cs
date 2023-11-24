@@ -33,5 +33,9 @@ public class QueryFilterMappingProfile : Profile
         CreateMap<EmployeeQueryFilter, Employee>();
 
         CreateMap<MenuQueryFilter, Menu>();
+
+        CreateMap<OrderQueryFilter, Order>();
+
+        CreateMap<ReservationQueryFilter, Reservation>();
     }
 }

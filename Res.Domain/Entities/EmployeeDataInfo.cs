@@ -6,7 +6,7 @@ public partial class Employee
     {
         get
         {
-            var fullName = $"{FirstName} {LastName} {MiddleName}";
+            var fullName = $"{FirstName} {MiddleName} {LastName}";
             return fullName.Trim();
         }
     }

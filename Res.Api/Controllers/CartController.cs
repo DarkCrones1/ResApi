@@ -66,7 +66,8 @@ public class CartController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CartDetailResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CartCreateRequestDto requestDto)
     {
-        var entity = _mapper.Map<Cart>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+        var entity = _mapper.Map<Cart>(requestDto);
+        entity.CreatedBy = _tokenHelper.GetUserName();
 
         if (requestDto.DrinkIds != null)
         {

@@ -79,7 +79,8 @@ public class CategoryController : ControllerBase
     {
         try
         {
-            var entity = _mapper.Map<Category>(requestDto, opts => opts.Items["CreatedUser"] = _tokenHelper.GetUserName());
+            var entity = _mapper.Map<Category>(requestDto);
+            entity.CreatedBy = _tokenHelper.GetUserName();
             await _service.Create(entity);
             var dto = _mapper.Map<CategoryResponseDto>(entity);
             var response = new ApiResponse<CategoryResponseDto>(data: dto);
