@@ -21,6 +21,12 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
         );
 
+        CreateMap<Cart, CartResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<CartStatus>((CartStatus)src.Status))
+        );
+
         CreateMap<Cart, CartDetailResponseDto>()
         .ForMember(
             dest => dest.Drink,
@@ -290,10 +296,42 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderStatus>((OrderStatus)src.Status))
         );
 
+        CreateMap<Order, OrderDetailResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderStatus>((OrderStatus)src.Status))
+        );
+
+        CreateMap<OrderDrink, OrderDrinkResponseDto>();
+
+        CreateMap<OrderFood, OrderFoodResponseDto>();
+
         CreateMap<Reservation, ReservationResponseDto>()
         .ForMember(
             dest => dest.StatusName,
             opt => opt.MapFrom(src => EnumHelper.GetDescription<ReservationStatus>((ReservationStatus)src.Status))
+        );
+
+        CreateMap<Ticket, TicketResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<TicketStatus>((TicketStatus)src.Status))
+        );
+
+        CreateMap<Ticket, TicketDetailResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<TicketStatus>((TicketStatus)src.Status))
+        )
+        .ForMember(
+            dest => dest.Cart,
+            opt => opt.MapFrom(src => src.Cart)
+        );
+
+        CreateMap<Payment, PaymentResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<PaymentStatus>((PaymentStatus)src.Status))
         );
     }
 }

@@ -37,5 +37,7 @@ public class QueryFilterMappingProfile : Profile
         CreateMap<OrderQueryFilter, Order>();
 
         CreateMap<ReservationQueryFilter, Reservation>();
+
+        CreateMap<TicketQueryFilter, Ticket>();
     }
 }

@@ -1,12 +1,16 @@
 namespace Res.Domain.Dto.Response;
 
-public class OrderResponseDto
+public class TicketResponseDto
 {
     public int Id { get; set; }
+
+    public Guid SerialId { get; set; }
 
     public int BranchStoreId { get; set; }
 
     public string? BranchStoreName { get; set; }
+
+    public int CartId { get; set; }
 
     public int CustomerId { get; set; }
 
@@ -15,4 +19,6 @@ public class OrderResponseDto
     public short Status { get; set; }
 
     public string? StatusName { get; set; }
+
+    public DateTime CloseTicket { get; set; }
 }

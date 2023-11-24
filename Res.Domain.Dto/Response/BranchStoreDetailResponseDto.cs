@@ -47,4 +47,6 @@ public class BranchStoreDetailResponseDto
     public string ZipCode { get; set; } = string.Empty;
 
     public IEnumerable<EmployeeResponseDto> Employee { get; } = new List<EmployeeResponseDto>();
+
+    public IEnumerable<BoxCashResponseDto> BoxCash { get; } = new List<BoxCashResponseDto>();
 }

@@ -15,6 +15,7 @@ using Res.Api.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Res.Domain.Dto.QueryFilters;
 using Res.Domain.Interfaces.Services;
+using Res.Domain.Enumerations;
 
 namespace Res.API.Controllers;
 
@@ -42,21 +43,41 @@ public class CartController : ControllerBase
     [HttpGet]
     [Route("")]
     [AllowAnonymous]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
-    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CartResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CartResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CartResponseDto>>))]
     public async Task<IActionResult> Get([FromQuery] CartQueryFilter filter)
     {
         var filters = _mapper.Map<Cart>(filter);
         var entities = await _service.GetPaged(filters);
-        var dtos = _mapper.Map<IEnumerable<CartDetailResponseDto>>(entities);
+        var dtos = _mapper.Map<IEnumerable<CartResponseDto>>(entities);
 
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-        var response = new ApiResponse<IEnumerable<CartDetailResponseDto>>(data: dtos, meta: metaDataResponse);
+        var response = new ApiResponse<IEnumerable<CartResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("{id:int}")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CartDetailResponseDto>>))]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        Expression<Func<Cart, bool>> filter = x => x.Id == id;
+        var existEntity = await _service.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        var entity = await _service.GetById(id);
+
+        var dto = _mapper.Map<CartDetailResponseDto>(entity);
+        var response = new ApiResponse<CartDetailResponseDto>(data: dto);
         return Ok(response);
     }
 
@@ -92,6 +113,26 @@ public class CartController : ControllerBase
         await _service.Create(entity);
         var dto = _mapper.Map<CartDetailResponseDto>(entity);
         var response = new ApiResponse<CartDetailResponseDto>(data: dto);
+        return Ok(response);
+    }
+
+    [HttpDelete]
+    [Route("{id:int}/Cancel")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CartResponseDto>))]
+    public async Task<IActionResult> CancelOrder([FromRoute] int id)
+    {
+        Expression<Func<Cart, bool>> filter = x => x.Id == id;
+        var existEntity = await _service.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        var entity = await _service.GetById(id);
+        entity.Status = (short)CartStatus.Canceled;
+        await _service.Update(entity);
+
+        var dto = _mapper.Map<CartResponseDto>(entity);
+        var response = new ApiResponse<CartResponseDto>(data: dto);
         return Ok(response);
     }
 }

@@ -306,5 +306,36 @@ public class CreateRequestMappingProfile : Profile
             opt => opt.MapFrom(src => (short)ReservationStatus.Reserved)
         );
 
+        CreateMap<TicketCreateRequestDto, Ticket>()
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        )
+        .ForMember(
+            dest => dest.SerialId,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        )
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)TicketStatus.Pendding)
+        )
+        .ForMember(
+            dest => dest.CloseTicket,
+            opt => opt.MapFrom(src => DateTime.Now)
+        );
+
+        CreateMap<PaymentCreateRequestDto, Payment>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)PaymentStatus.Payment)
+        )
+        .ForMember(
+            dest => dest.SerialId,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        )
+        .ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        );
     }
 }
