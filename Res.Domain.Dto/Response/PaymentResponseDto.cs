@@ -28,7 +28,7 @@ public class PaymentResponseDto
 
     public decimal AmountRecieve { get; set; }
 
-    public decimal AmountReturnet { get; }
+    public decimal Returnet { get; set; }
 
     public short Status { get; set; }
 

@@ -40,9 +40,30 @@ public class PaymentController : ControllerBase
         this._cartService = cartService;
     }
 
+    [HttpGet]
+    [Route("")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<PaymentResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<PaymentResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<PaymentResponseDto>>))]
+    public async Task<IActionResult> GetAll([FromQuery] PaymentQueryFilter filter)
+    {
+        var filters = _mapper.Map<Payment>(filter);
+        var entities = await _service.GetPaged(filters);
+        var dtos = _mapper.Map<IEnumerable<PaymentResponseDto>>(entities);
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+
+        var response = new ApiResponse<IEnumerable<PaymentResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
+    }
+
+
     [HttpPost]
     [Route("Ticket")]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<TicketResponseDto>))]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<PaymentResponseDto>))]
     public async Task<IActionResult> Create([FromBody] PaymentCreateRequestDto requestDto)
     {
         var entity = _mapper.Map<Payment>(requestDto);
@@ -59,8 +80,8 @@ public class PaymentController : ControllerBase
         cart.LastModifiedDate = DateTime.Now;
         await _cartService.Update(cart);
 
-        var dto = _mapper.Map<TicketResponseDto>(entity);
-        var response = new ApiResponse<TicketResponseDto>(data: dto);
+        var dto = _mapper.Map<PaymentResponseDto>(entity);
+        var response = new ApiResponse<PaymentResponseDto>(data: dto);
         return Ok(response);
     }
 }

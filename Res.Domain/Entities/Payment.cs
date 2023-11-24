@@ -20,15 +20,6 @@ public partial class Payment : BaseRemovableAuditablePaginationEntity
 
     public decimal AmountRecieve { get; set; }
 
-    public decimal AmountReturnet
-    {
-        get
-        {
-            var change = AmountRecieve - AmountPay;
-            return change;
-        }
-    }
-
     public short Status { get; set; }
 
     public virtual BranchStore BranchStore { get; set; } = null!;
