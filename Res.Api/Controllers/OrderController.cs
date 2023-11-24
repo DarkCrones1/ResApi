@@ -27,12 +27,12 @@ public class OrderController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly ICrudService<Order> _service;
-    private readonly ICatalogBaseService<Drink> _drinkService;
-    private readonly ICatalogBaseService<Food> _foodService;
+    private readonly ICrudService<OrderDrink> _drinkService;
+    private readonly ICrudService<OrderFood> _foodService;
     private readonly ICrudService<Cart> _cartService;
     private readonly TokenHelper _tokenHelper;
 
-    public OrderController(IMapper mapper, ICrudService<Order> service, ICatalogBaseService<Drink> drinkService, ICatalogBaseService<Food> foodService, ICrudService<Cart> cartService, TokenHelper tokenHelper)
+    public OrderController(IMapper mapper, ICrudService<Order> service, ICrudService<OrderDrink> drinkService, ICrudService<OrderFood> foodService, ICrudService<Cart> cartService, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
@@ -57,7 +57,7 @@ public class OrderController : ControllerBase
             entities.CurrentPage,
             entities.PageSize
         );
-        
+
         var response = new ApiResponse<IEnumerable<OrderResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }
@@ -79,6 +79,48 @@ public class OrderController : ControllerBase
 
         var dto = _mapper.Map<OrderDetailResponseDto>(entity);
         var response = new ApiResponse<OrderDetailResponseDto>(data: dto);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("{id:int}/OrderDrink")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<OrderDrinkResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<OrderDrinkResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<OrderDrinkResponseDto>>))]
+    public async Task<IActionResult> GetOrderDrink([FromRoute] int id)
+    {
+        Expression<Func<Order, bool>> filter = x => x.Id == id;
+        var existEntity = await _service.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        Expression<Func<OrderDrink, bool>> filterD = x => x.OrderId == id;
+
+        var entities = await _drinkService.GetBy(filterD);
+        var dto = _mapper.Map<IEnumerable<OrderDrinkResponseDto>>(entities);
+        var response = new ApiResponse<IEnumerable<OrderDrinkResponseDto>>(data: dto);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("{id:int}/OrderFood")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<OrderFoodResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<OrderFoodResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<OrderFoodResponseDto>>))]
+    public async Task<IActionResult> GetOrderFood([FromRoute] int id)
+    {
+        Expression<Func<Order, bool>> filter = x => x.Id == id;
+        var existEntity = await _service.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        Expression<Func<OrderFood, bool>> filterF = x => x.OrderId == id;
+
+        var entities = await _foodService.GetBy(filterF);
+        var dto = _mapper.Map<IEnumerable<OrderFoodResponseDto>>(entities);
+        var response = new ApiResponse<IEnumerable<OrderFoodResponseDto>>(data: dto);
         return Ok(response);
     }
 
@@ -122,6 +164,46 @@ public class OrderController : ControllerBase
 
         var dto = _mapper.Map<OrderResponseDto>(entity);
         var response = new ApiResponse<OrderResponseDto>(data: dto);
+        return Ok(response);
+    }
+
+    [HttpPut]
+    [Route("{orderDrinkId:int}/StatusOrderDrink")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderDrinkResponseDto>))]
+    public async Task<IActionResult> ChangeStatusDrink([FromRoute] int orderDrinkId, [FromBody] short status)
+    {
+        Expression<Func<OrderDrink, bool>> filter = x => x.Id == orderDrinkId;
+        var existEntity = await _drinkService.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        var entity = await _drinkService.GetById(orderDrinkId);
+        entity.Status = status;
+        await _drinkService.Update(entity);
+
+        var dto = _mapper.Map<OrderDrinkResponseDto>(entity);
+        var response = new ApiResponse<OrderDrinkResponseDto>(data: dto);
+        return Ok(response);
+    }
+
+    [HttpPut]
+    [Route("{orderFoodId:int}/StatusOrderFood")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderFoodResponseDto>))]
+    public async Task<IActionResult> ChangeStatusFood([FromRoute] int orderFoodId, [FromBody] short status)
+    {
+        Expression<Func<OrderFood, bool>> filter = x => x.Id == orderFoodId;
+        var existEntity = await _foodService.Exist(filter);
+
+        if (!existEntity)
+            return NotFound("No se encontró un elemento que cumpla con la información proporcionada, verifique su información porfavor....");
+
+        var entity = await _foodService.GetById(orderFoodId);
+        entity.Status = status;
+        await _foodService.Update(entity);
+
+        var dto = _mapper.Map<OrderFoodResponseDto>(entity);
+        var response = new ApiResponse<OrderFoodResponseDto>(data: dto);
         return Ok(response);
     }
 

@@ -302,9 +302,17 @@ public class ResponseMappingProfile : Profile
             opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderStatus>((OrderStatus)src.Status))
         );
 
-        CreateMap<OrderDrink, OrderDrinkResponseDto>();
+        CreateMap<OrderDrink, OrderDrinkResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderDrinkStatus>((OrderDrinkStatus)src.Status))
+        );
 
-        CreateMap<OrderFood, OrderFoodResponseDto>();
+        CreateMap<OrderFood, OrderFoodResponseDto>()
+        .ForMember(
+            dest => dest.StatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<OrderFoodStatus>((OrderFoodStatus)src.Status))
+        );
 
         CreateMap<Reservation, ReservationResponseDto>()
         .ForMember(

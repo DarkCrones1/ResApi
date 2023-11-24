@@ -4,7 +4,7 @@ namespace Res.Domain.Enumerations;
 
 public enum OrderDrinkStatus
 {
-    [Description("Pedido")]
+    [Description("Ordenado")]
     Order = 1,
     [Description("Preparandose")]
     Make = 2,
