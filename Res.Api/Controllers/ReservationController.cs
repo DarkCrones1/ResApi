@@ -71,7 +71,7 @@ public class ReservationController : ControllerBase
     }
 
     [HttpPut]
-    [Route("{id:int}/StatusReservation")]
+    [Route("{id:int}")]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<ReservationResponseDto>))]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ReservationUpdateRequestDto requestDto)
     {
