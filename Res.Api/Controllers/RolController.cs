@@ -10,6 +10,7 @@ using Res.Domain.Dto.Response;
 using Res.Domain.Entities;
 using Res.API.Responses;
 using Res.Domain.Dto.Request.Create;
+using Res.Domain.Dto.Request.Update;
 using Res.Common.Exceptions;
 using Res.Api.Helper;
 using Microsoft.AspNetCore.Authorization;

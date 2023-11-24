@@ -1,4 +1,4 @@
-namespace Res.Domain.Dto.Request.Create;
+namespace Res.Domain.Dto.Request.Update;
 
 public class CategoryUpdateRequestDto : BaseCatalogUpdateRequestDto
 {

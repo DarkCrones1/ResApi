@@ -1,6 +1,6 @@
 using Res.Domain.Dto.Interfaces;
 
-namespace Res.Domain.Dto.Request.Create;
+namespace Res.Domain.Dto.Request.Update;
 
 public class BaseCatalogUpdateRequestDto : ICatalogBaseDto
 {

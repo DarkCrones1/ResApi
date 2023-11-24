@@ -1,6 +1,6 @@
 using AutoMapper;
 using Res.Common.Helpers;
-using Res.Domain.Dto.Request.Create;
+using Res.Domain.Dto.Request.Update;
 using Res.Domain.Entities;
 using Res.Domain.Enumerations;
 
@@ -37,7 +37,6 @@ public class UpdateRequestMappingProfile : Profile
         );
 
         CreateMap<CustomerUpdateRequestDto, Customer>();
-
 
         CreateMap<DrinkUpdateRequestDto, Drink>();
 
