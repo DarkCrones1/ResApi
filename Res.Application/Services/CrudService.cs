@@ -48,6 +48,7 @@ public class CrudService<T> : ICrudService<T> where T : BaseEntity
             return (ICrudRepository<T>)this._unitOfWork.CategoryRepository;
 
         if (typeRep == typeof(Customer))
+            return (ICrudRepository<T>)this._unitOfWork.CustomerRepository;
 
         if (typeRep == typeof(CustomerType))
             return (ICrudRepository<T>)this._unitOfWork.CustomerTypeRepository;
