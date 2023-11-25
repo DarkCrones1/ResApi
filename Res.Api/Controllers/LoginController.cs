@@ -131,7 +131,7 @@ public class LoginController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(ActiveUserAccountEmployee))]
     public async Task<IActionResult> AuthenticateUser([FromBody] LoginRequestDto requestDto)
     {
-        var result = await _service.IsValidUser(requestDto.UserName!, requestDto.Password!);
+        var result = await _service.IsValidUser(requestDto.UserName!, MD5Encrypt.GetMD5(requestDto.Password!));
 
         if (!result)
             return Unauthorized();
@@ -155,14 +155,14 @@ public class LoginController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(ActiveUserAccountEmployee))]
     public async Task<IActionResult> AuthorizeTransaction([FromBody] LoginRequestDto requestDto)
     {
-        var result = await _service.IsValidUser(requestDto.UserName!, requestDto.Password!);
+        var result = await _service.IsValidUser(requestDto.UserName!, MD5Encrypt.GetMD5(requestDto.Password!));
 
         if (!result)
             return Unauthorized();
 
         var administratorJobId = SettingConfigurationFile.Instance.AdministratorRolId;
 
-        Expression<Func<ActiveUserAccountEmployee, bool>> filters = x => x.UserName == requestDto.UserName && x.JobId == administratorJobId;
+        Expression<Func<ActiveUserAccountEmployee, bool>> filters = x => x.UserName == requestDto.UserName && x.AccountType == administratorJobId;
 
         var entity = await _userAccountService.GetUserAccountToLogin(filters);
 

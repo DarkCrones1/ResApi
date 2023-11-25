@@ -24,7 +24,7 @@ public class SettingConfigurationFile
 
     public static void Initialize(IConfiguration configuration)
     {
-        if (_instance == null)
+        if (_instance != null)
         {
             return;
         }
