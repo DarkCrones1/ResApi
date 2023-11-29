@@ -288,6 +288,42 @@ public class CreateRequestMappingProfile : Profile
             }
         );
 
+        CreateMap<CartCreateRequestDto, Order>()
+        .ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => (short)OrderStatus.Order)
+        )
+        .AfterMap(
+            (src, dest) =>
+            {
+                if (src.DrinkIds != null)
+                {
+                    foreach (var item in src.DrinkIds)
+                    {
+                        var orderDrink = new OrderDrink
+                        {
+                            DrinkId = item,
+                            Status = (short)OrderDrinkStatus.Order,
+                        };
+                        dest.OrderDrink.Add(orderDrink);
+                    }
+                }
+
+                if (src.FoodIds != null)
+                {
+                    foreach (var item in src.FoodIds)
+                    {
+                        var orderFood = new OrderFood
+                        {
+                            FoodId = item,
+                            Status = (short)OrderFoodStatus.Order
+                        };
+                        dest.OrderFood.Add(orderFood);
+                    }
+                }
+            }
+        );
+
         CreateMap<ReservationCreateRequestDto, Reservation>()
         .ForMember(
             dest => dest.IsDeleted,

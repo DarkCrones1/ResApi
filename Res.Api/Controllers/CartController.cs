@@ -30,14 +30,16 @@ public class CartController : ControllerBase
     private readonly TokenHelper _tokenHelper;
     private readonly ICatalogBaseService<Food> _foodService;
     private readonly ICatalogBaseService<Drink> _drinkService;
+    private readonly ICrudService<Order> _orderService;
 
-    public CartController(IMapper mapper, ICrudService<Cart> service, TokenHelper tokenHelper, ICatalogBaseService<Food> foodService, ICatalogBaseService<Drink> drinkService)
+    public CartController(IMapper mapper, ICrudService<Cart> service, TokenHelper tokenHelper, ICatalogBaseService<Food> foodService, ICatalogBaseService<Drink> drinkService, ICrudService<Order> orderService)
     {
         this._mapper = mapper;
         this._service = service;
         this._tokenHelper = tokenHelper;
         this._foodService = foodService;
         this._drinkService = drinkService;
+        this._orderService = orderService;
     }
 
     [HttpGet]
@@ -109,6 +111,10 @@ public class CartController : ControllerBase
                     entity.Food.Add(food);
             }
         }
+
+        var entityOrder = _mapper.Map<Order>(requestDto);
+        entity.CreatedBy = _tokenHelper.GetUserName();
+        await _orderService.Create(entityOrder);
 
         await _service.Create(entity);
         var dto = _mapper.Map<CartDetailResponseDto>(entity);
