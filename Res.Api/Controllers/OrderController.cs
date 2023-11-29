@@ -125,16 +125,12 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-    [Route("{cartId:int}")]
+    [Route("")]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderResponseDto>))]
-    public async Task<IActionResult> Create([FromBody] OrderCreateRequestDto requestDto, [FromRoute] int cartId)
+    public async Task<IActionResult> Create([FromBody] OrderCreateRequestDto requestDto)
     {
         var entity = _mapper.Map<Order>(requestDto);
         await _service.Create(entity);
-
-        var cart = await _cartService.GetById(cartId);
-        cart.Status = (short)CartStatus.Process;
-        await _cartService.Update(cart);
 
         var dto = _mapper.Map<OrderResponseDto>(entity);
         var response = new ApiResponse<OrderResponseDto>(data: dto);
