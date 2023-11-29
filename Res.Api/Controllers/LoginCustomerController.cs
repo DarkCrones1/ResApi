@@ -55,7 +55,7 @@ public class LoginCustomerController : ControllerBase
         var result = await _service.IsValidUser(requestDto.UserName!, MD5Encrypt.GetMD5(requestDto.Password!));
 
         if (!result)
-            return NotFound("El usuario no es válido");
+            return NotFound("El usuario no es válido, revise si el Usuario o la Contraseña son correctos");
 
         _user = await GetCustomer(requestDto);
 
