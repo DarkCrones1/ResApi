@@ -33,6 +33,44 @@ public class CreateRequestMappingProfile : Profile
             dest => dest.Status,
             opt => opt.MapFrom(src => (short)CartStatus.Arrange)
         );
+        // .AfterMap(
+        //     (src, dest) =>
+        //     {
+        //         var orderC = new Order{
+        //             BranchStoreId = src.BranchStoreId,
+        //             CustomerId = src.CustomerId,
+        //             Status = (short)OrderStatus.Order
+        //         };
+
+        //         // var order = dest.Order ?? new Order();
+
+        //         if (src.DrinkIds != null)
+        //         {
+        //             foreach (var item in src.DrinkIds)
+        //             {
+        //                 var orderDrink = new OrderDrink
+        //                 {
+        //                     DrinkId = item,
+        //                     Status = (short)OrderDrinkStatus.Order,
+        //                 };
+        //                 orderC.OrderDrink.Add(orderDrink);
+        //             }
+        //         }
+
+        //         if (src.FoodIds != null)
+        //         {
+        //             foreach (var item in src.FoodIds)
+        //             {
+        //                 var orderFood = new OrderFood
+        //                 {
+        //                     FoodId = item,
+        //                     Status = (short)OrderFoodStatus.Order
+        //                 };
+        //                 orderC.OrderFood.Add(orderFood);
+        //             }
+        //         }
+        //     }
+        // );
 
         CreateMap<CategoryCreateRequestDto, Category>()
         .ForMember(

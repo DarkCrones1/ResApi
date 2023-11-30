@@ -10,6 +10,8 @@ public partial class Cart : BaseAuditablePaginationEntity
 
     public short Status { get; set; }
 
+    public virtual Order Order { get; set; } = null!;
+
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual BranchStore BranchStore { get; set; } = null!;

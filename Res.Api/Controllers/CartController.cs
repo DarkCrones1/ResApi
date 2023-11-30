@@ -86,7 +86,7 @@ public class CartController : ControllerBase
     [HttpPost]
     [Route("")]
     [Authorize]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CartDetailResponseDto>))]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<CartResponseDto>))]
     public async Task<IActionResult> Create([FromBody] CartCreateRequestDto requestDto)
     {
         var entity = _mapper.Map<Cart>(requestDto);
@@ -111,15 +111,23 @@ public class CartController : ControllerBase
                     entity.Food.Add(food);
             }
         }
+        await _service.Create(entity);
 
         var entityOrder = _mapper.Map<Order>(requestDto);
-        entity.CreatedBy = _tokenHelper.GetUserName();
+        entityOrder.CartId = entity.Id;
         await _orderService.Create(entityOrder);
 
-        await _service.Create(entity);
-        var dto = _mapper.Map<CartDetailResponseDto>(entity);
-        var response = new ApiResponse<CartDetailResponseDto>(data: dto);
-        return Ok(response);
+        var cartDto = _mapper.Map<CartResponseDto>(entity);
+        var cartResponse = new ApiResponse<CartResponseDto>(data: cartDto);
+        var orderDto = _mapper.Map<OrderResponseDto>(entityOrder);
+        var orderResponse = new ApiResponse<OrderResponseDto>(data: orderDto);
+
+        var responseDto = new
+        {
+            CartResponse = new ApiResponse<CartResponseDto>(data: cartDto),
+            OrderResponse = new ApiResponse<OrderResponseDto>(data: orderDto)
+        };
+        return Ok(responseDto);
     }
 
     [HttpDelete]

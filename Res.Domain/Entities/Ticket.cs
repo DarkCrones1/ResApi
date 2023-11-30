@@ -14,7 +14,7 @@ public partial class Ticket : BaseAuditablePaginationEntity
 
     public short Status { get; set; }
 
-    public DateTime CloseTicket { get; set; }
+    public DateTime? CloseTicket { get; set; }
 
     public virtual BranchStore BranchStore { get; set; } = null!;
 
