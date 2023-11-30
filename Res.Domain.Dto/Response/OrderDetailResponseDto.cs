@@ -8,6 +8,8 @@ public class OrderDetailResponseDto
 
     public string? BranchStoreName { get; set; }
 
+    public int CartId { get; set; }
+
     public int CustomerId { get; set; }
 
     public string? CustomerFullName { get; set; }

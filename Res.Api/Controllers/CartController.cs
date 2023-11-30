@@ -118,9 +118,7 @@ public class CartController : ControllerBase
         await _orderService.Create(entityOrder);
 
         var cartDto = _mapper.Map<CartResponseDto>(entity);
-        var cartResponse = new ApiResponse<CartResponseDto>(data: cartDto);
         var orderDto = _mapper.Map<OrderResponseDto>(entityOrder);
-        var orderResponse = new ApiResponse<OrderResponseDto>(data: orderDto);
 
         var responseDto = new
         {
