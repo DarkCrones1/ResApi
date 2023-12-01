@@ -25,11 +25,11 @@ namespace Res.API.Controllers;
 public class DrinkController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Drink> _service;
+    private readonly IDrinkService _service;
     private readonly TokenHelper _tokenHelper;
     private readonly ICategoryService _categoryService;
 
-    public DrinkController(IMapper mapper, ICatalogBaseService<Drink> service, TokenHelper tokenHelper, ICategoryService categoryService)
+    public DrinkController(IMapper mapper, IDrinkService service, TokenHelper tokenHelper, ICategoryService categoryService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -45,9 +45,7 @@ public class DrinkController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<DrinkResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] DrinkQueryFilter filter)
     {
-        var filters = _mapper.Map<Drink>(filter);
-        var entities = await _service.GetPaged(filters);
-
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<DrinkResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,

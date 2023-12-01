@@ -24,6 +24,24 @@ public class BoxCashRepository : CrudRepository<BoxCash>, IBoxCashRepository
     {
         var query = _dbContext.BoxCash.AsQueryable();
 
+        if (entity.Id > 0)
+            query = query.Where(x => x.Id == entity.Id);
+
+        if (!string.IsNullOrEmpty(entity.Name) && !string.IsNullOrWhiteSpace(entity.Name))
+            query = query.Where(x => x.Name.Contains(entity.Name));
+
+        if (!string.IsNullOrEmpty(entity.Description) && !string.IsNullOrWhiteSpace(entity.Description))
+            query = query.Where(x => x.Description!.Contains(entity.Description));
+
+        if (!string.IsNullOrEmpty(entity.SerialNumber) && !string.IsNullOrWhiteSpace(entity.Description))
+            query = query.Where(x => x.Description!.Contains(entity.SerialNumber));
+
+        if (entity.IsDeleted.HasValue)
+            query = query.Where(x => x.IsDeleted == entity.IsDeleted);
+
+        if (entity.BranchStoreId > 0)
+            query = query.Where(x => x.BranchStoreId == entity.Id);
+
         return await query.ToListAsync();
     }
 }

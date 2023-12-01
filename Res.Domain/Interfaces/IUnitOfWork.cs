@@ -14,7 +14,7 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<BranchStoreEmployee> BranchStoreEmployeeRepository { get; }
 
-    ICrudRepository<Cart> CartRepository { get; }
+    ICartRepository CartRepository { get; }
 
     ICategoryRepository CategoryRepository { get; }
 
@@ -22,11 +22,11 @@ public interface IUnitOfWork : IDisposable
 
     ICatalogBaseRepository<CustomerType> CustomerTypeRepository { get; }
 
-    ICatalogBaseRepository<Drink> DrinkRepository { get; }
+    IDrinkRepository DrinkRepository { get; }
 
     IEmployeeRepository EmployeeRepository { get; }
 
-    ICatalogBaseRepository<Food> FoodRepository { get; }
+    IFoodRepository FoodRepository { get; }
 
     ICatalogBaseRepository<GeographicalZone> GeographicalZoneRepository { get; }
 
@@ -34,9 +34,9 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository { get; }
 
-    ICatalogBaseRepository<Menu> MenuRepository { get; }
+    IMenuRepository MenuRepository { get; }
 
-    ICrudRepository<Order> OrderRepository { get; }
+    IOrderRepository OrderRepository { get; }
 
     ICrudRepository<OrderDrink> OrderDrinkRepository { get; }
 
@@ -44,13 +44,13 @@ public interface IUnitOfWork : IDisposable
 
     ICrudRepository<PayBox> PayBoxRepository { get; }
 
-    ICrudRepository<Payment> PaymentRepository { get; }
+    IPaymentRepository PaymentRepository { get; }
 
-    ICrudRepository<Reservation> ReservationRepository { get; }
+    IReservationRepository ReservationRepository { get; }
 
     ICatalogBaseRepository<Rol> RolRepository { get; }
 
-    ICrudRepository<Ticket> TicketRepository { get; }
+    ITicketRepository TicketRepository { get; }
 
     IUserAccountRepository UserAccountRepository { get; }
 

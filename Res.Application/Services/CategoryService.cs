@@ -6,7 +6,7 @@ using Res.Domain.Interfaces.Services;
 
 namespace Res.Application.Services;
 
-public class CategoryService : CrudService<Category>, ICategoryService
+public class CategoryService : CatalogBaseService<Category>, ICategoryService
 {
     public CategoryService(IUnitOfWork unitOfWork) : base(unitOfWork)
     {

@@ -7,37 +7,46 @@ using Res.Domain.Dto.QueryFilters;
 
 namespace Res.Infrastructure.Repositories;
 
-public class CategoryRepository : CatalogBaseRepository<Category>, ICategoryRepository
+public class DrinkRepository : CatalogBaseRepository<Drink>, IDrinkRepository
 {
-    public CategoryRepository(ResDbContext dbContext) : base(dbContext)
+    public DrinkRepository(ResDbContext dbContext) : base(dbContext)
     {
     }
 
-    public override async Task<IEnumerable<Category>> GetPaged(Category entity)
+    public override async Task<IEnumerable<Drink>> GetPaged(Drink entity)
     {
-        var query = _dbContext.Category.AsQueryable();
+        var query = _dbContext.Drink.AsQueryable();
 
         return await query.ToListAsync();
     }
 
-    public async Task<IEnumerable<Category>> GetPaged(CategoryQueryFilter entity)
+    public async Task<IEnumerable<Drink>> GetPaged(DrinkQueryFilter entity)
     {
-        var query = _dbContext.Category.AsQueryable();
+        var query = _dbContext.Drink.AsQueryable();
 
         if (entity.Id > 0)
             query = query.Where(x => x.Id == entity.Id);
 
         if (!string.IsNullOrEmpty(entity.Name) && !string.IsNullOrWhiteSpace(entity.Name))
             query = query.Where(x => x.Name.Contains(entity.Name));
-        
+
         if (!string.IsNullOrEmpty(entity.Description) && !string.IsNullOrWhiteSpace(entity.Description))
             query = query.Where(x => x.Description!.Contains(entity.Description));
 
         if (entity.IsDeleted.HasValue)
             query = query.Where(x => x.IsDeleted == entity.IsDeleted);
 
-        if (entity.ProductType > 0)
-            query = query.Where(x => x.ProductType == entity.ProductType);
+        if (entity.CategoryId != null && entity.CategoryId.Length > 0)
+            query = query.Where(x => x.Category.Any(x => entity.CategoryId.Contains(x.Id)));
+
+        if (entity.Price > 0)
+            query = query.Where(x => x.Price == entity.Price);
+
+        if (entity.LowPriceRange > 0)
+            query = query.Where(x => x.Price >= entity.LowPriceRange);
+
+        if (entity.HighPriceRange > 0)
+            query = query.Where(x => x.Price <= entity.HighPriceRange);
 
         return await query.ToListAsync();
     }

@@ -50,7 +50,6 @@ public class BranchStoreController : ControllerBase
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<BranchStoreResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

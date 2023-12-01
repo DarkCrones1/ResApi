@@ -26,11 +26,11 @@ namespace Res.API.Controllers;
 public class TicketController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Ticket> _service;
+    private readonly ITicketService _service;
     private readonly TokenHelper _tokenHelper;
-    private readonly ICrudService<Cart> _cartService;
+    private readonly ICartService _cartService;
 
-    public TicketController(IMapper mapper, ICrudService<Ticket> service, TokenHelper tokenHelper, ICrudService<Cart> cartService)
+    public TicketController(IMapper mapper, ITicketService service, TokenHelper tokenHelper, ICartService cartService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -45,15 +45,13 @@ public class TicketController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<TicketResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] TicketQueryFilter filter)
     {
-        var filters = _mapper.Map<Ticket>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<TicketResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<TicketResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

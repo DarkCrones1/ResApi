@@ -26,13 +26,13 @@ namespace Res.API.Controllers;
 public class CartController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Cart> _service;
+    private readonly ICartService _service;
     private readonly TokenHelper _tokenHelper;
-    private readonly ICatalogBaseService<Food> _foodService;
-    private readonly ICatalogBaseService<Drink> _drinkService;
-    private readonly ICrudService<Order> _orderService;
+    private readonly IFoodService _foodService;
+    private readonly IDrinkService _drinkService;
+    private readonly IOrderService _orderService;
 
-    public CartController(IMapper mapper, ICrudService<Cart> service, TokenHelper tokenHelper, ICatalogBaseService<Food> foodService, ICatalogBaseService<Drink> drinkService, ICrudService<Order> orderService)
+    public CartController(IMapper mapper, ICartService service, TokenHelper tokenHelper, IFoodService foodService, IDrinkService drinkService, IOrderService orderService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -50,10 +50,8 @@ public class CartController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<CartResponseDto>>))]
     public async Task<IActionResult> Get([FromQuery] CartQueryFilter filter)
     {
-        var filters = _mapper.Map<Cart>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<CartResponseDto>>(entities);
-
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,

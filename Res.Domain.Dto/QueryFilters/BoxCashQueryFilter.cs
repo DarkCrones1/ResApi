@@ -3,7 +3,9 @@ using Res.Common.QueryFilters;
 
 namespace Res.Domain.Dto.QueryFilters;
 
-public class BoxCashQueryFilter :PaginationControlRequestFilter, IBaseQueryFilter
+public class BoxCashQueryFilter : BaseCatalogQueryFilter
 {
-    
+    public int BranchStoreId { get; set; }
+
+    public string? SerialNumber { get; set; }
 }

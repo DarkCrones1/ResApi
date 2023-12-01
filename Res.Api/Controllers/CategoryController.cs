@@ -49,7 +49,6 @@ public class CategoryController : ControllerBase
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<CategoryResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

@@ -24,12 +24,12 @@ namespace Res.API.Controllers;
 public class MenuController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Menu> _service;
+    private readonly IMenuService _service;
     private readonly TokenHelper _tokenHelper;
-    private readonly ICatalogBaseService<Drink> _drinkService;
-    private readonly ICatalogBaseService<Food> _foodService;
+    private readonly IDrinkService _drinkService;
+    private readonly IFoodService _foodService;
 
-    public MenuController(IMapper mapper, ICatalogBaseService<Menu> service, TokenHelper tokenHelper, ICatalogBaseService<Drink> drinkService, ICatalogBaseService<Food> foodService)
+    public MenuController(IMapper mapper, IMenuService service, TokenHelper tokenHelper, IDrinkService drinkService, IFoodService foodService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -46,10 +46,8 @@ public class MenuController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<MenuDetailResponseDto>>))]
     public async Task<IActionResult> Get([FromQuery] MenuQueryFilter filter)
     {
-        var filters = _mapper.Map<Menu>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<MenuDetailResponseDto>>(entities);
-
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,

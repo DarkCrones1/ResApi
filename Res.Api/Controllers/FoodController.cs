@@ -25,11 +25,11 @@ namespace Res.API.Controllers;
 public class FoodController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICatalogBaseService<Food> _service;
+    private readonly IFoodService _service;
     private readonly TokenHelper _tokenHelper;
     private readonly ICategoryService _categoryService;
 
-    public FoodController(IMapper mapper, ICatalogBaseService<Food> service, TokenHelper tokenHelper, ICategoryService categoryService)
+    public FoodController(IMapper mapper, IFoodService service, TokenHelper tokenHelper, ICategoryService categoryService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -44,10 +44,8 @@ public class FoodController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<FoodResponseDto>>))]
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<FoodResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] FoodQueryFilter filter)
-    {
-        var filters = _mapper.Map<Food>(filter);
-        var entities = await _service.GetPaged(filters);
-
+    {;
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<FoodResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,

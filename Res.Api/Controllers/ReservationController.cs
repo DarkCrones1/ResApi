@@ -26,10 +26,10 @@ namespace Res.API.Controllers;
 public class ReservationController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Reservation> _service;
+    private readonly IReservationService _service;
     private readonly TokenHelper _tokenHelper;
 
-    public ReservationController(IMapper mapper, ICrudService<Reservation> service, TokenHelper tokenHelper)
+    public ReservationController(IMapper mapper, IReservationService service, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
@@ -43,15 +43,13 @@ public class ReservationController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<ReservationResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] ReservationQueryFilter filter)
     {
-        var filters = _mapper.Map<Reservation>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<ReservationResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-        
         var response = new ApiResponse<IEnumerable<ReservationResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

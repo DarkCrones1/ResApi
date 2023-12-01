@@ -26,13 +26,13 @@ namespace Res.API.Controllers;
 public class OrderController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Order> _service;
+    private readonly IOrderService _service;
     private readonly ICrudService<OrderDrink> _drinkService;
     private readonly ICrudService<OrderFood> _foodService;
-    private readonly ICrudService<Cart> _cartService;
+    private readonly ICartService _cartService;
     private readonly TokenHelper _tokenHelper;
 
-    public OrderController(IMapper mapper, ICrudService<Order> service, ICrudService<OrderDrink> drinkService, ICrudService<OrderFood> foodService, ICrudService<Cart> cartService, TokenHelper tokenHelper)
+    public OrderController(IMapper mapper, IOrderService service, ICrudService<OrderDrink> drinkService, ICrudService<OrderFood> foodService, ICartService cartService, TokenHelper tokenHelper)
     {
         this._mapper = mapper;
         this._service = service;
@@ -49,15 +49,13 @@ public class OrderController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<ReservationResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] OrderQueryFilter filter)
     {
-        var filters = _mapper.Map<Order>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<OrderResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<OrderResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

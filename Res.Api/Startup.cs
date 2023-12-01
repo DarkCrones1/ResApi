@@ -108,9 +108,17 @@ public class Startup
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
         services.AddScoped<IBoxCashRepository, BoxCashRepository>();
         services.AddScoped<IBranchStoreRepository, BranchStoreRepository>();
+        services.AddScoped<ICartRepository, CartRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IDrinkRepository, DrinkRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IFoodRepository, FoodRepository>();
+        services.AddScoped<IMenuRepository, MenuRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IPaymentRepository, PaymentRepository>();
+        services.AddScoped<IReservationRepository, ReservationRepository>();
+        services.AddScoped<ITicketRepository, TicketRepository>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
         services.AddScoped<IUnitOfWork, UnirOfWork>();
 
@@ -120,10 +128,18 @@ public class Startup
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IBoxCashService, BoxCashService>();
         services.AddScoped<IBranchStoreService, BranchStoreService>();
+        services.AddScoped<ICartService, CartService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IDrinkService, DrinkService>();
         services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<IFoodService, FoodService>();
+        services.AddScoped<IMenuService, MenuService>();
         services.AddScoped<IMiscellaneousService, MiscellaneousService>();
+        services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IPaymentService, PaymentService>();
+        services.AddScoped<IReservationService, ReservationService>();
+        services.AddScoped<ITicketService, TicketService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
         services.AddScoped<TokenHelper>();
         services.AddHttpContextAccessor();

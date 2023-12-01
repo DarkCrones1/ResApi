@@ -24,7 +24,7 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<BranchStoreEmployee> _branchStoreEmployeeRepository;
 
-    protected ICrudRepository<Cart> _cartRepository;
+    protected ICartRepository _cartRepository;
 
     protected ICategoryRepository _categoryRepository;
 
@@ -32,11 +32,11 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICatalogBaseRepository<CustomerType> _customerTypeRepository;
 
-    protected ICatalogBaseRepository<Drink> _drinkRepository;
+    protected IDrinkRepository _drinkRepository;
 
     protected IEmployeeRepository _employeeRepository;
 
-    protected ICatalogBaseRepository<Food> _foodRepository;
+    protected IFoodRepository _foodRepository;
 
     protected ICatalogBaseRepository<GeographicalZone> _geographicalZoneRepository;
 
@@ -44,9 +44,9 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<ManagerZoneBranchStore> _managerZoneBranchStoreRepository;
 
-    protected ICatalogBaseRepository<Menu> _menuRepository;
+    protected IMenuRepository _menuRepository;
 
-    protected ICrudRepository<Order> _orderRepository;
+    protected IOrderRepository _orderRepository;
 
     protected ICrudRepository<OrderDrink> _orderDrinkRepository;
 
@@ -54,13 +54,13 @@ public class UnirOfWork : IUnitOfWork
 
     protected ICrudRepository<PayBox> _payBoxRepository;
 
-    protected ICrudRepository<Payment> _paymentRepository;
+    protected IPaymentRepository _paymentRepository;
 
-    protected ICrudRepository<Reservation> _reservationRepository;
+    protected IReservationRepository _reservationRepository;
 
     protected ICatalogBaseRepository<Rol> _rolRepository;
 
-    protected ICrudRepository<Ticket> _ticketRepository;
+    protected ITicketRepository _ticketRepository;
 
     protected IUserAccountRepository _userAccountRepository;
 
@@ -86,7 +86,7 @@ public class UnirOfWork : IUnitOfWork
 
         _branchStoreEmployeeRepository = new CrudRepository<BranchStoreEmployee>(_dbContext);
 
-        _cartRepository = new CrudRepository<Cart>(_dbContext);
+        _cartRepository = new CartRepository(_dbContext);
 
         _categoryRepository = new CategoryRepository(_dbContext);
 
@@ -94,11 +94,11 @@ public class UnirOfWork : IUnitOfWork
 
         _customerTypeRepository = new CatalogBaseRepository<CustomerType>(_dbContext);
 
-        _drinkRepository = new CatalogBaseRepository<Drink>(_dbContext);
+        _drinkRepository = new DrinkRepository(_dbContext);
 
         _employeeRepository = new EmployeeRepository(_dbContext);
 
-        _foodRepository = new CatalogBaseRepository<Food>(_dbContext);
+        _foodRepository = new FoodRepository(_dbContext);
 
         _geographicalZoneRepository = new CatalogBaseRepository<GeographicalZone>(_dbContext);
 
@@ -106,9 +106,9 @@ public class UnirOfWork : IUnitOfWork
 
         _managerZoneBranchStoreRepository = new CrudRepository<ManagerZoneBranchStore>(_dbContext);
 
-        _menuRepository = new CatalogBaseRepository<Menu>(_dbContext);
+        _menuRepository = new MenuRepository(_dbContext);
 
-        _orderRepository = new CrudRepository<Order>(_dbContext);
+        _orderRepository = new OrderRepository(_dbContext);
 
         _orderDrinkRepository = new CrudRepository<OrderDrink>(_dbContext);
 
@@ -116,13 +116,13 @@ public class UnirOfWork : IUnitOfWork
 
         _payBoxRepository = new CrudRepository<PayBox>(_dbContext);
 
-        _paymentRepository = new CrudRepository<Payment>(_dbContext);
+        _paymentRepository = new PaymentRepository(_dbContext);
 
-        _reservationRepository = new CrudRepository<Reservation>(_dbContext);
+        _reservationRepository = new ReservationRepository(_dbContext);
 
         _rolRepository = new CatalogBaseRepository<Rol>(_dbContext);
 
-        _ticketRepository = new CrudRepository<Ticket>(_dbContext);
+        _ticketRepository = new TicketRepository(_dbContext);
 
         _userAccountRepository = new UserAccountRepository(_dbContext);
 
@@ -139,7 +139,7 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<BranchStoreEmployee> BranchStoreEmployeeRepository => _branchStoreEmployeeRepository;
 
-    public ICrudRepository<Cart> CartRepository => _cartRepository;
+    public ICartRepository CartRepository => _cartRepository;
 
     public ICategoryRepository CategoryRepository => _categoryRepository;
 
@@ -147,11 +147,11 @@ public class UnirOfWork : IUnitOfWork
 
     public ICatalogBaseRepository<CustomerType> CustomerTypeRepository => _customerTypeRepository;
 
-    public ICatalogBaseRepository<Drink> DrinkRepository => _drinkRepository;
+    public IDrinkRepository DrinkRepository => _drinkRepository;
 
     public IEmployeeRepository EmployeeRepository => _employeeRepository;
 
-    public ICatalogBaseRepository<Food> FoodRepository => _foodRepository;
+    public IFoodRepository FoodRepository => _foodRepository;
 
     public ICatalogBaseRepository<GeographicalZone> GeographicalZoneRepository => _geographicalZoneRepository;
 
@@ -159,9 +159,9 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<ManagerZoneBranchStore> ManagerZoneBranchStoreRepository => _managerZoneBranchStoreRepository;
 
-    public ICatalogBaseRepository<Menu> MenuRepository => _menuRepository;
+    public IMenuRepository MenuRepository => _menuRepository;
 
-    public ICrudRepository<Order> OrderRepository => _orderRepository;
+    public IOrderRepository OrderRepository => _orderRepository;
 
     public ICrudRepository<OrderDrink> OrderDrinkRepository => _orderDrinkRepository;
 
@@ -169,13 +169,13 @@ public class UnirOfWork : IUnitOfWork
 
     public ICrudRepository<PayBox> PayBoxRepository => _payBoxRepository;
 
-    public ICrudRepository<Payment> PaymentRepository => _paymentRepository;
+    public IPaymentRepository PaymentRepository => _paymentRepository;
 
-    public ICrudRepository<Reservation> ReservationRepository => _reservationRepository;
+    public IReservationRepository ReservationRepository => _reservationRepository;
 
     public ICatalogBaseRepository<Rol> RolRepository => _rolRepository;
 
-    public ICrudRepository<Ticket> TicketRepository => _ticketRepository;
+    public ITicketRepository TicketRepository => _ticketRepository;
 
     public IUserAccountRepository UserAccountRepository => _userAccountRepository;
 

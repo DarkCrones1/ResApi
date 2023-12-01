@@ -50,7 +50,6 @@ public class BoxCashController : ControllerBase
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<BoxCashResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

@@ -18,11 +18,11 @@ public class CreateRequestMappingProfile : Profile
         .ForMember(
             dest => dest.IsDeleted,
             opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
-        )
-        .ForMember(
-            dest => dest.SerialNumber,
-            opt => opt.MapFrom(src => Guid.NewGuid())
         );
+        // .ForMember(
+        //     dest => dest.SerialNumber,
+        //     opt => opt.MapFrom(src => Guid.NewGuid())
+        // );
 
         CreateMap<CartCreateRequestDto, Cart>()
         .ForMember(

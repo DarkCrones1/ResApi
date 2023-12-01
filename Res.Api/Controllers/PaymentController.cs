@@ -26,12 +26,12 @@ namespace Res.API.Controllers;
 public class PaymentController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly ICrudService<Payment> _service;
+    private readonly IPaymentService _service;
     private readonly TokenHelper _tokenHelper;
-    private readonly ICrudService<Ticket> _ticketService;
-    private readonly ICrudService<Cart> _cartService;
+    private readonly ITicketService _ticketService;
+    private readonly ICartService _cartService;
 
-    public PaymentController(IMapper mapper, ICrudService<Payment> service, TokenHelper tokenHelper, ICrudService<Ticket> ticketService, ICrudService<Cart> cartService)
+    public PaymentController(IMapper mapper, IPaymentService service, TokenHelper tokenHelper, ITicketService ticketService, ICartService cartService)
     {
         this._mapper = mapper;
         this._service = service;
@@ -47,15 +47,13 @@ public class PaymentController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<PaymentResponseDto>>))]
     public async Task<IActionResult> GetAll([FromQuery] PaymentQueryFilter filter)
     {
-        var filters = _mapper.Map<Payment>(filter);
-        var entities = await _service.GetPaged(filters);
+        var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<PaymentResponseDto>>(entities);
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
             entities.PageSize
         );
-
         var response = new ApiResponse<IEnumerable<PaymentResponseDto>>(data: dtos, meta: metaDataResponse);
         return Ok(response);
     }

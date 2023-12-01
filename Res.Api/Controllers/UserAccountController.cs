@@ -54,7 +54,6 @@ public class UserAccountController : ControllerBase
     {
         var entities = await _service.GetPaged(filter);
         var dtos = _mapper.Map<IEnumerable<UserAccountResponseDto>>(entities);
-
         var metaDataResponse = new MetaDataResponse(
             entities.TotalCount,
             entities.CurrentPage,
