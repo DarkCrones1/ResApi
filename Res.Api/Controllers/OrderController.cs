@@ -122,18 +122,18 @@ public class OrderController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost]
-    [Route("")]
-    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderResponseDto>))]
-    public async Task<IActionResult> Create([FromBody] OrderCreateRequestDto requestDto)
-    {
-        var entity = _mapper.Map<Order>(requestDto);
-        await _service.Create(entity);
+    // [HttpPost]
+    // [Route("")]
+    // [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<OrderResponseDto>))]
+    // public async Task<IActionResult> Create([FromBody] OrderCreateRequestDto requestDto)
+    // {
+    //     var entity = _mapper.Map<Order>(requestDto);
+    //     await _service.Create(entity);
 
-        var dto = _mapper.Map<OrderResponseDto>(entity);
-        var response = new ApiResponse<OrderResponseDto>(data: dto);
-        return Ok(response);
-    }
+    //     var dto = _mapper.Map<OrderResponseDto>(entity);
+    //     var response = new ApiResponse<OrderResponseDto>(data: dto);
+    //     return Ok(response);
+    // }
 
     [HttpPost]
     [Route("{orderid:int}/FinishOrder/{cartId:int}")]
