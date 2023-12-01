@@ -33,4 +33,6 @@ public class PaymentResponseDto
     public short Status { get; set; }
 
     public string? StatusName { get; set; }
+
+    public bool? CashPayment { get; set; }
 }
