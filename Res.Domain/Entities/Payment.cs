@@ -26,9 +26,9 @@ public partial class Payment : BaseRemovableAuditablePaginationEntity
 
     public virtual BranchStore BranchStore { get; set; } = null!;
 
-    public virtual BoxCash CashRegister { get; set; } = null!;
+    public virtual BoxCash? CashRegister { get; set; }
 
-    public virtual Employee Cashier { get; set; } = null!;
+    public virtual Employee? Cashier { get; set; }
 
     public virtual Customer Customer { get; set; } = null!;
 
